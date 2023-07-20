@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/product.schema.json",
+    "title": "Initialize",
+    "description": "The initialize message to the control-software",
+    "type": "object",
+    "properties": {
+        "session_id": {
+            "description": "An arbitrary string, filled in by the client, that is copied by the server in the response dictionary that is sent in response to this request.",
+            "type": "string"
+        },
+        "command": {
+            "description": "A string identifying the function to be executed.",
+            "type": "string",
+            "const": "initialize"
+        },
+        "version": {
+            "description": "String containing the version number of the message format.",
+            "type": "string",
+            "pattern": "^\\d+.\\d+.\\d$"
+        }
+    }
+}
