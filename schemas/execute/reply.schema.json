@@ -19,6 +19,14 @@
         "results": {
           "description": "Mapping of measured bitstring (little endian notation; q[n]...q[0]) to count of occurrences.",
           "type": "object"
+        },
+        "raw_data": {
+          "description": "A list of bitstrings (little endian notation; `q[n]...q[0]`) ordered by the shot in which it was measured.",
+          "type": "array",
+          "items": {
+            "description": "A bitstring measured by 2300.",
+            "type": "string"
+          }
         }
       },
       "if": {
@@ -34,7 +42,8 @@
       "then": {
         "required": [
           "run_id",
-          "results"
+          "results",
+          "raw_data"
         ]
       }
     }
