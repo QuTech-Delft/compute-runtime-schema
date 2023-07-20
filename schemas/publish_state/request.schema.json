@@ -1,0 +1,54 @@
+{
+  "title": "Publish state request",
+  "description": "System 2300 publishes a state message to inform subscribers of its current state.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../base_request.schema.json"
+    }
+  ],
+  "properties": {
+    "command": {
+      "const": "publish_state"
+    },
+    "payload": {
+      "description": "The return value(s) of the executed command.",
+      "type": "object",
+      "properties": {
+        "state": {
+          "description": "The current state of the system in all-capitals",
+          "type": "string",
+          "enum": [
+            "IDLE",
+            "EXECUTING",
+            "CALIBRATING",
+            "OFFLINE"
+          ]
+        },
+        "timestamp": {
+          "description": "Timestamp of the instantiation of the message (return value of time.time())",
+          "type": "number"
+        }
+      },
+      "required": [
+        "state",
+        "timestamp"
+      ]
+    }
+  },
+  "if": {
+    "properties": {
+      "status": {
+        "const": "success"
+      }
+    },
+    "required": [
+      "status"
+    ]
+  },
+  "then": {
+    "required": [
+      "payload"
+    ]
+  }
+}

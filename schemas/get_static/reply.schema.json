@@ -1,0 +1,68 @@
+{
+  "title": "Get static reply",
+  "description": "The reply containing system information for 2300.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../base_reply.schema.json"
+    }
+  ],
+  "properties": {
+    "payload": {
+      "description": "The return value(s) of the executed command.",
+      "type": "object",
+      "properties": {
+        "nqubits": {
+          "description": "The number of qubits.",
+          "type": "integer"
+        },
+        "topology": {
+          "description": "List of the edges between the various qubits.",
+          "type": "array",
+          "items": {
+            "description": "Edge between two (tuple) qubits.",
+            "type": "array"
+          }
+        },
+        "name": {
+          "description": "Name of the system.",
+          "type": "string"
+        },
+        "pgs": {
+          "description": "Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase).",
+          "type": "array",
+          "items": {
+            "description": "Name of the primitive gate",
+            "type": "string"
+          }
+        },
+        "starttime": {
+          "description": "Timestamp of start-up of the system (return value of time.time())",
+          "type": "number"
+        }
+      },
+      "required": [
+        "nqubits",
+        "topology",
+        "name",
+        "pgs",
+        "starttime"
+      ]
+    }
+  },
+  "if": {
+    "properties": {
+      "status": {
+        "const": "success"
+      }
+    },
+    "required": [
+      "status"
+    ]
+  },
+  "then": {
+    "required": [
+      "payload"
+    ]
+  }
+}

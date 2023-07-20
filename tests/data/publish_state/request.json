@@ -1,0 +1,8 @@
+{
+  "command": "publish_state",
+  "payload": {
+    "state": "IDLE",
+    "timestamp": 1690061619.610174
+  },
+  "version": "0.1.0"
+}

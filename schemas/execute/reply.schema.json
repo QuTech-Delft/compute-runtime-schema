@@ -1,0 +1,45 @@
+{
+  "title": "Initialize reply",
+  "description": "The reply whether initializing 2300 has succeeded.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../extended_reply.schema.json"
+    }
+  ],
+  "properties": {
+    "payload": {
+      "description": "The return value(s) of the executed command.",
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "description": "Client defined identifier for the execution.",
+          "type": "integer"
+        },
+        "results": {
+          "description": "Mapping of measured bitstring (little endian notation; q[n]...q[0]) to count of occurrences.",
+          "type": "object"
+        }
+      },
+      "required": [
+        "run_id",
+        "results"
+      ]
+    }
+  },
+  "if": {
+    "properties": {
+      "status": {
+        "const": "success"
+      }
+    },
+    "required": [
+      "status"
+    ]
+  },
+  "then": {
+    "required": [
+      "payload"
+    ]
+  }
+}

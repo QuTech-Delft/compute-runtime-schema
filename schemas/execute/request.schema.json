@@ -1,0 +1,53 @@
+{
+  "title": "Initialize request",
+  "description": "This message signals to the 2300 that execution is about to begin. The initialize should be picked up as a request for locking 2300.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../extended_request.schema.json"
+    }
+  ],
+  "properties": {
+    "command": {
+      "const": "execute"
+    },
+    "payload": {
+      "description": "Arguments for the function to be executed.",
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "description": "Client defined identifier for the execution.",
+          "type": "integer"
+        },
+        "circuit": {
+          "description": "Circuit description in cQASM language.",
+          "type": "string"
+        },
+        "number_of_shots": {
+          "description": "Number of shots to be executed for the circuit.",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "circuit",
+        "number_of_shots"
+      ]
+    }
+  },
+  "if": {
+    "properties": {
+      "status": {
+        "const": "success"
+      }
+    },
+    "required": [
+      "status"
+    ]
+  },
+  "then": {
+    "required": [
+      "payload"
+    ]
+  }
+}
