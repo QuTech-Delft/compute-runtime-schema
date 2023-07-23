@@ -1,6 +1,6 @@
 # Active modus
 
-In the active modus, the interface will be a client-server interface, with 2200 the client and 2300 the server. It follows the semantics of remote procedure calls (RPCs), i.e., the client "calls" a function that is "remotely" executed on the server and the result is passed back to the client.
+In the active modus, the interface will be a client-server interface. 2200 acts as the client and 2300 as the server. It follows the semantics of remote procedure calls (RPCs), i.e., the client "calls" a function that is "remotely" executed on the server and the result is passed back to the client.
 
 ## Message layer
 
@@ -10,8 +10,6 @@ In the active modus, the interface will be a client-server interface, with 2200 
 | ZMQ message pattern | Request-reply. 2200 using REQ socket and 2300 REP socket |
 | Server binding argument | `tcp://*:4203` i.e., uses underlying TCP socket connect to port 4203. |
 | Client connect argument | `tcp://<host address>:4203`. The `<host address>` contains the IP address of 2300. |
-
-The messages are python dictionaries that are converted from/to python strings via the JSON serializer of the python standard library (`json.loads` and `json.dumps` functions).
 
 The message used are described in the [messages spec](../messages.md). Both the base and extended messages are used.
 
@@ -33,7 +31,7 @@ The `payload` for the request is:
 | --- | --- | --- |
 | - | - | - |
 
-```json
+```jsonc
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "initialize",
@@ -47,7 +45,7 @@ The `payload` for the response is:
 | --- | --- | --- |
 | - | - | - |
 
-```json
+```jsonc
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
@@ -65,7 +63,7 @@ The `payload` for the request is:
 | --- | --- | --- |
 | - | - | - |
 
-```json
+```jsonc
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "terminate",
@@ -79,7 +77,7 @@ The `payload` for the response is:
 | --- | --- | --- |
 | - | - | - |
 
-```json
+```jsonc
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
@@ -109,7 +107,7 @@ The cQASM language is described in detail [here](https://www.quantum-inspire.com
 * The requested number of qubits must be smaller or equal than the allowed number of qubits.
 * Static loops are not allowed
 
-```json
+```jsonc
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "execute",
@@ -129,7 +127,7 @@ The `payload` for the response is:
 | `run_id` | `int` | Client defined identifier for the execution. |
 | `results` | `dict[str, int]` | Mapping of measured bitstring (little endian notation; `q[n]...q[0]`) to count of occurrences. |
 
-```json
+```jsonc
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
@@ -156,7 +154,7 @@ The `payload` for the request is:
 | --- | --- | --- |
 | - | - | - |
 
-```json
+```jsonc
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "get_static",
@@ -174,7 +172,7 @@ The `payload` for the response is:
 | `pgs` | `list[str]` | Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase). |
 | `starttime` | `float` | Timestamp of start-up of the system (return value of `time.time()`) |
 
-```json title="get_static_response.json"
+```jsonc
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
@@ -205,7 +203,7 @@ The `payload` for the request is:
 | --- | --- | --- |
 | `active` | `bool` | Turn the PUB/SUB channel on, so that it starts broadcasting. This is a governance safeguard that initial messages are not missed and metadata on results is outdated. |
 
-```json
+```jsonc
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "set_publish",
@@ -222,7 +220,7 @@ The `payload` for the response is:
 | --- | --- | --- |
 | - | - | - |
 
-```json
+```jsonc
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",

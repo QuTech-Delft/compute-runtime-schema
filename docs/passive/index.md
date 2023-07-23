@@ -11,8 +11,6 @@ In the passive mode, a broadcast model is followed. 2300 acts as a sender, while
 | Publish binding argument | `tcp://*:4204` i.e., uses underlying TCP socket connect to port 4204. |
 | Subscriber connect argument | `tcp://<host address>:4204`. The `<host address>` contains the IP address of 2300. |
 
-The messages are python dictionaries that are converted from/to python strings via the JSON serializer of the python standard library (`json.loads` and `json.dumps` functions).
-
 The message used are described in the [messages spec](../messages.md). Only the base messages are used. Since messages will only be broadcasted, the messages will be limited to only the [base request](../messages.md#base-request).
 
 ## Application layer
@@ -32,7 +30,7 @@ The payload for the message is:
 | `status` | `str` | The current status of the system in all-capitals (i.e. IDLE, EXECUTING, CALIBRATING, OFFLINE) |
 | `timestamp` | `float` | Timestamp of the instantiation of the message (return value of `time.time()`) |
 
-```json
+```jsonc
 {
     "command": "publish_status",
     "payload": {
@@ -51,7 +49,7 @@ The payload for the message is still under advicement. The appropriate key-value
 | --- | --- | --- |
 | - | - | - |
 
-```json
+```jsonc
 {
     "command": "publish_dynamic",
     "payload": {

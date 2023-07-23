@@ -7,3 +7,6 @@ The job processor (2200) and control-software (2300) are python software compone
 * Function to retrieve system information from 2300
 
 Although this ICD was originally intended for a spin quantum runtime, an effort was made to make this a generic interface that can easily be extended to other quantum runtimes. To achive this the functions above will be performed in two different communication modi; active and passive. The interface for both modi consists of two layers: a message layer and an application layer.
+
+* [Active communication](active/index.md)
+* [Passive communication](passive/index.md)
