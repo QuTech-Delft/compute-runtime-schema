@@ -13,13 +13,7 @@ In the passive mode, a broadcast model is followed. 2300 acts as a sender, while
 
 The messages are python dictionaries that are converted from/to python strings via the JSON serializer of the python standard library (`json.loads` and `json.dumps` functions).
 
-The dictionaries, received by the subscribers, have the following structure:
-
-| Key | Type | Value |
-| --- | --- | --- |
-| `command` | `str` | A string identifying the function to be executed. |
-| `payload` | `dict` | Arguments for the function to be executed. Presence of this key-value pair depends on the specific command. |
-| `version` | `str` | String containing the version number of the message format. This allows modification of the interface in a backwards compatible manner. The version will adhere to the [semantic versioning rules](<https://semver.org/>). Presently we are still using a beta numbering (`0.y.z`). |
+The message used are described in the [messages spec](../messages.md). Only the base messages are used. Since messages will only be broadcasted, the messages will be limited to only the [base request](../messages.md#base-request).
 
 ## Application layer
 
@@ -40,7 +34,6 @@ The payload for the message is:
 
 ```json
 {
-    "session_id": "abcd",
     "command": "publish_status",
     "payload": {
         "status": "IDLE",
@@ -52,7 +45,7 @@ The payload for the message is:
 
 #### Publish dynamic
 
-The payload for the message is:
+The payload for the message is still under advicement. The appropriate key-value pairs will be filled in when they are determined.
 
 | Key | Type | Value |
 | --- | --- | --- |
@@ -60,9 +53,10 @@ The payload for the message is:
 
 ```json
 {
-    "session_id": "abcd",
     "command": "publish_dynamic",
-    "payload": {},
+    "payload": {
+        // to be determined
+    },
     "version": "0.1.0"
 }
 ```
