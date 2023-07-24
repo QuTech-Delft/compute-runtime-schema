@@ -10,7 +10,6 @@ The message described below has the most basic information needed for a message,
 
 | Key | Type | Value |
 | --- | --- | --- |
-| `session_id` | `str` | An arbitrary string, filled in by the client, that is copied by the server in the response dictionary that is sent in response to this request. Normally this would contain a unique identifier for the request, e.g., a UUID |
 | `command` | `str` | A string identifying the function to be executed. |
 | `payload` | `dict` | Arguments for the function to be executed. Presence of this key-value pair depends on the specific command. |
 | `version` | `str` | String containing the version number of the message format. This allows modification of the interface in a backwards compatible manner. The version will adhere to the [semantic versioning rules](<https://semver.org/>). Presently we are still using a beta numbering (`0.y.z`). |
@@ -29,7 +28,6 @@ The message described below has the most basic information needed for a message,
 
 | Key | Type | Value |
 | --- | --- | --- |
-| `session_id` | `str` | The same `session_id` from the request to validate the request and reply. |
 | `status` | `str` | "success" or "failure", depending on whether the command executed successfully. |
 | `payload` | `dict` | If "status" == "failure": a string describing the failure in more detail. If "status" == "success": the return value(s) of the executed command (presence of this key-value pair then depends on the specific command). |
 | `version` | `str` | String containing the version number of the message format. This allows modification of the interface in a backwards compatible manner. The version will adhere to the [semantic versioning rules](<https://semver.org/>). Presently we are still using a beta numbering (`0.y.z`). |

@@ -1,8 +1,8 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://example.com/product.schema.json",
-    "title": "Initialize",
-    "description": "The initialize message to the control-software",
+    "$id": "https://raw.githubusercontent.com/QuTech-Delft/compute-runtime-schema/master/schemas/initialize/request.schema.json",
+    "title": "Initialize request",
+    "description": "This message signals to the 2300 that execution is about to begin. The initialize should be picked up as a request for locking 2300.",
     "type": "object",
     "properties": {
         "session_id": {
@@ -19,5 +19,10 @@
             "type": "string",
             "pattern": "^\\d+.\\d+.\\d$"
         }
-    }
+    },
+    "required": [
+        "session_id",
+        "command",
+        "version"
+    ]
 }
