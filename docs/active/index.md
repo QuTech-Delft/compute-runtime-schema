@@ -1,6 +1,8 @@
 # Active modus
 
-In the active modus, the interface will be a client-server interface. 2200 acts as the client and 2300 as the server. It follows the semantics of remote procedure calls (RPCs), i.e., the client "calls" a function that is "remotely" executed on the server and the result is passed back to the client.
+In the active modus, the interface will be a client-server interface. 2200 acts as the client and 2300 as the server. It
+follows the semantics of remote procedure calls (RPCs), i.e., the client "calls" a function that is "remotely" executed
+on the server and the result is passed back to the client.
 
 ## Message layer
 
@@ -15,7 +17,8 @@ The messages used are described in the [messages spec](../messages.md). Both the
 
 ## Application layer
 
-The application layer contains the specific application functions that are described in the [root document](../index.md). The functions are described via the contents of the response and reply dictionaries.
+The application layer contains the specific application functions that are described in the
+[root document](../index.md). The functions are described via the contents of the response and reply dictionaries.
 
 ### Locking
 
@@ -23,7 +26,8 @@ This function consists of two RPCs. One to disable the algorithm interruption an
 
 #### Initialize
 
-This message signals to the 2300 that execution is about to begin. The initialize should be picked up as a request for locking 2300. However, this interpretation is left to this component.
+This message signals to the 2300 that execution is about to begin. The initialize should be picked up as a request for
+locking 2300. However, this interpretation is left to this component.
 
 The schemas for validation can be found in:
 
@@ -60,7 +64,8 @@ This message does not require any additional information in the payload section.
 
 #### Terminate
 
-The opposing message for the initialize request. When 2300 receives this request, execution from user generated circuits has stopped and the system can resume normal operations.
+The opposing message for the initialize request. When 2300 receives this request, execution from user generated circuits
+has stopped and the system can resume normal operations.
 
 The schemas for validation can be found in:
 
@@ -97,11 +102,13 @@ This message does not require any additional information in the payload section.
 
 ### Execution
 
-Execute an algorithm on 2300. This is only allowed when 2300 is in non-interruption mode. So for a single execution three commands are required, "initialize", "execute", "terminate".
+Execute an algorithm on 2300. This is only allowed when 2300 is in non-interruption mode. So for a single execution
+three commands are required, "initialize", "execute", "terminate".
 
 #### Execute
 
-This message requests a backend to execute a user generated circuit. This can only be done when the system has been initialized (in reality "locked").
+This message requests a backend to execute a user generated circuit. This can only be done when the system has been
+initialized (in reality "locked").
 
 The schemas for validation can be found in:
 
@@ -116,7 +123,8 @@ The schemas for validation can be found in:
 | `circuit` | `str` | Circuit description in cQASM language, see below for more information. |
 | `number_of_shots` | `int` | Number of shots to be executed for the circuit. |
 
-The cQASM language is described in detail [here](https://www.quantum-inspire.com/kbase/cqasm/). 2300 imposes the following constraints on the cQASM it accepts:
+The cQASM language is described in detail [here](https://www.quantum-inspire.com/kbase/cqasm/). 2300 imposes the
+following constraints on the cQASM it accepts:
 
 * The gates should be part of the allowed gates set.
 * The requested number of qubits must be smaller or equal than the allowed number of qubits.
@@ -225,7 +233,9 @@ This message does not require any additional information in the payload section.
 
 #### Set publish
 
-System 2300 publishes dynamic information for 2200 to read. To prevent the system from broadcasting these messages before 2200 is listening and potentially missing relevant information, 2200 can actively start this broadcasting. If necessary, 2200 can also opt to stop the broadcasting.
+System 2300 publishes dynamic information for 2200 to read. To prevent the system from broadcasting these messages
+before 2200 is listening and potentially missing relevant information, 2200 can actively start this broadcasting. If
+necessary, 2200 can also opt to stop the broadcasting.
 
 The schemas for validation can be found in:
 

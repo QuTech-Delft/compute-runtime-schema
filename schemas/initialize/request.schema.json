@@ -1,28 +1,28 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/QuTech-Delft/compute-runtime-schema/master/schemas/initialize/request.schema.json",
-    "title": "Initialize request",
-    "description": "This message signals to the 2300 that execution is about to begin. The initialize should be picked up as a request for locking 2300.",
-    "type": "object",
-    "properties": {
-        "session_id": {
-            "description": "An arbitrary string, filled in by the client, that is copied by the server in the response dictionary that is sent in response to this request.",
-            "type": "string"
-        },
-        "command": {
-            "description": "A string identifying the function to be executed.",
-            "type": "string",
-            "const": "initialize"
-        },
-        "version": {
-            "description": "String containing the version number of the message format.",
-            "type": "string",
-            "pattern": "^\\d+.\\d+.\\d$"
-        }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/QuTech-Delft/compute-runtime-schema/master/schemas/initialize/request.schema.json",
+  "title": "Initialize request",
+  "description": "This message signals to the 2300 that execution is about to begin. The initialize should be picked up as a request for locking 2300.",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "description": "An arbitrary string, filled in by the client, that is copied by the server in the response dictionary that is sent in response to this request.",
+      "type": "string"
     },
-    "required": [
-        "session_id",
-        "command",
-        "version"
-    ]
+    "command": {
+      "description": "A string identifying the function to be executed.",
+      "type": "string",
+      "const": "initialize"
+    },
+    "version": {
+      "description": "String containing the version number of the message format.",
+      "type": "string",
+      "pattern": "^\\d+.\\d+.\\d$"
+    }
+  },
+  "required": [
+    "session_id",
+    "command",
+    "version"
+  ]
 }

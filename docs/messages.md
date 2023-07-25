@@ -1,6 +1,7 @@
 # Messages
 
-The messages are python dictionaries that are converted from/to python strings via the JSON serializer of the python standard library (`json.loads` and `json.dumps` functions).
+The messages are python dictionaries that are converted from/to python strings via the JSON serializer of the python
+standard library (`json.loads` and `json.dumps` functions).
 
 ## Base message
 
@@ -44,7 +45,8 @@ The message described below has the most basic information needed for a message,
 
 ## Extended messages
 
-An extended version of the messages exists. Next to the key-value pairs already present in these messages, it also contains session identifiers.
+An extended version of the messages exists. Next to the key-value pairs already present in these messages, it also
+contains session identifiers.
 
 ### Extended request
 
