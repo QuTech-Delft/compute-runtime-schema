@@ -231,32 +231,27 @@ This message does not require any additional information in the payload section.
 }
 ```
 
-#### Set publish
+#### Trigger publish
 
-System 2300 publishes dynamic information for 2200 to read. To prevent the system from broadcasting these messages
-before 2200 is listening and potentially missing relevant information, 2200 can actively start this broadcasting. If
-necessary, 2200 can also opt to stop the broadcasting.
+System 2300 publishes dynamic information for 2200 to read. It might happen that 2300 broadcasted a message while 2200
+wasn't ready yet, resulting in relevant information being missed. In such a case, 2200 can request 2300 to publish the
+information again.
 
 The schemas for validation can be found in:
 
-* [`/schemas/set_publish/request.schema.json`](../../schemas/set_publish/request.schema.json)
-* [`/schemas/set_publish/response.schema.json`](../../schemas/set_publish/response.schema.json)
+* [`/schemas/trigger_publish/request.schema.json`](../../schemas/trigger_publish/request.schema.json)
+* [`/schemas/trigger_publish/response.schema.json`](../../schemas/trigger_publish/response.schema.json)
 
 ##### Set publish request payload
 
-| Key | Type | Value |
-| --- | --- | --- |
-| `active` | `bool` | Turn the PUB/SUB channel on, so that it starts broadcasting. This is a governance safeguard that initial messages are not missed and metadata on results is outdated. |
+This message does not require any additional information in the payload section.
 
 ##### Set publish request example
 
 ```jsonc
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
-    "command": "set_publish",
-    "payload": {
-        "active": true
-    },
+    "command": "trigger_publish",
     "version": "0.1.0"
 }
 ```
