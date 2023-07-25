@@ -1,11 +1,16 @@
 # Messages
 
-The messages are python dictionaries that are converted from/to python strings via the JSON serializer of the python
-standard library (`json.loads` and `json.dumps` functions).
+The message templates that are used for communication between 2200 and 2300 are described below. The various functions
+of the systems can be divided between user-triggered communication and system communication. User-triggered
+communication for example is the execution of an algorithm, while system communication is fetching static system
+information. These messages are python dictionaries that are converted from/to python strings via the JSON serializer of
+the python standard library (`json.loads` and `json.dumps` functions).
 
 ## Base message
 
 The message described below has the most basic information needed for a message, either in the active or passive modus.
+The information contained within these messages is sufficient for non-iterative communication, e.g. requesting system
+information. These messages would be sent only once and not be part of a longer session.
 
 ### Base request
 
@@ -46,13 +51,14 @@ The message described below has the most basic information needed for a message,
 ## Extended messages
 
 An extended version of the messages exists. Next to the key-value pairs already present in these messages, it also
-contains session identifiers.
+contains session identifiers. These session identifiers are needed when messages repetitively transcend application
+boundaries and should be tracked as such (e.g. execution of jobs).
 
 ### Extended request
 
 | Key | Type | Value |
 | --- | --- | --- |
-| `session_id` | `str` | An arbitrary string, filled in by the client, that is copied by the server in the response dictionary that is sent in response to this request. Normally this would contain a unique identifier for the request, e.g., a UUID |
+| `session_id` | `str` | An arbitrary string, filled in in the request, which is copied into the response object. Normally this would contain a unique identifier for the request, e.g., a UUID |
 
 ```jsonc
 {
