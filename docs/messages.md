@@ -1,10 +1,9 @@
 # Messages
 
-The message templates that are used for communication between 2200 and 2300 are described below. The various functions
-of the systems can be divided between user-triggered communication and system communication. User-triggered
-communication for example is the execution of an algorithm, while system communication is fetching static system
-information. These messages are python dictionaries that are converted from/to python strings via the JSON serializer of
-the python standard library (`json.loads` and `json.dumps` functions).
+The message templates that are used for communication between 2200 and 2300 are described below. The base message format
+is used for standalone messages, while the extended message format allows to link messages that are technically
+independent, but logically connected. These messages are python dictionaries that are converted from/to python strings
+via the JSON serializer of the python standard library (`json.loads` and `json.dumps` functions).
 
 ## Base message
 
