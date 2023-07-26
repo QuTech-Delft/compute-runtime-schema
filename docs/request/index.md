@@ -1,6 +1,6 @@
-# Active modus
+# Request/Reply
 
-In the active modus, the interface will be a client-server interface. 2200 acts as the client and 2300 as the server. It
+For request/reply, the interface will be a client-server interface. 2200 acts as the client and 2300 as the server. It
 follows the semantics of remote procedure calls (RPCs), i.e., the client "calls" a function that is "remotely" executed
 on the server and the result is passed back to the client.
 
@@ -171,7 +171,8 @@ following constraints on the cQASM it accepts:
 
 ### Meta communication
 
-System information from 2300 is divided over both active and passive communication. The messages below are triggered by 2200.
+System information from 2300 is divided over both request/reply and publish/subscribe. The messages below are published
+by 2300.
 
 #### Get static
 
@@ -190,7 +191,6 @@ This message does not require any additional information in the payload section.
 
 ```jsonc
 {
-    "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "get_static",
     "version": "0.1.0"
 }
@@ -210,7 +210,6 @@ This message does not require any additional information in the payload section.
 
 ```jsonc
 {
-    "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
     "payload": {
         "nqubits": 5,

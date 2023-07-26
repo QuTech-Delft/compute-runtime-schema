@@ -8,8 +8,8 @@ the python standard library (`json.loads` and `json.dumps` functions).
 
 ## Base message
 
-The message described below has the most basic information needed for a message, either in the active or passive modus.
-The information contained within these messages is sufficient for non-iterative communication, e.g. requesting system
+The message described below has the most basic information needed for a message, either for requests or publish. The
+information contained within these messages is sufficient for non-iterative communication, e.g. requesting system
 information. These messages would be sent only once and not be part of a longer session.
 
 ### Base request

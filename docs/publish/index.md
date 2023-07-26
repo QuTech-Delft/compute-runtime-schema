@@ -1,6 +1,6 @@
-# Passive modus
+# Publish/Subscribe
 
-In the passive mode, a broadcast model is followed. 2300 acts as a sender, while 2200 listens to the various messages.
+For publish/subscribe, a broadcast model is followed. 2300 acts as a sender, while 2200 listens to the various messages.
 
 ## Message layer
 
@@ -21,32 +21,39 @@ The application layer contains the specific application functions that are descr
 
 ### Meta communication
 
-System information from 2300 is divided over both active and passive communication. The messages below are published by
-2300.
+System information from 2300 is divided over both request/reply and publish/subscribe. The messages below are published
+by 2300.
 
-#### Publish status
+#### Publish state
 
-System 2300 publishes a status message to inform subscribers of its current status. This happens both via a heartbeat
+System 2300 publishes a state message to inform subscribers of its current state. This happens both via a heartbeat
 ("am I still responsive") and the state the system is in.
 
 The schema for validation can be found in:
 
-* [`/schemas/publish_status/request.schema.json`](../../schemas/publish_status/message.schema.json)
+* [`/schemas/publish_state/request.schema.json`](../../schemas/publish_state/message.schema.json)
 
-##### Publish status payload
+##### Publish state payload
 
 | Key | Type | Value |
 | --- | --- | --- |
-| `status` | `str` | The current status of the system in all-capitals (i.e. IDLE, EXECUTING, CALIBRATING, OFFLINE) |
+| `state` | `str` | The current state of the system in all-capitals (i.e. `IDLE`, `EXECUTING`, `CALIBRATING`, `OFFLINE`) |
 | `timestamp` | `float` | Timestamp of the instantiation of the message (return value of `time.time()`) |
 
-##### Publish status example
+The various states are defined as such:
+
+* `IDLE`: 2300 is not executing experiments and being calibrated,
+* `EXECUTING`: 2300 is executing a circuit,
+* `CALIBRATING`: 2300 is calibrating,
+* `OFFLINE`: 2300 is controlled manually or not reachable.
+
+##### Publish state example
 
 ```jsonc
 {
-    "command": "publish_status",
+    "command": "publish_state",
     "payload": {
-        "status": "IDLE",
+        "state": "IDLE",
         "timestamp": 1690061619.610174
     },
     "version": "0.1.0"
