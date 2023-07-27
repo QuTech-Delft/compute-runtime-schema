@@ -6,7 +6,7 @@
   "type": "object",
   "properties": {
     "session_id": {
-      "description": "An arbitrary string, filled in in the request, which is copied into the response object.",
+      "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
       "type": "string"
     },
     "command": {

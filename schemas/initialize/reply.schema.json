@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/QuTech-Delft/compute-runtime-schema/master/schemas/initialize/response.schema.json",
-  "title": "Initialize response",
-  "description": "The response whether initializing 2300 has succeeded.",
+  "$id": "https://raw.githubusercontent.com/QuTech-Delft/compute-runtime-schema/master/schemas/initialize/ewply.schema.json",
+  "title": "Initialize reply",
+  "description": "The reply whether initializing 2300 has succeeded.",
   "type": "object",
   "properties": {
     "session_id": {
-      "description": "An arbitrary string, filled in in the request, which is copied into the response object.",
+      "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
       "type": "string"
     },
     "status": {

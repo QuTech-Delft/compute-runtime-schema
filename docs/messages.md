@@ -7,9 +7,11 @@ via the JSON serializer of the python standard library (`json.loads` and `json.d
 
 ## Base message
 
-The message described below has the most basic information needed for a message, either for requests or publish. The
-information contained within these messages is sufficient for non-iterative communication, e.g. requesting system
-information. These messages would be sent only once and not be part of a longer session.
+The message described below has the most basic information needed for standalone messages. JSON schemas will be provided
+for these messages and should be inherited from for every relevant message.
+
+* [`/schemas/base_request.schema.json`](../../schemas/base_request.schema.json)
+* [`/schemas/base_reply.schema.json`](../../schemas/base_reply.schema.json)
 
 ### Base request
 
@@ -50,14 +52,17 @@ information. These messages would be sent only once and not be part of a longer 
 ## Extended messages
 
 An extended version of the messages exists. Next to the key-value pairs already present in these messages, it also
-contains session identifiers. These session identifiers are needed when messages repetitively transcend application
-boundaries and should be tracked as such (e.g. execution of jobs).
+contains parameters to link logically-connected messages. JSON schemas will be provided for these messages and should be
+inherited from for every relevant message.
+
+* [`/schemas/extended_request.schema.json`](../../schemas/extended_request.schema.json)
+* [`/schemas/extended_reply.schema.json`](../../schemas/extended_reply.schema.json)
 
 ### Extended request
 
 | Key | Type | Value |
 | --- | --- | --- |
-| `session_id` | `str` | An arbitrary string, filled in in the request, which is copied into the response object. Normally this would contain a unique identifier for the request, e.g., a UUID |
+| `session_id` | `str` | An arbitrary string, filled in in the request, which is copied into the reply object. Normally this would contain a unique identifier for the request, e.g., a UUID |
 
 ```jsonc
 {
@@ -74,7 +79,7 @@ boundaries and should be tracked as such (e.g. execution of jobs).
 
 | Key | Type | Value |
 | --- | --- | --- |
-| `session_id` | `str` | The same `session_id` from the request to validate the request and reply. |
+| `session_id` | `str` | The same `session_id` from the request to link the request and reply. |
 
 ```jsonc
 {

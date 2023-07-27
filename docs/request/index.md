@@ -13,12 +13,13 @@ on the server and the result is passed back to the client.
 | Server binding argument | `tcp://*:4203` i.e., uses underlying TCP socket connect to port 4203. |
 | Client connect argument | `tcp://<host address>:4203`. The `<host address>` contains the IP address of 2300. |
 
-The messages used are described in the [messages spec](../messages.md). Both the base and extended messages are used.
+The messages in this section inherit from generic messages described in the [messages spec](../messages.md). Any new
+messages should also inherit from these messages.
 
 ## Application layer
 
 The application layer contains the specific application functions that are described in the
-[root document](../index.md). The functions are described via the contents of the response and reply dictionaries.
+[root document](../index.md). The functions are described via the contents of the request and reply dictionaries.
 
 ### Locking
 
@@ -29,10 +30,10 @@ This function consists of two RPCs. One to disable the algorithm interruption an
 This message signals to the 2300 that execution is about to begin. The initialize should be picked up as a request for
 locking 2300. However, this interpretation is left to this component.
 
-The schemas for validation can be found in:
+The schemas for validation inherit from the **extended schema** and can be found in:
 
 * [`/schemas/initialize/request.schema.json`](../../schemas/initialize/request.schema.json)
-* [`/schemas/initialize/response.schema.json`](../../schemas/initialize/response.schema.json)
+* [`/schemas/initialize/reply.schema.json`](../../schemas/initialize/reply.schema.json)
 
 ##### Initialize request payload
 
@@ -48,11 +49,11 @@ This message does not require any additional information in the payload section.
 }
 ```
 
-##### Initialize response payload
+##### Initialize reply payload
 
 This message does not require any additional information in the payload section.
 
-##### Initialize response example
+##### Initialize reply example
 
 ```jsonc
 {
@@ -67,10 +68,10 @@ This message does not require any additional information in the payload section.
 The opposing message for the initialize request. When 2300 receives this request, execution from user generated circuits
 has stopped and the system can resume normal operations.
 
-The schemas for validation can be found in:
+The schemas for validation inherit from the **extended schema** and can be found in:
 
 * [`/schemas/terminate/request.schema.json`](../../schemas/terminate/request.schema.json)
-* [`/schemas/terminate/response.schema.json`](../../schemas/terminate/response.schema.json)
+* [`/schemas/terminate/reply.schema.json`](../../schemas/terminate/reply.schema.json)
 
 ##### Terminate request payload
 
@@ -86,11 +87,11 @@ This message does not require any additional information in the payload section.
 }
 ```
 
-##### Terminate response payload
+##### Terminate reply payload
 
 This message does not require any additional information in the payload section.
 
-##### Terminate response example
+##### Terminate reply example
 
 ```jsonc
 {
@@ -110,10 +111,10 @@ three commands are required, "initialize", "execute", "terminate".
 This message requests a backend to execute a user generated circuit. This can only be done when the system has been
 initialized (in reality "locked").
 
-The schemas for validation can be found in:
+The schemas for validation inherit from the **extended schema** and can be found in:
 
 * [`/schemas/execute/request.schema.json`](../../schemas/execute/request.schema.json)
-* [`/schemas/execute/response.schema.json`](../../schemas/execute/response.schema.json)
+* [`/schemas/execute/reply.schema.json`](../../schemas/execute/reply.schema.json)
 
 ##### Execute request payload
 
@@ -145,14 +146,14 @@ following constraints on the cQASM it accepts:
 }
 ```
 
-##### Execute response payload
+##### Execute reply payload
 
 | Key | Type | Value |
 | --- | --- | --- |
 | `run_id` | `int` | Client defined identifier for the execution. |
 | `results` | `dict[str, int]` | Mapping of measured bitstring (little endian notation; `q[n]...q[0]`) to count of occurrences. |
 
-##### Execute response example
+##### Execute reply example
 
 ```jsonc
 {
@@ -178,10 +179,10 @@ by 2300.
 
 Get system information from 2300. This information is retrieved only once, normally at startup time for 2200.
 
-The schemas for validation can be found in:
+The schemas for validation inherit from the **base schema** and can be found in:
 
 * [`/schemas/get_static/request.schema.json`](../../schemas/get_statis/request.schema.json)
-* [`/schemas/get_static/response.schema.json`](../../schemas/get_static/response.schema.json)
+* [`/schemas/get_static/reply.schema.json`](../../schemas/get_static/reply.schema.json)
 
 ##### Get static request payload
 
@@ -196,7 +197,7 @@ This message does not require any additional information in the payload section.
 }
 ```
 
-##### Get static response payload
+##### Get static reply payload
 
 | Key | Type | Value |
 | --- | --- | --- |
@@ -206,7 +207,7 @@ This message does not require any additional information in the payload section.
 | `pgs` | `list[str]` | Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase). |
 | `starttime` | `float` | Timestamp of start-up of the system (return value of `time.time()`) |
 
-##### Get static response example
+##### Get static reply example
 
 ```jsonc
 {
@@ -236,10 +237,10 @@ System 2300 publishes dynamic information for 2200 to read. It might happen that
 wasn't ready yet, resulting in relevant information being missed. In such a case, 2200 can request 2300 to publish the
 information again.
 
-The schemas for validation can be found in:
+The schemas for validation inherit from the **base schema** and can be found in:
 
 * [`/schemas/trigger_publish/request.schema.json`](../../schemas/trigger_publish/request.schema.json)
-* [`/schemas/trigger_publish/response.schema.json`](../../schemas/trigger_publish/response.schema.json)
+* [`/schemas/trigger_publish/reply.schema.json`](../../schemas/trigger_publish/reply.schema.json)
 
 ##### Set publish request payload
 
@@ -249,21 +250,19 @@ This message does not require any additional information in the payload section.
 
 ```jsonc
 {
-    "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "trigger_publish",
     "version": "0.1.0"
 }
 ```
 
-##### Set publish response payload
+##### Set publish reply payload
 
 This message does not require any additional information in the payload section.
 
-##### Set publish response example
+##### Set publish reply example
 
 ```jsonc
 {
-    "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
     "version": "0.1.0"
 }
