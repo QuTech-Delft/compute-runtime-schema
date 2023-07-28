@@ -41,12 +41,13 @@ The schemas for validation inherit from the **base schema** and can be found in:
 | `state` | `str` | The current state of the system in all-capitals (i.e. `IDLE`, `EXECUTING`, `CALIBRATING`, `OFFLINE`) |
 | `timestamp` | `float` | Timestamp of the instantiation of the message (return value of `time.time()`) |
 
-The various states are defined as such:
+The various states are defined as described below. The first state that applies from top to bottom, is used in the
+published message.
 
-* `IDLE`: 2300 is not executing experiments and being calibrated,
-* `EXECUTING`: 2300 is executing a circuit,
+* `OFFLINE`: 2300 is controlled manually or not reachable,
 * `CALIBRATING`: 2300 is calibrating,
-* `OFFLINE`: 2300 is controlled manually or not reachable.
+* `EXECUTING`: 2300 is initialized for execution and not yet terminated,
+* `IDLE`: 2300 is not executing experiments and being calibrated.
 
 ##### Publish state example
 

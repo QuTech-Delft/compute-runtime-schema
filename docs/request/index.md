@@ -124,12 +124,8 @@ The schemas for validation inherit from the **extended schema** and can be found
 | `circuit` | `str` | Circuit description in cQASM language, see below for more information. |
 | `number_of_shots` | `int` | Number of shots to be executed for the circuit. |
 
-The cQASM language is described in detail [here](https://www.quantum-inspire.com/kbase/cqasm/). 2300 imposes the
-following constraints on the cQASM it accepts:
-
-* The gates should be part of the allowed gates set.
-* The requested number of qubits must be smaller or equal than the allowed number of qubits.
-* Static loops are not allowed
+The cQASM language is described in detail [here](https://www.quantum-inspire.com/kbase/cqasm/). Different
+implementations of 2300 might impose different requirements. These will be described on a per case basis.
 
 ##### Execute request example
 
