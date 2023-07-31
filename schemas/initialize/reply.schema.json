@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/QuTech-Delft/compute-runtime-schema/master/schemas/initialize/ewply.schema.json",
+  "title": "Initialize reply",
+  "description": "The reply whether initializing 2300 has succeeded.",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
+      "type": "string"
+    },
+    "status": {
+      "description": "\"success\" or \"failure\", depending on whether the command executed successfully.",
+      "type": "string",
+      "enum": [
+        "success",
+        "failure"
+      ]
+    },
+    "payload": {
+      "description": "If \"status\" == \"failure\": a string describing the failure in more detail.",
+      "type": "string"
+    },
+    "version": {
+      "description": "String containing the version number of the message format.",
+      "type": "string",
+      "pattern": "^\\d+.\\d+.\\d$"
+    }
+  },
+  "required": [
+    "session_id",
+    "status",
+    "version"
+  ],
+  "if": {
+    "properties": {
+      "status": {
+        "const": "failure"
+      }
+    },
+    "required": [
+      "status"
+    ]
+  },
+  "then": {
+    "required": [
+      "payload"
+    ]
+  }
+}
