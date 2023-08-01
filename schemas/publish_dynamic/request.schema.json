@@ -18,19 +18,7 @@
       "required": []
     }
   },
-  "if": {
-    "properties": {
-      "status": {
-        "const": "success"
-      }
-    },
-    "required": [
-      "status"
-    ]
-  },
-  "then": {
-    "required": [
-      "payload"
-    ]
-  }
+  "required": [
+    "payload"
+  ]
 }

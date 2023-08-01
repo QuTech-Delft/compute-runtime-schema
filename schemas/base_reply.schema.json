@@ -12,9 +12,28 @@
         "failure"
       ]
     },
-    "error": {
-      "description": "If \"status\" == \"failure\": a string describing the failure in more detail.",
-      "type": "string"
+    "payload": {
+      "properties": {
+        "error": {
+          "description": "If \"status\" == \"failure\": a string describing the failure in more detail.",
+          "type": "string"
+        }
+      },
+      "if": {
+        "properties": {
+          "status": {
+            "const": "failure"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "error"
+        ]
+      }
     },
     "version": {
       "description": "String containing the version number of the message format.",
@@ -38,7 +57,7 @@
   },
   "then": {
     "required": [
-      "error"
+      "payload"
     ]
   }
 }
