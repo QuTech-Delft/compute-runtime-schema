@@ -1,0 +1,15 @@
+{
+  "title": "Terminate request",
+  "description": "When 2300 receives this request, execution from user generated circuits has stopped and the system can resume normal operations",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../extended_request.schema.json"
+    }
+  ],
+  "properties": {
+    "command": {
+      "const": "terminate"
+    }
+  }
+}

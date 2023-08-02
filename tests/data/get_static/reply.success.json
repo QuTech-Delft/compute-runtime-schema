@@ -1,0 +1,31 @@
+{
+  "status": "success",
+  "payload": {
+    "nqubits": 5,
+    "topology": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ]
+    ],
+    "name": "Starmon-5",
+    "pgs": [
+      "X",
+      "Y"
+    ],
+    "starttime": 1690061619.610174
+  },
+  "version": "0.1.0"
+}

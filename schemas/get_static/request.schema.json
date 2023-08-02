@@ -1,0 +1,15 @@
+{
+  "title": "Get static request",
+  "description": "Get system information from 2300. This information is retrieved only once, normally at startup time for 2200.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../base_request.schema.json"
+    }
+  ],
+  "properties": {
+    "command": {
+      "const": "get_static"
+    }
+  }
+}

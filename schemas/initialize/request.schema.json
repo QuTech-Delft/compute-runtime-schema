@@ -1,28 +1,15 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/QuTech-Delft/compute-runtime-schema/master/schemas/initialize/request.schema.json",
   "title": "Initialize request",
   "description": "This message signals to the 2300 that execution is about to begin. The initialize should be picked up as a request for locking 2300.",
   "type": "object",
-  "properties": {
-    "session_id": {
-      "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
-      "type": "string"
-    },
-    "command": {
-      "description": "A string identifying the function to be executed.",
-      "type": "string",
-      "const": "initialize"
-    },
-    "version": {
-      "description": "String containing the version number of the message format.",
-      "type": "string",
-      "pattern": "^\\d+.\\d+.\\d$"
+  "allOf": [
+    {
+      "$ref": "../extended_request.schema.json"
     }
-  },
-  "required": [
-    "session_id",
-    "command",
-    "version"
-  ]
+  ],
+  "properties": {
+    "command": {
+      "const": "initialize"
+    }
+  }
 }

@@ -1,0 +1,10 @@
+{
+  "title": "Trigger publish reply",
+  "description": "The reply whether triggering a publish has succeeded.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../base_reply.schema.json"
+    }
+  ]
+}

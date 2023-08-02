@@ -1,0 +1,19 @@
+{
+  "title": "Extended request",
+  "description": "An extension of the base message template to also link logically-connected messages.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "./base_request.schema.json"
+    }
+  ],
+  "properties": {
+    "session_id": {
+      "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "session_id"
+  ]
+}

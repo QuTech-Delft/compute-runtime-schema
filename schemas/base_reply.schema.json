@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Base reply",
+  "description": "The message template with the most basic information needed for a standalone reply.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "description": "\"success\" or \"failure\", depending on whether the command executed successfully.",
+      "type": "string",
+      "enum": [
+        "success",
+        "failure"
+      ]
+    },
+    "payload": {
+      "properties": {
+        "error": {
+          "description": "If \"status\" == \"failure\": a string describing the failure in more detail.",
+          "type": "string"
+        }
+      },
+      "if": {
+        "properties": {
+          "status": {
+            "const": "failure"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "error"
+        ]
+      }
+    },
+    "version": {
+      "description": "String containing the version number of the message format.",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d$"
+    }
+  },
+  "required": [
+    "status",
+    "version"
+  ],
+  "if": {
+    "properties": {
+      "status": {
+        "const": "failure"
+      }
+    },
+    "required": [
+      "status"
+    ]
+  },
+  "then": {
+    "required": [
+      "payload"
+    ]
+  }
+}
