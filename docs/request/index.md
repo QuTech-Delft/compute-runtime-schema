@@ -138,7 +138,7 @@ implementations of 2300 might impose different requirements. These will be descr
         "run_id": 1,
         "circuit": "version 1.0\n\nqubits 2",
         "include_raw_data": true,
-        "number_of_shots": 1024
+        "number_of_shots": 4
     },
     "version": "0.1.0"
 }
@@ -161,12 +161,13 @@ implementations of 2300 might impose different requirements. These will be descr
     "payload": {
         "run_id": 1,
         "results": {
-            "000": 512,
-            "001": 512
+            "000": 3,
+            "001": 1
         },
         "raw_data": [
             "000",
             "001",
+            "000",
             "000"
         ]
     },
