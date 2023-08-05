@@ -28,18 +28,25 @@
             "type": "string"
           }
         }
-      },
-      "if": {
-        "properties": {
-          "status": {
-            "const": "success"
-          }
-        },
-        "required": [
-          "status"
-        ]
-      },
-      "then": {
+      }
+    }
+  },
+  "required": [
+    "payload"
+  ],
+  "if": {
+    "properties": {
+      "status": {
+        "const": "success"
+      }
+    },
+    "required": [
+      "status"
+    ]
+  },
+  "then": {
+    "properties": {
+      "payload": {
         "required": [
           "run_id",
           "results",
@@ -47,8 +54,5 @@
         ]
       }
     }
-  },
-  "required": [
-    "payload"
-  ]
+  }
 }
