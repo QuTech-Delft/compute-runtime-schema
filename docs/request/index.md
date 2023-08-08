@@ -149,7 +149,7 @@ implementations of 2300 might impose different requirements. These will be descr
 | Key | Type | Value |
 | --- | --- | --- |
 | `run_id` | `int` | Client defined identifier for the execution. |
-| `results` | `dict[str, int]` | Mapping of measured bitstring (little endian notation; `q[n]...q[0]`) to count of occurrences. Limited to `m` results. |
+| `results` | `dict[str, int]` | Mapping of measured bitstring (for a circuit with `n` measurements; `q[n]...q[0]`) to count of occurrences. Limited to `m` results. |
 | `raw_data` | `list[str]` | A list of bitstrings (little endian notation; `q[n]...q[0]`) ordered by the shot in which it was measured. If `include_raw_data` is set to `false` the list is left empty. |
 
 ##### Execute reply example

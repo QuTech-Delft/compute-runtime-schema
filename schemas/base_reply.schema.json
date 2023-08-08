@@ -14,7 +14,7 @@
     },
     "payload": {
       "properties": {
-        "error": {
+        "error_msg": {
           "description": "If \"status\" == \"failure\": a string describing the failure in more detail.",
           "type": "string"
         }
@@ -47,7 +47,7 @@
     "properties": {
       "payload": {
         "required": [
-          "error"
+          "error_msg"
         ]
       }
     }
