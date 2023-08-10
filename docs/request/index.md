@@ -261,7 +261,7 @@ This message does not require any additional information in the payload section.
 
 ##### Get dynamic reply payload
 
-The payload for the message is still under advicement. The appropriate key-value pairs will be filled in when they are
+The payload for the message is still under advisement. The appropriate key-value pairs will be filled in when they are
 determined.
 
 | Key | Type | Value |
