@@ -1,0 +1,15 @@
+{
+  "title": "Get dynamic request",
+  "description": "Get dynamic information from 2300. This information is retrieved on startup for 2200 or on a state change from CALIBRATING/OFFLINE to IDLE.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../base_request.schema.json"
+    }
+  ],
+  "properties": {
+    "command": {
+      "const": "get_dynamic"
+    }
+  }
+}
