@@ -21,7 +21,7 @@ check-jsonschema --schemafile ../schemas/trigger_publish/request.schema.json ./d
 check-jsonschema --schemafile ../schemas/trigger_publish/reply.schema.json ./data/trigger_publish/reply.success.json ./data/trigger_publish/reply.failure.json
 
 echo Test publish_state
-check-jsonschema --schemafile ../schemas/publish_state/request.schema.json ./data/publish_state/request.json
+check-jsonschema --schemafile ../schemas/publish_state/message.schema.json ./data/publish_state/message.json
 
 echo Test publish_dynamic
-check-jsonschema --schemafile ../schemas/publish_dynamic/request.schema.json ./data/publish_dynamic/request.json
+check-jsonschema --schemafile ../schemas/publish_dynamic/message.schema.json ./data/publish_dynamic/message.json

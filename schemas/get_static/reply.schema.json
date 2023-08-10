@@ -40,18 +40,25 @@
           "description": "Timestamp of start-up of the system (return value of time.time())",
           "type": "number"
         }
-      },
-      "if": {
-        "properties": {
-          "status": {
-            "const": "success"
-          }
-        },
-        "required": [
-          "status"
-        ]
-      },
-      "then": {
+      }
+    }
+  },
+  "required": [
+    "payload"
+  ],
+  "if": {
+    "properties": {
+      "status": {
+        "const": "success"
+      }
+    },
+    "required": [
+      "status"
+    ]
+  },
+  "then": {
+    "properties": {
+      "payload": {
         "required": [
           "nqubits",
           "topology",
@@ -61,8 +68,5 @@
         ]
       }
     }
-  },
-  "required": [
-    "payload"
-  ]
+  }
 }

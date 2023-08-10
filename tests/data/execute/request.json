@@ -4,6 +4,7 @@
   "payload": {
     "run_id": 1,
     "circuit": "version 1.0\n\nqubits 2",
+    "include_raw_data": true,
     "number_of_shots": 1024
   },
   "version": "0.1.0"

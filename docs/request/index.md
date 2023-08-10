@@ -122,6 +122,7 @@ The schemas for validation inherit from the **extended schema** and can be found
 | --- | --- | --- |
 | `run_id` | `int` | Client defined identifier for the execution. |
 | `circuit` | `str` | Circuit description in cQASM language, see below for more information. |
+| `include_raw_data` | `bool` | Whether or not to return all bitstrings in the order in which they were measured. |
 | `number_of_shots` | `int` | Number of shots to be executed for the circuit. |
 
 The cQASM language is described in detail [here](https://www.quantum-inspire.com/kbase/cqasm/). Different
@@ -136,7 +137,8 @@ implementations of 2300 might impose different requirements. These will be descr
     "payload": {
         "run_id": 1,
         "circuit": "version 1.0\n\nqubits 2",
-        "number_of_shots": 1024
+        "include_raw_data": true,
+        "number_of_shots": 4
     },
     "version": "0.1.0"
 }
@@ -147,7 +149,8 @@ implementations of 2300 might impose different requirements. These will be descr
 | Key | Type | Value |
 | --- | --- | --- |
 | `run_id` | `int` | Client defined identifier for the execution. |
-| `results` | `dict[str, int]` | Mapping of measured bitstring (little endian notation; `q[n]...q[0]`) to count of occurrences. |
+| `results` | `dict[str, int]` | Mapping of measured bitstring (for a circuit with `n` measurements; `q[n]...q[0]`) to count of occurrences. Limited to `m` results. |
+| `raw_data` | `list[str]` | A list of bitstrings (little endian notation; `q[n]...q[0]`) ordered by the shot in which it was measured. If `include_raw_data` is set to `false` the list is left empty. |
 
 ##### Execute reply example
 
@@ -158,9 +161,15 @@ implementations of 2300 might impose different requirements. These will be descr
     "payload": {
         "run_id": 1,
         "results": {
-            "000": 512,
-            "001": 512
-        }
+            "000": 3,
+            "001": 1
+        },
+        "raw_data": [
+            "000",
+            "001",
+            "000",
+            "000"
+        ]
     },
     "version": "0.1.0"
 }

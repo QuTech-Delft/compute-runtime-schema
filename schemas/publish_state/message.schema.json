@@ -1,5 +1,5 @@
 {
-  "title": "Publish state request",
+  "title": "Publish state message",
   "description": "System 2300 publishes a state message to inform subscribers of its current state.",
   "type": "object",
   "allOf": [

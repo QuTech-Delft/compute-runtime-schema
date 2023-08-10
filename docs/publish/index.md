@@ -32,7 +32,7 @@ System 2300 publishes a state message to inform subscribers of its current state
 
 The schemas for validation inherit from the **base schema** and can be found in:
 
-* [`/schemas/publish_state/request.schema.json`](../../schemas/publish_state/message.schema.json)
+* [`/schemas/publish_state/message.schema.json`](../../schemas/publish_state/message.schema.json)
 
 ##### Publish state payload
 
@@ -69,7 +69,7 @@ This dynamic metadata is shared with the rest of the system via a broadcasting m
 
 The schemas for validation inherit from the **base schema** and can be found in:
 
-* [`/schemas/publish_dynamic/request.schema.json`](../../schemas/publish_dynamic/message.schema.json)
+* [`/schemas/publish_dynamic/message.schema.json`](../../schemas/publish_dynamic/message.schema.json)
 
 ##### Publish dynamic payload
 

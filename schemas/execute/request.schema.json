@@ -23,6 +23,10 @@
           "description": "Circuit description in cQASM language.",
           "type": "string"
         },
+        "include_raw_data": {
+          "description": "Whether or not to return all bitstrings in the order in which they were measured.",
+          "type": "boolean"
+        },
         "number_of_shots": {
           "description": "Number of shots to be executed for the circuit.",
           "type": "integer"

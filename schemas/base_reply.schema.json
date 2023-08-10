@@ -14,25 +14,10 @@
     },
     "payload": {
       "properties": {
-        "error": {
+        "error_msg": {
           "description": "If \"status\" == \"failure\": a string describing the failure in more detail.",
           "type": "string"
         }
-      },
-      "if": {
-        "properties": {
-          "status": {
-            "const": "failure"
-          }
-        },
-        "required": [
-          "status"
-        ]
-      },
-      "then": {
-        "required": [
-          "error"
-        ]
       }
     },
     "version": {
@@ -58,6 +43,13 @@
   "then": {
     "required": [
       "payload"
-    ]
+    ],
+    "properties": {
+      "payload": {
+        "required": [
+          "error_msg"
+        ]
+      }
+    }
   }
 }
