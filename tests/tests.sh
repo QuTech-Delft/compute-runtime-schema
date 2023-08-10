@@ -16,12 +16,9 @@ echo Test get_static
 check-jsonschema --schemafile ../schemas/get_static/request.schema.json ./data/get_static/request.json
 check-jsonschema --schemafile ../schemas/get_static/reply.schema.json ./data/get_static/reply.success.json ./data/get_static/reply.failure.json
 
-echo Test trigger_publish
-check-jsonschema --schemafile ../schemas/trigger_publish/request.schema.json ./data/trigger_publish/request.json
-check-jsonschema --schemafile ../schemas/trigger_publish/reply.schema.json ./data/trigger_publish/reply.success.json ./data/trigger_publish/reply.failure.json
+echo Test get_dynamic
+check-jsonschema --schemafile ../schemas/get_dynamic/request.schema.json ./data/get_dynamic/request.json
+check-jsonschema --schemafile ../schemas/get_dynamic/reply.schema.json ./data/get_dynamic/reply.success.json ./data/get_dynamic/reply.failure.json
 
 echo Test publish_state
 check-jsonschema --schemafile ../schemas/publish_state/message.schema.json ./data/publish_state/message.json
-
-echo Test publish_dynamic
-check-jsonschema --schemafile ../schemas/publish_dynamic/message.schema.json ./data/publish_dynamic/message.json
