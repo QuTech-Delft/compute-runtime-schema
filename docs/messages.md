@@ -37,7 +37,7 @@ for these messages and should be inherited from for every relevant message.
 | --- | --- | --- |
 | `status` | `str` | "success" or "failure", depending on whether the command executed successfully. |
 | `payload` | `dict` | The return value(s) of the executed command (presence of this key-value pair then depends on the specific command). |
-| `playload.error_msg` | `str` | If `"status" == "failure"`: a string describing the failure in more detail. |
+| `payload.error_msg` | `str` | If `"status" == "failure"`: a string describing the failure in more detail. |
 | `version` | `str` | String containing the version number of the message format. This allows modification of the interface in a backwards compatible manner. The version will adhere to the [semantic versioning rules](<https://semver.org/>). Presently we are still using a beta numbering (`0.y.z`). |
 
 #### Base reply success
