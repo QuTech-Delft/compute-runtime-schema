@@ -2,7 +2,7 @@
   "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
   "status": "success",
   "payload": {
-    "run_id": 1,
+    "job_id": 1,
     "results": {
       "000": 512,
       "001": 512
@@ -13,5 +13,5 @@
       "000"
     ]
   },
-  "version": "0.1.0"
+  "version": "0.2.0"
 }

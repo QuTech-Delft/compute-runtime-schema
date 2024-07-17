@@ -2,10 +2,10 @@
   "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
   "command": "execute",
   "payload": {
-    "run_id": 1,
+    "job_id": 1,
     "circuit": "version 1.0\n\nqubits 2",
     "include_raw_data": true,
     "number_of_shots": 1024
   },
-  "version": "0.1.0"
+  "version": "0.2.0"
 }
