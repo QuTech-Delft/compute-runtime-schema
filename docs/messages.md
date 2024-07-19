@@ -27,7 +27,7 @@ for these messages and should be inherited from for every relevant message.
     "payload": {
         // optional
     },
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -48,7 +48,7 @@ for these messages and should be inherited from for every relevant message.
     "payload": {
         // optional
     },
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -60,7 +60,7 @@ for these messages and should be inherited from for every relevant message.
     "payload": {
         "error_msg": "Lorem ipsum"
     },
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -86,7 +86,7 @@ inherited from for every relevant message.
     "payload": {
         // optional
     },
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -103,6 +103,6 @@ inherited from for every relevant message.
     "payload": {
         // optional
     },
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```

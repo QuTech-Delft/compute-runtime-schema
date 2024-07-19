@@ -45,7 +45,7 @@ This message does not require any additional information in the payload section.
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "initialize",
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -59,7 +59,7 @@ This message does not require any additional information in the payload section.
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -83,7 +83,7 @@ This message does not require any additional information in the payload section.
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "terminate",
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -97,7 +97,7 @@ This message does not require any additional information in the payload section.
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -140,7 +140,7 @@ implementations of 2300 might impose different requirements. These will be descr
         "include_raw_data": true,
         "number_of_shots": 4
     },
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -171,7 +171,7 @@ implementations of 2300 might impose different requirements. These will be descr
             "000"
         ]
     },
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -198,7 +198,7 @@ This message does not require any additional information in the payload section.
 ```jsonc
 {
     "command": "get_static",
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -232,7 +232,7 @@ This message does not require any additional information in the payload section.
         ],
         "starttime": 1690061619.610174
     },
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -255,7 +255,7 @@ This message does not require any additional information in the payload section.
 ```jsonc
 {
     "command": "get_dynamic",
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
 
@@ -276,6 +276,6 @@ determined.
     "payload": {
         // to be determined
     },
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
 ```
