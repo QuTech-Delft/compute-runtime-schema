@@ -120,7 +120,7 @@ The schemas for validation inherit from the **extended schema** and can be found
 
 | Key | Type | Value |
 | --- | --- | --- |
-| `run_id` | `int` | Client defined identifier for the execution. |
+| `job_id` | `int` | Client defined identifier for the execution. |
 | `circuit` | `str` | Circuit description in cQASM language, see below for more information. |
 | `include_raw_data` | `bool` | Whether or not to return all bitstrings in the order in which they were measured. |
 | `number_of_shots` | `int` | Number of shots to be executed for the circuit. |
@@ -135,7 +135,7 @@ implementations of 2300 might impose different requirements. These will be descr
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "execute",
     "payload": {
-        "run_id": 1,
+        "job_id": 1,
         "circuit": "version 1.0\n\nqubits 2",
         "include_raw_data": true,
         "number_of_shots": 4
@@ -148,7 +148,7 @@ implementations of 2300 might impose different requirements. These will be descr
 
 | Key | Type | Value |
 | --- | --- | --- |
-| `run_id` | `int` | Client defined identifier for the execution. |
+| `job_id` | `int` | Client defined identifier for the execution. |
 | `results` | `dict[str, int]` | Mapping of measured bitstring (for a circuit with `n` measurements; `q[n]...q[0]`) to count of occurrences. Limited to `m` results. |
 | `raw_data` | `list[str]` | A list of bitstrings (little endian notation; `q[n]...q[0]`) ordered by the shot in which it was measured. If `include_raw_data` is set to `false` the list is left empty. |
 
@@ -159,7 +159,7 @@ implementations of 2300 might impose different requirements. These will be descr
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
     "payload": {
-        "run_id": 1,
+        "job_id": 1,
         "results": {
             "000": 3,
             "001": 1

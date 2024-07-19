@@ -12,7 +12,7 @@
       "description": "The return value(s) of the executed command.",
       "type": "object",
       "properties": {
-        "run_id": {
+        "job_id": {
           "description": "Client defined identifier for the execution.",
           "type": "integer"
         },
@@ -48,7 +48,7 @@
     "properties": {
       "payload": {
         "required": [
-          "run_id",
+          "job_id",
           "results",
           "raw_data"
         ]

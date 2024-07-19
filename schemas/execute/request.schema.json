@@ -15,7 +15,7 @@
       "description": "Arguments for the function to be executed.",
       "type": "object",
       "properties": {
-        "run_id": {
+        "job_id": {
           "description": "Client defined identifier for the execution.",
           "type": "integer"
         },
@@ -33,7 +33,7 @@
         }
       },
       "required": [
-        "run_id",
+        "job_id",
         "circuit",
         "number_of_shots"
       ]
