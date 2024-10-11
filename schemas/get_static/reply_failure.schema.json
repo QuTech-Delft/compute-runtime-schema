@@ -1,23 +1,24 @@
 {
+  "description": "Reply for when hardware data request fails.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",
       "title": "Version",
       "type": "string"
     },
-    "command": {
-      "const": "get_dynamic",
+    "status": {
+      "const": "failure",
       "enum": [
-        "get_dynamic"
+        "failure"
       ],
-      "title": "Command",
+      "title": "Status",
       "type": "string"
     }
   },
   "required": [
     "version",
-    "command"
+    "status"
   ],
-  "title": "GetDynamicRequest",
+  "title": "Hardware data failure",
   "type": "object"
 }

@@ -1,0 +1,85 @@
+{
+  "$defs": {
+    "QuantumHardwareStaticData": {
+      "properties": {
+        "nqubits": {
+          "description": "The number of qubits.",
+          "title": "Nqubits",
+          "type": "integer"
+        },
+        "topology": {
+          "description": "List of the edges between the various qubits",
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Topology",
+          "type": "array"
+        },
+        "name": {
+          "description": "Name of the system.",
+          "title": "Name",
+          "type": "string"
+        },
+        "pgs": {
+          "description": "Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase).",
+          "items": {
+            "type": "string"
+          },
+          "title": "Pgs",
+          "type": "array"
+        },
+        "starttime": {
+          "description": "Timestamp of start-up of the system (return value of time.time())",
+          "title": "Starttime",
+          "type": "number"
+        }
+      },
+      "required": [
+        "nqubits",
+        "topology",
+        "name",
+        "pgs",
+        "starttime"
+      ],
+      "title": "QuantumHardwareStaticData",
+      "type": "object"
+    }
+  },
+  "description": "The reply containing system information for 2300.",
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "status": {
+      "const": "success",
+      "enum": [
+        "success"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/QuantumHardwareStaticData",
+      "description": "The return value(s) of the executed command."
+    }
+  },
+  "required": [
+    "version",
+    "status",
+    "payload"
+  ],
+  "title": "Get hardware data reply",
+  "type": "object"
+}

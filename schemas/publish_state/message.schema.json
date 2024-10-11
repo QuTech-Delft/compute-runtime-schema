@@ -1,42 +1,59 @@
 {
-  "title": "Publish state message",
-  "description": "System 2300 publishes a state message to inform subscribers of its current state.",
-  "type": "object",
-  "allOf": [
-    {
-      "$ref": "../base_request.schema.json"
-    }
-  ],
-  "properties": {
-    "command": {
-      "const": "publish_state"
+  "$defs": {
+    "HWCSState": {
+      "enum": [
+        "IDLE",
+        "EXECUTING",
+        "CALIBRATING",
+        "OFFLINE"
+      ],
+      "title": "HWCSState",
+      "type": "string"
     },
-    "payload": {
-      "description": "The return value(s) of the executed command.",
-      "type": "object",
+    "PublishStatePayload": {
       "properties": {
-        "state": {
-          "description": "The current state of the system in all-capitals",
-          "type": "string",
-          "enum": [
-            "IDLE",
-            "EXECUTING",
-            "CALIBRATING",
-            "OFFLINE"
-          ]
-        },
         "timestamp": {
           "description": "Timestamp of the instantiation of the message (return value of time.time())",
+          "title": "Timestamp",
           "type": "number"
+        },
+        "state": {
+          "$ref": "#/$defs/HWCSState"
         }
       },
       "required": [
-        "state",
-        "timestamp"
-      ]
+        "timestamp",
+        "state"
+      ],
+      "title": "PublishStatePayload",
+      "type": "object"
+    }
+  },
+  "description": "System 2300 publishes a state message to inform subscribers of its current state.",
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "command": {
+      "const": "publish_state",
+      "enum": [
+        "publish_state"
+      ],
+      "title": "Command",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/PublishStatePayload",
+      "description": "The return value(s) of the executed command."
     }
   },
   "required": [
+    "version",
+    "command",
     "payload"
-  ]
+  ],
+  "title": "Publish state message",
+  "type": "object"
 }
