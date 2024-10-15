@@ -1,15 +1,23 @@
 {
-  "title": "Get static request",
-  "description": "Get system information from 2300. This information is retrieved only once, normally at startup time for 2200.",
-  "type": "object",
-  "allOf": [
-    {
-      "$ref": "../base_request.schema.json"
-    }
-  ],
   "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
     "command": {
-      "const": "get_static"
+      "const": "get_static",
+      "enum": [
+        "get_static"
+      ],
+      "title": "Command",
+      "type": "string"
     }
-  }
+  },
+  "required": [
+    "version",
+    "command"
+  ],
+  "title": "GetStaticRequest",
+  "type": "object"
 }
