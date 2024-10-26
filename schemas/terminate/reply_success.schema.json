@@ -1,5 +1,5 @@
 {
-  "description": "When 2300 receives this request, execution from user generated circuits has stopped and the system can resume\nnormal operations.",
+  "description": "The reply for a successful operation.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",
@@ -12,20 +12,20 @@
       "title": "Session Id",
       "type": "string"
     },
-    "command": {
-      "const": "terminate",
+    "status": {
+      "const": "success",
       "enum": [
-        "terminate"
+        "success"
       ],
-      "title": "Command",
+      "title": "Status",
       "type": "string"
     }
   },
   "required": [
     "version",
     "session_id",
-    "command"
+    "status"
   ],
-  "title": "Terminate request",
+  "title": "Operation success reply",
   "type": "object"
 }
