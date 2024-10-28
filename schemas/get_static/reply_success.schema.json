@@ -42,6 +42,53 @@
           "description": "Timestamp of start-up of the system (return value of time.time())",
           "title": "Starttime",
           "type": "number"
+        },
+        "compiler_config": {
+          "description": "Array of compiler configurations, each containing a stage name and required passes as decomposers.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "compiler_stage": {
+                "description": "Name of the compilation stage.",
+                "type": "string",
+                "enum": [
+                  "none",
+                  "mapped",
+                  "native_gateset",
+                  "scheduled"
+                ]
+              },
+              "compiler_passes": {
+                "description": "List of compiler passes required for this stage as decomposers.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "decomposer": {
+                      "description": "Decomposer for this compiler pass.",
+                      "type": "string"
+                    },
+                    "merge_single_qubit_gates": {
+                      "description": "Whether to merge single qubit gates for this pass.",
+                      "default": true,
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "decomposer"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "compiler_stage",
+              "compiler_passes"
+            ]
+          }
         }
       },
       "required": [
@@ -49,7 +96,8 @@
         "topology",
         "name",
         "pgs",
-        "starttime"
+        "starttime",
+        "compiler_config"
       ],
       "title": "QuantumHardwareStaticData",
       "type": "object"
