@@ -69,13 +69,27 @@
                       "description": "Decomposer for this compiler pass.",
                       "type": "string"
                     },
-                    "merge_single_qubit_gates": {
-                      "description": "Whether to merge single qubit gates for this pass.",
-                      "default": true,
-                      "type": [
-                        "boolean",
-                        "null"
-                      ]
+                    "decomposer_args": {
+                      "description": "Configurable arguments for the decomposer.",
+                      "type": "object",
+                      "properties": {
+                        "merge_single_qubit_gates": {
+                          "description": "Whether to merge single qubit gates.",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ],
+                          "default": true
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": [
+                          "boolean",
+                          "number",
+                          "string",
+                          "null"
+                        ]
+                      }
                     }
                   },
                   "required": [
@@ -96,8 +110,7 @@
         "topology",
         "name",
         "pgs",
-        "starttime",
-        "compiler_config"
+        "starttime"
       ],
       "title": "QuantumHardwareStaticData",
       "type": "object"
