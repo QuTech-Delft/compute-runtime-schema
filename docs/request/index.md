@@ -211,6 +211,7 @@ This message does not require any additional information in the payload section.
 | `name` | `str` | Name of the system |
 | `pgs` | `list[str]` | Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase). |
 | `starttime` | `float` | Timestamp of start-up of the system (return value of `time.time()`) |
+| `default_compiler_config` | `dict[str,list[dict[str, Any]]]` | Compiler configurations for different stages. Keys represent stage names (e.g., "decomposition"), and values are list of passes. Each pass includes settings such as the pass name, corresponding method invoked by opensquirrel and additional keyword arguments. |
 
 ##### Get static reply example
 
@@ -230,7 +231,18 @@ This message does not require any additional information in the payload section.
             "X",
             "Y"
         ],
-        "starttime": 1690061619.610174
+        "starttime": 1690061619.610174,
+        "default_compiler_config": {
+            "decomposition": [
+                {
+                    "path": "opensquirrel.decomposer.mckay_decomposer.McKayDecomposer",
+                    "method": "decompose",
+                    "arguments": {
+                        "merge_single_qubit_gates": true
+                    }
+                }
+            ]
+        }        
     },
     "version": "0.1.0"
 }
