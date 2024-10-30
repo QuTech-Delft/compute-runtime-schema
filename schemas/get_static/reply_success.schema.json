@@ -1,5 +1,52 @@
 {
   "$defs": {
+    "CompilerConfig": {
+      "description": "Specifies a series of compiler passes to be applied to the circuit before execution.",
+      "properties": {
+        "decomposition": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/CompilerPass"
+          },
+          "title": "Decomposition",
+          "type": "array"
+        }
+      },
+      "title": "CompilerConfig",
+      "type": "object"
+    },
+    "CompilerPass": {
+      "properties": {
+        "path": {
+          "description": "Path to OpenSquirrel object that does the compiler pass",
+          "examples": [
+            "opensquirrel.decomposer.mckay_decomposer.McKayDecomposer"
+          ],
+          "title": "Path",
+          "type": "string"
+        },
+        "method": {
+          "description": "Method on OpenSquirrel object that does the compiler pass",
+          "examples": [
+            "decompose"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "arguments": {
+          "default": {},
+          "description": "Arguments for the compiler pass",
+          "title": "Arguments",
+          "type": "object"
+        }
+      },
+      "required": [
+        "path",
+        "method"
+      ],
+      "title": "CompilerPass",
+      "type": "object"
+    },
     "QuantumHardwareStaticData": {
       "properties": {
         "nqubits": {
@@ -37,6 +84,13 @@
           },
           "title": "Pgs",
           "type": "array"
+        },
+        "default_compiler_config": {
+          "$ref": "#/$defs/CompilerConfig",
+          "default": {
+            "decomposition": []
+          },
+          "description": "A suitable default compiler configuration for the hardware backend"
         },
         "starttime": {
           "description": "Timestamp of start-up of the system (return value of time.time())",
