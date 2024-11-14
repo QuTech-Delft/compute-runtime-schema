@@ -205,13 +205,14 @@ This message does not require any additional information in the payload section.
 
 ##### Get static reply payload
 
-| Key | Type | Value |
-| --- | --- | --- |
-| `nqubits` | `int` | The number of qubits |
-| `topology` | `list[tuple]` | List of the edges between the various qubits |
-| `name` | `str` | Name of the system |
-| `pgs` | `list[str]` | Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase). |
-| `starttime` | `float` | Timestamp of start-up of the system (return value of `time.time()`) |
+| Key                       | Type | Value |
+|---------------------------| --- | --- |
+| `nqubits`                 | `int` | The number of qubits |
+| `max_number_of_runtimes`  | `int` | The number of qubits |
+| `topology`                | `list[tuple]` | List of the edges between the various qubits |
+| `name`                    | `str` | Name of the system |
+| `pgs`                     | `list[str]` | Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase). |
+| `starttime`               | `float` | Timestamp of start-up of the system (return value of `time.time()`) |
 | `default_compiler_config` | `dict[str,list[dict[str, Any]]]` | Compiler configurations for different stages. Keys represent stage names (e.g., "decomposition"), and values are list of passes. Each pass includes settings such as the pass name, corresponding method invoked by opensquirrel and additional keyword arguments. |
 
 ##### Get static reply example
@@ -221,6 +222,7 @@ This message does not require any additional information in the payload section.
     "status": "success",
     "payload": {
         "nqubits": 5,
+        "max_number_of_runtimes": 1,
         "topology": [
             [0, 2],
             [1, 2],
@@ -243,7 +245,7 @@ This message does not require any additional information in the payload section.
                     }
                 }
             ]
-        }        
+        }
     },
     "version": "0.1.0"
 }
