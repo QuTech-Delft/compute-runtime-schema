@@ -27,7 +27,7 @@
         },
         "compile_stage": {
           "default": "none",
-          "description": "Stage upto which the circuit has been compiled.",
+          "description": "Stage upto which the circuit has already been compiled.",
           "title": "Compile Stage",
           "type": "string"
         }

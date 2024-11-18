@@ -124,6 +124,7 @@ The schemas for validation inherit from the **extended schema** and can be found
 | `circuit` | `str` | Circuit description in cQASM language, see below for more information. |
 | `include_raw_data` | `bool` | Whether or not to return all bitstrings in the order in which they were measured. |
 | `number_of_shots` | `int` | Number of shots to be executed for the circuit. |
+| `compile_stage` | `str` | Stage upto which the circuit has already been compiled. |
 
 The cQASM language is described in detail [here](https://www.quantum-inspire.com/kbase/cqasm/). Different
 implementations of 2300 might impose different requirements. These will be described on a per case basis.
