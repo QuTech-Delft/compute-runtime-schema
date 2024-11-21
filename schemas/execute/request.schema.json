@@ -24,6 +24,12 @@
           "description": "Whether or not to return all bitstrings in the order in which they were measured.",
           "title": "Include Raw Data",
           "type": "boolean"
+        },
+        "compile_stage": {
+          "default": "none",
+          "description": "Stage upto which the circuit has already been compiled.",
+          "title": "Compile Stage",
+          "type": "string"
         }
       },
       "required": [
