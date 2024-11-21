@@ -54,12 +54,6 @@
           "title": "Nqubits",
           "type": "integer"
         },
-        "max_number_of_runtimes": {
-          "default": 1,
-          "description": "The maximum number of runtimes.",
-          "title": "Max Number Of Runtimes",
-          "type": "integer"
-        },
         "topology": {
           "description": "List of the edges between the various qubits",
           "items": {
