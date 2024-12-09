@@ -96,6 +96,12 @@
           "description": "Timestamp of start-up of the system (return value of time.time())",
           "title": "Starttime",
           "type": "number"
+        },
+        "supports_shot_memory": {
+          "default": false,
+          "description": "Whether the hardware backend supports shot memory. If True, the include_raw_data flag in the QuantumHardwareRunCircuitPayload should trigger the backend to store shot memory in the raw_data field of the results.",
+          "title": "Supports Shot Memory",
+          "type": "boolean"
         }
       },
       "required": [
