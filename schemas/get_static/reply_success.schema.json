@@ -100,7 +100,7 @@
         "supports_raw_data": {
           "default": false,
           "description": "Whether the hardware backend supports shot memory. If True, the include_raw_data flag in the QuantumHardwareRunCircuitPayload should trigger the backend to store shot memory in the raw_data field of the results.",
-          "title": "Supports Shot Memory",
+          "title": "Supports Raw Data",
           "type": "boolean"
         }
       },
