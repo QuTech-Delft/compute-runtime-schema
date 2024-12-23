@@ -14,9 +14,6 @@
     },
     "command": {
       "const": "initialize",
-      "enum": [
-        "initialize"
-      ],
       "title": "Command",
       "type": "string"
     }

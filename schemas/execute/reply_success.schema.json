@@ -56,9 +56,6 @@
     },
     "status": {
       "const": "success",
-      "enum": [
-        "success"
-      ],
       "title": "Status",
       "type": "string"
     },

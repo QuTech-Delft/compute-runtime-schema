@@ -14,9 +14,6 @@
     },
     "command": {
       "const": "terminate",
-      "enum": [
-        "terminate"
-      ],
       "title": "Command",
       "type": "string"
     }
