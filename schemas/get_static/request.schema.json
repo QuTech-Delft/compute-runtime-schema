@@ -7,9 +7,6 @@
     },
     "command": {
       "const": "get_static",
-      "enum": [
-        "get_static"
-      ],
       "title": "Command",
       "type": "string"
     }

@@ -7,9 +7,6 @@
     },
     "command": {
       "const": "get_dynamic",
-      "enum": [
-        "get_dynamic"
-      ],
       "title": "Command",
       "type": "string"
     }

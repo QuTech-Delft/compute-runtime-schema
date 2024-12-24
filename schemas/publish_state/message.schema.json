@@ -38,9 +38,6 @@
     },
     "command": {
       "const": "publish_state",
-      "enum": [
-        "publish_state"
-      ],
       "title": "Command",
       "type": "string"
     },

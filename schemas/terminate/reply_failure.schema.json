@@ -29,9 +29,6 @@
     },
     "status": {
       "const": "failure",
-      "enum": [
-        "failure"
-      ],
       "title": "Status",
       "type": "string"
     },

@@ -50,9 +50,6 @@
     },
     "command": {
       "const": "execute",
-      "enum": [
-        "execute"
-      ],
       "title": "Command",
       "type": "string"
     },
