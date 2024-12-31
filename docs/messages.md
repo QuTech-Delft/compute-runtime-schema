@@ -10,8 +10,9 @@ via the JSON serializer of the python standard library (`json.loads` and `json.d
 The message described below has the most basic information needed for standalone messages. JSON schemas will be provided
 for these messages and should be inherited from for every relevant message.
 
-* [`/schemas/base_request.schema.json`](../../schemas/base_request.schema.json)
-* [`/schemas/base_reply.schema.json`](../../schemas/base_reply.schema.json)
+!!! info
+    The schemas are automatically generated. This means that these requests and replies are already included in the
+    schemas. The content is left here to illustrate the basis of the various schemas.
 
 ### Base request
 
@@ -70,8 +71,9 @@ An extended version of the messages exists. Next to the key-value pairs already 
 contains parameters to link logically-connected messages. JSON schemas will be provided for these messages and should be
 inherited from for every relevant message.
 
-* [`/schemas/extended_request.schema.json`](../../schemas/extended_request.schema.json)
-* [`/schemas/extended_reply.schema.json`](../../schemas/extended_reply.schema.json)
+!!! info
+    The schemas are automatically generated. This means that these requests and replies are already included in the
+    schemas. The content is left here to illustrate the basis of the various schemas.
 
 ### Extended request
 

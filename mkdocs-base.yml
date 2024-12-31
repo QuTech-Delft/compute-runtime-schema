@@ -4,19 +4,46 @@ repo_url: https://github.com/QuTech-Delft/compute-runtime-schema
 use_directory_urls: false
 
 nav:
-  - Home:
+  - Interface:
       - index.md
-  - Messages:
-      - messages/index.md
-      - Request/Reply: messages/request.md
-      - Pub/Sub: messages/publish.md
+      - messages.md
+  - Request/Reply:
+      - request/index.md
+      - request/locking.md
+      - request/execute.md
+      - request/meta.md
+  - Pub/Sub:
+      - publish/index.md
+      - publish/meta.md
 
 theme:
   name: material
+  logo: assets/images/logo.png
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      # scheme: default
+      primary: light blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
   features:
     - navigation.indexes
     - navigation.tabs
     - navigation.tracking
+    - navigation.footer
 
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js

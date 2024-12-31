@@ -12,5 +12,5 @@ interface that can easily be extended to other quantum runtimes. To achive this 
 two different communication modi; request/reply and publish/subscribe. The interface for both modi consists of two
 layers: a message layer and an application layer.
 
-* [Request/Reply](messages/request.md)
-* [Publish/Subscribe](messages/publish.md)
+* [Request/Reply](request/index.md)
+* [Publish/Subscribe](publish/index.md)
