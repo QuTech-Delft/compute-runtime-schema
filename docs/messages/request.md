@@ -13,7 +13,7 @@ on the server and the result is passed back to the client.
 | Server binding argument | `tcp://*:4203` i.e., uses underlying TCP socket connect to port 4203. |
 | Client connect argument | `tcp://<host address>:4203`. The `<host address>` contains the IP address of 2300. |
 
-The messages in this section inherit from generic messages described in the [messages spec](../messages.md). Any new
+The messages in this section inherit from generic messages described in the [messages spec](index.md). Any new
 messages should also inherit from these messages.
 
 ## Application layer
@@ -41,7 +41,7 @@ This message does not require any additional information in the payload section.
 
 ##### Initialize request example
 
-```jsonc
+```json title="initialize_request.json" linenums="1"
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "initialize",
@@ -55,7 +55,7 @@ This message does not require any additional information in the payload section.
 
 ##### Initialize reply example
 
-```jsonc
+```json title="initialize_reply.json" linenums="1"
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
@@ -79,7 +79,7 @@ This message does not require any additional information in the payload section.
 
 ##### Terminate request example
 
-```jsonc
+```json title="terminate_request.json" linenums="1"
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "terminate",
@@ -93,7 +93,7 @@ This message does not require any additional information in the payload section.
 
 ##### Terminate reply example
 
-```jsonc
+```json title="terminate_reply.json" linenums="1"
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
@@ -130,7 +130,7 @@ implementations of 2300 might impose different requirements. These will be descr
 
 ##### Execute request example
 
-```jsonc
+```json title="execute_request.json" linenums="1"
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "execute",
@@ -154,7 +154,7 @@ implementations of 2300 might impose different requirements. These will be descr
 
 ##### Execute reply example
 
-```jsonc
+```json title="execute_reply.json" linenums="1"
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
@@ -195,7 +195,7 @@ This message does not require any additional information in the payload section.
 
 ##### Get static request example
 
-```jsonc
+```json title="get_static_request.json" linenums="1"
 {
     "command": "get_static",
     "version": "0.2.0"
@@ -215,7 +215,7 @@ This message does not require any additional information in the payload section.
 
 ##### Get static reply example
 
-```jsonc
+```json title="get_static_reply.json" linenums="1"
 {
     "status": "success",
     "payload": {
@@ -242,7 +242,7 @@ This message does not require any additional information in the payload section.
                     }
                 }
             ]
-        }        
+        }
     },
     "version": "0.2.0"
 }
@@ -264,7 +264,7 @@ This message does not require any additional information in the payload section.
 
 ##### Get dynamic request example
 
-```jsonc
+```json title="get_dynamic_request.json" linenums="1"
 {
     "command": "get_dynamic",
     "version": "0.2.0"
@@ -282,7 +282,7 @@ determined.
 
 ##### Get dynamic reply example
 
-```jsonc
+```json title="get_dynamic_reply.json" linenums="1"
 {
     "status": "success",
     "payload": {

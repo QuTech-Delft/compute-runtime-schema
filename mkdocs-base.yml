@@ -1,0 +1,56 @@
+site_name: Compute Runtime Schema
+site_dir: public
+repo_url: https://github.com/QuTech-Delft/compute-runtime-schema
+use_directory_urls: false
+
+nav:
+  - Home:
+      - index.md
+  - Messages:
+      - messages/index.md
+      - Request/Reply: messages/request.md
+      - Pub/Sub: messages/publish.md
+
+theme:
+  name: material
+  features:
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.tracking
+
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - def_list
+  - footnotes
+  - md_in_html
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - tables
+
+plugins:
+  - glightbox
+  - render_swagger
+  - search
+
+watch:
+  - mkdocs-base.yml

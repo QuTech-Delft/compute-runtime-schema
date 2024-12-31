@@ -21,7 +21,7 @@ for these messages and should be inherited from for every relevant message.
 | `payload` | `dict` | Arguments for the function to be executed. Presence of this key-value pair depends on the specific command. |
 | `version` | `str` | String containing the version number of the message format. This allows modification of the interface in a backwards compatible manner. The version will adhere to the [semantic versioning rules](<https://semver.org/>). Presently we are still using a beta numbering (`0.y.z`). |
 
-```jsonc
+```json title="base_request.json" linenums="1"
 {
     "command": "execute",
     "payload": {
@@ -42,7 +42,7 @@ for these messages and should be inherited from for every relevant message.
 
 #### Base reply success
 
-```jsonc
+```json title="base_reply_success.json" linenums="1"
 {
     "status": "success",
     "payload": {
@@ -54,7 +54,7 @@ for these messages and should be inherited from for every relevant message.
 
 #### Base reply failure
 
-```jsonc
+```json title="base_reply_failure.json" linenums="1"
 {
     "status": "failure",
     "payload": {
@@ -79,7 +79,7 @@ inherited from for every relevant message.
 | --- | --- | --- |
 | `session_id` | `str` | An arbitrary string, filled in in the request, which is copied into the reply object. Normally this would contain a unique identifier for the request, e.g., a UUID |
 
-```jsonc
+```json title="extended_request.json" linenums="1"
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "execute",
@@ -96,7 +96,7 @@ inherited from for every relevant message.
 | --- | --- | --- |
 | `session_id` | `str` | The same `session_id` from the request to link the request and reply. |
 
-```jsonc
+```json title="extended_reply.json" linenums="1"
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
