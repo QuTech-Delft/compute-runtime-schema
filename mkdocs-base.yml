@@ -1,0 +1,82 @@
+site_name: Compute Runtime Schema
+site_dir: public
+repo_url: https://github.com/QuTech-Delft/compute-runtime-schema
+use_directory_urls: false
+
+nav:
+  - Interface:
+      - index.md
+      - messages.md
+  - Request/Reply:
+      - request/index.md
+      - request/locking.md
+      - request/execute.md
+      - request/meta.md
+  - Pub/Sub:
+      - publish/index.md
+      - publish/meta.md
+
+theme:
+  name: material
+  logo: assets/images/logo.png
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      # scheme: default
+      primary: light blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  features:
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.tracking
+    - navigation.footer
+
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - def_list
+  - footnotes
+  - md_in_html
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - tables
+
+plugins:
+  - glightbox
+  - search
+
+watch:
+  - mkdocs-base.yml
