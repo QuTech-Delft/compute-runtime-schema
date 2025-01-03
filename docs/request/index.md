@@ -250,16 +250,23 @@ This message does not require any additional information in the payload section.
 
 ##### Compiler configuration
 
-The compiler configuration (`default_compiler_config`) defines the compile configuration expected by the backend. This configuration defines some preprocessing steps that should be applied to the circuit using the Opensquirrel library.
-The config is represented as a dict with defines for each _stage_, a list of _passes_ (ie preprocessing actions that should be applied on the circuit) that should be performed in the stage. Each pass includes settings such as the pass _name_, corresponding _method_ invoked by opensquirrel and additional keyword arguments.
+The compiler configuration (`default_compiler_config`) defines the compile configuration expected by the backend. This
+configuration defines some preprocessing steps that should be applied to the circuit using the Opensquirrel library. The
+config is represented as a dict and defines for each _stage_, a list of _passes_ (ie preprocessing actions that should
+be applied on the circuit) that should be performed in the stage. Each pass includes settings such as the pass _name_,
+corresponding _method_ invoked by opensquirrel and additional keyword arguments.
 
 Currently, the following stages are supported:
-- `decomposition`:
-  - `path`: `opensquirrel.decomposer.<path_to_decomposer_class>`. See [here](https://github.com/QuTech-Delft/OpenSquirrel/tree/develop/opensquirrel/passes/decomposer) for all available decomposers
-  - `method`: `decompose`
-  - `arguments`: arguments expected by the `decompose()` method
 
-**Note** if no `default_compiler_config` is provided, there will be **no** pre-processing steps applied to the circuit by default, and the backend will receive the CQASM string the same way it was provided by the user.
+* `decomposition`:
+  * `path`: `opensquirrel.decomposer.<path_to_decomposer_class>`.
+See [here](https://github.com/QuTech-Delft/OpenSquirrel/tree/develop/opensquirrel/passes/decomposer) for all available
+decomposers.
+  * `method`: `decompose`
+  * `arguments`: arguments expected by the `decompose()` method.
+
+If no `default_compiler_config` is provided, there will be **no** pre-processing steps applied to the circuit
+by default, and the backend will receive the CQASM string the same way it was provided by the user.
 
 #### Get dynamic
 
