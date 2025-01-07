@@ -34,9 +34,9 @@ This message does not require any additional information in the payload section.
 | `nqubits` | `int` | The number of qubits |
 | `topology` | `list[tuple]` | List of the edges between the various qubits |
 | `name` | `str` | Name of the system |
-| `pgs` | `list[str]` | Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase). |
+| `pgs` | `list[str]` | Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase) |
 | `starttime` | `float` | Timestamp of start-up of the system (return value of `time.time()`) |
-| `default_compiler_config` | `dict[str,list[dict[str, Any]]]` | Compiler configurations for different stages. Keys represent stage names (e.g., "decomposition"), and values are list of passes. Each pass includes settings such as the pass name, corresponding method invoked by opensquirrel and additional keyword arguments. |
+| `default_compiler_config` | `dict[str,list[dict[str, Any]]]` | Compiler configurations for different stages. |
 
 ### Get static reply example
 
@@ -72,6 +72,25 @@ This message does not require any additional information in the payload section.
     "version": "0.2.0"
 }
 ```
+
+##### Compiler configuration
+
+The compiler configuration defines the pre-processing needed to convert the user-provided circuit into one that the
+backend can process. This comprises a list of steps that should be applied to the circuit using the Opensquirrel
+library. The config is represented as a dict and defines for each _stage_, a list of _passes_ (ie preprocessing actions)
+that should be performed in the stage. Each pass includes settings such as the pass _name_, corresponding _method_
+invoked by opensquirrel and additional keyword arguments.
+
+Currently, the following stages are supported:
+
+* `decomposition`:
+  * `path`: `opensquirrel.<path_to_decomposer_class>`.
+See the _decomposers_ listed in [the opensquirrel docs](https://qutech-delft.github.io/OpenSquirrel/reference).
+  * `method`: `decompose`
+  * `arguments`: arguments expected for the initialization of the decomposer class.
+
+If no `default_compiler_config` is provided, there will be **no** pre-processing steps applied to the circuit.
+The backend will receive the cQASM string the same way it was provided by the user.
 
 ## Get dynamic
 
