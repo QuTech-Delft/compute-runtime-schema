@@ -62,9 +62,7 @@ This message does not require any additional information in the payload section.
                 {
                     "path": "opensquirrel.decomposer.mckay_decomposer.McKayDecomposer",
                     "method": "decompose",
-                    "arguments": {
-                        "merge_single_qubit_gates": true
-                    }
+                    "arguments": {}
                 }
             ]
         }
