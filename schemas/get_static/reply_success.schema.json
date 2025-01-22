@@ -10,6 +10,38 @@
           },
           "title": "Decomposition",
           "type": "array"
+        },
+        "mapping": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/CompilerPass"
+          },
+          "title": "Mapping",
+          "type": "array"
+        },
+        "optimization": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/CompilerPass"
+          },
+          "title": "Optimization",
+          "type": "array"
+        },
+        "routing": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/CompilerPass"
+          },
+          "title": "Routing",
+          "type": "array"
+        },
+        "exporting": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/CompilerPass"
+          },
+          "title": "Exporting",
+          "type": "array"
         }
       },
       "title": "CompilerConfig",
@@ -88,7 +120,11 @@
         "default_compiler_config": {
           "$ref": "#/$defs/CompilerConfig",
           "default": {
-            "decomposition": []
+            "decomposition": [],
+            "mapping": [],
+            "optimization": [],
+            "routing": [],
+            "exporting": []
           },
           "description": "A suitable default compiler configuration for the hardware backend"
         },
