@@ -20,7 +20,7 @@
         "path": {
           "description": "Path to OpenSquirrel object that does the compiler pass",
           "examples": [
-            "opensquirrel.decomposer.mckay_decomposer.McKayDecomposer"
+            "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
           ],
           "title": "Path",
           "type": "string"
