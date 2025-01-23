@@ -34,14 +34,6 @@
           },
           "title": "Routing",
           "type": "array"
-        },
-        "exporting": {
-          "default": [],
-          "items": {
-            "$ref": "#/$defs/CompilerPass"
-          },
-          "title": "Exporting",
-          "type": "array"
         }
       },
       "title": "CompilerConfig",
@@ -123,8 +115,7 @@
             "decomposition": [],
             "mapping": [],
             "optimization": [],
-            "routing": [],
-            "exporting": []
+            "routing": []
           },
           "description": "A suitable default compiler configuration for the hardware backend"
         },
