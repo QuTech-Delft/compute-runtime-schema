@@ -3,6 +3,7 @@
     "QuantumHardwareFailureData": {
       "properties": {
         "error_msg": {
+          "description": "A descriptive error message to be passed on to the user.",
           "title": "Error Msg",
           "type": "string"
         }
