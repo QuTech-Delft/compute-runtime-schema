@@ -11,5 +11,11 @@ find "$schemas" -type f -name "*.json" | while read -r file; do
     # Extract first parent directory
     parentdir=$(basename "$(dirname "$file")")
     classname="${parentdir}_${filename}"
-    datamodel-codegen --input "$file" --class-name $classname --output "./models/$classname.py" --output-model-type pydantic_v2.BaseModel
+    datamodel-codegen \
+        --input "$file" \
+        --class-name $classname \
+        --disable-timestamp \
+        --input-file-type jsonschema \
+        --output "./models/$classname.py" \
+        --output-model-type pydantic_v2.BaseModel 
 done
