@@ -7,7 +7,7 @@
       "type": "string"
     },
     "status": {
-      "const": "failure",
+      "const": "change",
       "title": "Status",
       "type": "string"
     }
