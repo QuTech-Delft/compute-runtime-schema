@@ -39,5 +39,5 @@ jobs:
       - name: Run generator
         working-directory: ./tests/control-software-validator
         run: ./generate.sh
-      - name: Verify no changes
+      - name: Verify files are unchanged
         run: git diff --exit-code
