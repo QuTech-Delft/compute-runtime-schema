@@ -19,8 +19,8 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install dependencies
-        working-directory: ./tests
+        working-directory: ./tests/schema-check
         run: pip install -r requirements.txt
       - name: Run test cases
-        working-directory: ./tests
+        working-directory: ./tests/schema-check
         run: ./tests.sh
