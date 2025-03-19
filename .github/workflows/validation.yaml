@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: DavidAnson/markdownlint-cli2-action@v11
-  tests:
+  schema-check:
     name: JSON validation
     runs-on: ubuntu-latest
     steps:
@@ -24,3 +24,20 @@ jobs:
       - name: Run test cases
         working-directory: ./tests/schema-check
         run: ./tests.sh
+  model-generation:
+    name: Model generation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        working-directory: ./tests/control-software-validator
+        run: pip install -r requirements.txt
+      - name: Run generator
+        working-directory: ./tests/control-software-validator
+        run: ./generate.sh
+      - name: Verify no changes
+        run: git diff --exit-code
