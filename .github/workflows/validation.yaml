@@ -47,6 +47,4 @@ jobs:
         run: mypy .
       - name: Validator dry run
         working-directory: ./tests/control-software-validator
-        with:
-          CSV_MODE: "dry_run"
-        run: pytest .
+        run: CSV_MODE=dry_run pytest .
