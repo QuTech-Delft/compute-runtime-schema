@@ -6,7 +6,7 @@ from __future__ import annotations
 from typing import Literal
 from uuid import UUID
 
-from pydantic import BaseModel, Field, constr
+from pydantic import BaseModel, Field
 
 
 class QuantumHardwareFailureData(BaseModel):
@@ -18,7 +18,7 @@ class QuantumHardwareFailureData(BaseModel):
 
 
 class InitializeReplyFailure(BaseModel):
-    version: constr(pattern=r'^\d+\.\d+\.\d$') = Field(..., title='Version')
+    version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     session_id: UUID = Field(
         ...,
         description='An arbitrary string, filled in in the request, which is copied into the reply object.',

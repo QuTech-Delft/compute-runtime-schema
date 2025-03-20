@@ -5,9 +5,9 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field, constr
+from pydantic import BaseModel, Field
 
 
 class GetDynamicRequest(BaseModel):
-    version: constr(pattern=r'^\d+\.\d+\.\d$') = Field(..., title='Version')
+    version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     command: Literal['get_dynamic'] = Field(..., title='Command')

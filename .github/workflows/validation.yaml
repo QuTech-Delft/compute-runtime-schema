@@ -41,3 +41,7 @@ jobs:
         run: ./generate.sh
       - name: Verify files are unchanged
         run: git diff --exit-code
+      - name: MyPy
+        # Helps ensure changes in model classes are reflected in validator
+        working-directory: ./tests/control-software-validator
+        run: mypy .

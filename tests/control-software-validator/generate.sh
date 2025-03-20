@@ -16,5 +16,6 @@ find "$schemas" -type f -name "*.json" | while read -r file; do
         --disable-timestamp \
         --input-file-type jsonschema \
         --output "./models/$classname.py" \
+        --field-constraints \
         --output-model-type pydantic_v2.BaseModel 
 done

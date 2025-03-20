@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Literal, Optional
 
-from pydantic import BaseModel, Field, constr
+from pydantic import BaseModel, Field, RootModel
 
 
 class CompilerPass(BaseModel):
@@ -26,6 +26,10 @@ class CompilerPass(BaseModel):
     )
 
 
+class TopologyItem(RootModel[List]):
+    root: List = Field(..., max_length=2, min_length=2)
+
+
 class CompilerConfig(BaseModel):
     decomposition: Optional[List[CompilerPass]] = Field([], title='Decomposition')
     mapping: Optional[List[CompilerPass]] = Field([], title='Mapping')
@@ -35,7 +39,7 @@ class CompilerConfig(BaseModel):
 
 class QuantumHardwareStaticData(BaseModel):
     nqubits: int = Field(..., description='The number of qubits.', title='Nqubits')
-    topology: List[List] = Field(
+    topology: List[TopologyItem] = Field(
         ...,
         description='List of the edges between the various qubits',
         title='Topology',
@@ -65,7 +69,7 @@ class QuantumHardwareStaticData(BaseModel):
 
 
 class GetStaticReplySuccess(BaseModel):
-    version: constr(pattern=r'^\d+\.\d+\.\d$') = Field(..., title='Version')
+    version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     status: Literal['success'] = Field(..., title='Status')
     payload: QuantumHardwareStaticData = Field(
         ..., description='The return value(s) of the executed command.'

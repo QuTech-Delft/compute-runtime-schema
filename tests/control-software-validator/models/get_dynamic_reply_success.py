@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field, constr
+from pydantic import BaseModel, Field
 
 
 class QuantumHardwareDynamicData(BaseModel):
@@ -13,7 +13,7 @@ class QuantumHardwareDynamicData(BaseModel):
 
 
 class GetDynamicReplySuccess(BaseModel):
-    version: constr(pattern=r'^\d+\.\d+\.\d$') = Field(..., title='Version')
+    version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     status: Literal['success'] = Field(..., title='Status')
     payload: QuantumHardwareDynamicData = Field(
         ..., description='The return value(s) of the executed command.'

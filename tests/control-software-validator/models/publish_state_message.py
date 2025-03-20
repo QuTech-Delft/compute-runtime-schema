@@ -6,7 +6,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Literal
 
-from pydantic import BaseModel, Field, constr
+from pydantic import BaseModel, Field
 
 
 class HWCSState(Enum):
@@ -26,7 +26,7 @@ class PublishStatePayload(BaseModel):
 
 
 class PublishStateMessage(BaseModel):
-    version: constr(pattern=r'^\d+\.\d+\.\d$') = Field(..., title='Version')
+    version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     command: Literal['publish_state'] = Field(..., title='Command')
     payload: PublishStatePayload = Field(
         ..., description='The return value(s) of the executed command.'
