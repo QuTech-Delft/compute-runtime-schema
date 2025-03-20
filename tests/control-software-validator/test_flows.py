@@ -74,6 +74,10 @@ async def test_dynamic_data_request(req_channel: RequestChannel) -> None:
     await req_channel.request(dynamic_data_request, GetDynamicReplySuccess)
 
 
+async def test_oops(req_channel: RequestChannel) -> None:
+    _ = InitializeRequest(version="b", session_id=session_id, command="initialize")
+
+
 async def test_happy_flow(req_channel: RequestChannel):
     # Test normal init->execute->terminate flow
     session_id = uuid.uuid4()

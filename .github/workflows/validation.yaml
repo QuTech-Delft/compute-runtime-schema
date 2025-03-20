@@ -45,3 +45,8 @@ jobs:
         # Helps ensure changes in model classes are reflected in validator
         working-directory: ./tests/control-software-validator
         run: mypy .
+      - name: Validator dry run
+        working-directory: ./tests/control-software-validator
+        with:
+          CSV_MODE: "dry_run"
+        run: pytest .
