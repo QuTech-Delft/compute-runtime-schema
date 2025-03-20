@@ -75,6 +75,7 @@ async def test_dynamic_data_request(req_channel: RequestChannel) -> None:
 
 
 async def test_oops(req_channel: RequestChannel) -> None:
+    session_id = uuid.uuid4()
     _ = InitializeRequest(version="b", session_id=session_id, command="initialize")
 
 
