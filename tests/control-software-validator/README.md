@@ -19,6 +19,14 @@ available on port 4203 (`tcp://localhost:4203`), and its publish channel availab
 These addresses are configurable using environment variables `CSV_HWCS_REQ_ADDRESS` and `CSV_HWCS_SUB_ADDRESS`
 respectively (or directly in the test file).
 
+Setting the environment variable `CSV_MODE` to `dry_run` triggers a dry run that does not connect to the control software.
+This is useful for verifying the validator itself.
+
+## Model generation
+
+The models used in the validator are automatically generated based on the jsonschemas. The generate.sh script can be run
+in the same Python environment as the tool.
+
 ## Limitations
 
 There is no way in the protocol to reliably trigger a failure, so the tool can only verify the
