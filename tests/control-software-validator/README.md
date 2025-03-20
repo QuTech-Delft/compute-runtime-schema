@@ -16,7 +16,7 @@ pytest .
 
 The tool assumes you have the control software running on the same host with its reply channel
 available on port 4203 (`tcp://localhost:4203`), and its publish channel available on port 4204 (`tcp://localhost:4204`).
-These addresses are configurable using environment variables `HWCS_REQ_ADDRESS` and `HWCS_SUB_ADDRESS`
+These addresses are configurable using environment variables `CSV_HWCS_REQ_ADDRESS` and `CSV_HWCS_SUB_ADDRESS`
 respectively (or directly in the test file).
 
 ## Limitations

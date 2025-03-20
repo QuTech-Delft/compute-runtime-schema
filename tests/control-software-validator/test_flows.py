@@ -1,9 +1,10 @@
 import os
 import uuid
-from typing import Any
 
 import pytest
 import zmq
+from channels.request_channel import MockRequestChannel, RequestChannel
+from channels.subscribe_channel import MockSubscribeChannel, SubscribeChannel
 from models.execute_reply_success import ExecuteReplySuccess
 from models.execute_request import ExecuteRequest, QuantumHardwareRunCircuitPayload
 from models.get_dynamic_reply_success import GetDynamicReplySuccess
@@ -15,51 +16,50 @@ from models.initialize_request import InitializeRequest
 from models.publish_state_message import PublishStateMessage
 from models.terminate_reply_success import TerminateReplySuccess
 from models.terminate_request import TerminateRequest
-from pydantic import BaseModel
 from zmq.asyncio import Context, Socket
 
+# Settings
+sub_address: str = os.environ.get("CSV_HWCS_SUB_ADDRESS", "tcp://localhost:4204")
+req_address: str = os.environ.get("CSV_HWCS_REQ_ADDRESS", "tcp://localhost:4203")
+mode: str = os.environ.get("CSV_MODE", "connect")
+
 context: Context = Context()
-sub_address: str = os.environ.get("HWCS_SUB_ADDRESS", "tcp://localhost:4204")
-req_address: str = os.environ.get("HWCS_REQ_ADDRESS", "tcp://localhost:4203")
 version: str = "0.1.0"
-
-
-class RequestChannel:
-    def __init__(self, req_stream: Socket) -> None:
-        self.req_stream = req_stream
-
-    async def request(self, request: BaseModel, return_type: type[BaseModel]) -> Any:
-        self.req_stream.send_string(request.model_dump_json())
-        reply = await self.req_stream.recv_string()
-        return return_type.model_validate_json(reply)
 
 
 @pytest.fixture
 def sub_stream() -> Socket:
-    stream = context.socket(zmq.SUB)
-    stream.connect(sub_address)
-    stream.subscribe("")
-
-    return stream
+    return context.socket(zmq.SUB)
 
 
 @pytest.fixture
 def req_stream() -> Socket:
-    stream = context.socket(zmq.REQ)
-    stream.connect(req_address)
-
-    return stream
+    return context.socket(zmq.REQ)
 
 
 @pytest.fixture
 def req_channel(req_stream: Socket) -> RequestChannel:
-    return RequestChannel(req_stream)
+    if mode == "dry_run":
+        return MockRequestChannel(req_stream)
+    else:
+        channel = RequestChannel(req_stream)
+        channel.connect(req_address)
+        return channel
 
 
-async def test_publish_state(sub_stream: Socket) -> None:
+@pytest.fixture
+def sub_channel(sub_stream: Socket) -> SubscribeChannel:
+    if mode == "dry_run":
+        return MockSubscribeChannel(sub_stream)
+    else:
+        channel = SubscribeChannel(sub_stream)
+        channel.connect(sub_address)
+        return channel
+
+
+async def test_publish_state(sub_channel: SubscribeChannel) -> None:
     # Test if published state message is correctly formatted
-    message = await sub_stream.recv_string()
-    _ = PublishStateMessage.model_validate_json(message)
+    _ = await sub_channel.receive(PublishStateMessage)
 
 
 async def test_static_data_request(req_channel: RequestChannel) -> None:
