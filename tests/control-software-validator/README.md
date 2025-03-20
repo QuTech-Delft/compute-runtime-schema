@@ -20,7 +20,7 @@ These addresses are configurable using environment variables `CSV_HWCS_REQ_ADDRE
 respectively (or directly in the test file).
 
 Setting the environment variable `CSV_MODE` to `dry_run` triggers a dry run that does not connect to the control software.
-This is useful for verifying the validator itself.
+This is useful for verifying the validator itself, as it will fail if any of the request messages are badly formatted.
 
 ## Model generation
 
