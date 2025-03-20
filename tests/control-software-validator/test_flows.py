@@ -16,7 +16,7 @@ from models.initialize_request import InitializeRequest
 from models.publish_state_message import PublishStateMessage
 from models.terminate_reply_success import TerminateReplySuccess
 from models.terminate_request import TerminateRequest
-from zmq.asyncio import Context, Socket
+from zmq.asyncio import Context
 
 # Settings
 sub_address: str = os.environ.get("CSV_HWCS_SUB_ADDRESS", "tcp://localhost:4204")
@@ -28,17 +28,8 @@ version: str = "0.1.0"
 
 
 @pytest.fixture
-def sub_stream() -> Socket:
-    return context.socket(zmq.SUB)
-
-
-@pytest.fixture
-def req_stream() -> Socket:
-    return context.socket(zmq.REQ)
-
-
-@pytest.fixture
-def req_channel(req_stream: Socket) -> RequestChannel:
+def req_channel() -> RequestChannel:
+    req_stream = context.socket(zmq.REQ)
     if mode == "dry_run":
         return MockRequestChannel(req_stream)
     else:
@@ -48,7 +39,8 @@ def req_channel(req_stream: Socket) -> RequestChannel:
 
 
 @pytest.fixture
-def sub_channel(sub_stream: Socket) -> SubscribeChannel:
+def sub_channel() -> SubscribeChannel:
+    sub_stream = context.socket(zmq.SUB)
     if mode == "dry_run":
         return MockSubscribeChannel(sub_stream)
     else:
