@@ -57,23 +57,27 @@ def sub_channel(sub_stream: Socket) -> SubscribeChannel:
         return channel
 
 
+@pytest.mark.timeout(10)
 async def test_publish_state(sub_channel: SubscribeChannel) -> None:
     # Test if published state message is correctly formatted
     _ = await sub_channel.receive(PublishStateMessage)
 
 
+@pytest.mark.timeout(20)
 async def test_static_data_request(req_channel: RequestChannel) -> None:
     # Test if static data reply is correctly formatted
     static_data_request = GetStaticRequest(version=version, command="get_static")
     await req_channel.request(static_data_request, GetStaticReplySuccess)
 
 
+@pytest.mark.timeout(20)
 async def test_dynamic_data_request(req_channel: RequestChannel) -> None:
     # Test if dynamic data reply is correctly formatted
     dynamic_data_request = GetDynamicRequest(version=version, command="get_dynamic")
     await req_channel.request(dynamic_data_request, GetDynamicReplySuccess)
 
 
+@pytest.mark.timeout(120)
 async def test_happy_flow(req_channel: RequestChannel):
     # Test normal init->execute->terminate flow
     session_id = uuid.uuid4()
@@ -103,6 +107,7 @@ async def test_happy_flow(req_channel: RequestChannel):
     await req_channel.request(terminate_request, TerminateReplySuccess)
 
 
+@pytest.mark.timeout(120)
 async def test_two_init_flow(req_channel: RequestChannel):
     # Control software should allow multiple initialize requests
     session_id = uuid.uuid4()
