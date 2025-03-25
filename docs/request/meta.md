@@ -71,7 +71,7 @@ This message does not require any additional information in the payload section.
 }
 ```
 
-##### Compiler configuration
+#### Compiler configuration
 
 The compiler configuration defines the pre-processing needed to convert the user-provided circuit into one that the
 backend can process. This comprises a list of steps that should be applied to the circuit using the Opensquirrel
@@ -117,12 +117,18 @@ This message does not require any additional information in the payload section.
 
 ### Get dynamic reply payload
 
-The payload for the message is still under advisement. The appropriate key-value pairs will be filled in when they are
-determined.
+The payload for this message contains an overview of one or more (or zero) metrics that can be used in a monitoring
+stack. In the table below, the format of a single metric is described. Keys between angular brackets (`<`) are dynamic.
 
 | Key | Type | Value |
 | --- | --- | --- |
-| - | - | - |
+| `<metric_name>` | object | Description of a single metric. The key is used as the metric name in Prometheus/Grafana. |
+| `__labels__` | list | The strings in this list are used as individual keys for labels in Prometheus/Grafana. |
+| `<label_value>` | any | The value of the key is mapped by index to the labels in `__labels__`. The tree is traversed until a leaf is found which is interpreted as value. These values can either be `ints` or `floats`. |
+
+The reason that these labels are this important has to do with the aggregation and filtering of metrics. By specifying
+one metric which is measured for different data point, the dashboard can easily reference this metric. However, if
+necessary panels in the dashboard or alerts can also reference values for individual data points.
 
 ### Get dynamic reply example
 
@@ -130,8 +136,82 @@ determined.
 {
     "status": "success",
     "payload": {
-        // to be determined
+        "metric_1": {
+            "__labels__": ["key1", "key2"],
+            "q1": {
+                "x1": 4,
+                "x2": 3
+            },
+            "q2": {
+                "y1": 4,
+                "y2": 3
+            }
+        }
     },
     "version": "0.2.0"
 }
+```
+
+#### Example 1: No labels
+
+```json title="get_dynamic_reply.json" linenums="1"
+{
+    "status": "success",
+    "payload": {
+        "fridge_temperature_in_mk": 8.4
+    },
+    "version": "0.2.0"
+}
+```
+
+This will be represented in Prometheus/Grafana as:
+
+```txt
+qi_fridge_temperature_in_mk 8.4
+```
+
+#### Example 2: One label
+
+```json title="get_dynamic_reply.json" linenums="1"
+{
+    "status": "success",
+    "payload": {
+        "t1": {
+            "__labels__": ["qubit"],
+            "q0": 0.995,
+            "q1": 0.988
+        }
+    },
+    "version": "0.2.0"
+}
+```
+
+This will be represented in Prometheus/Grafana as:
+
+```txt
+qi_t1{qubit=q0} 0.995
+qi_t1{qubit=q1} 0.988
+```
+
+#### Example 2: Multiple labels
+
+```json title="get_dynamic_reply.json" linenums="1"
+{
+    "status": "success",
+    "payload": {
+        "cnot_fidelity": {
+            "__labels__": ["qubit1", "qubit2"],
+            "q1": {
+                "q0": 0.995
+            }
+        }
+    },
+    "version": "0.2.0"
+}
+```
+
+This will be represented in Prometheus/Grafana as:
+
+```txt
+qi_cnot_fidelity{qubit1=q1, qubit2=q0} 0.995
 ```
