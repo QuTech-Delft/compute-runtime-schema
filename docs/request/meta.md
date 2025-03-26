@@ -32,11 +32,11 @@ This message does not require any additional information in the payload section.
 | Key | Type | Value |
 | --- | --- | --- |
 | `nqubits` | `int` | The number of qubits |
-| `topology` | `list[tuple]` | List of the edges between the various qubits |
+| `topology` | `array[tuple]` | List of the edges between the various qubits |
 | `name` | `str` | Name of the system |
-| `pgs` | `list[str]` | Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase) |
+| `pgs` | `array[str]` | Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase) |
 | `starttime` | `float` | Timestamp of start-up of the system (return value of `time.time()`) |
-| `default_compiler_config` | `dict[str,list[dict[str, Any]]]` | Compiler configurations for different stages. |
+| `default_compiler_config` | `object[str,array[object[str, Any]]]` | Compiler configurations for different stages. |
 
 ### Get static reply example
 
@@ -123,36 +123,14 @@ stack. In the table below, the format of a single metric is described. Keys betw
 | Key | Type | Value |
 | --- | --- | --- |
 | `<metric_name>` | object | Description of a single metric. The key is used as the metric name in Prometheus/Grafana. |
-| `__labels__` | list | The strings in this list are used as individual keys for labels in Prometheus/Grafana. |
-| `<label_value>` | any | The value of the key is mapped by index to the labels in `__labels__`. The tree is traversed until a leaf is found which is interpreted as value. These values can either be `ints` or `floats`. |
+| `__labels__` | array | The strings in this array are used as individual keys for labels in Prometheus/Grafana. |
+| `<label_value>` | any | The value can either be an object for nested values (see example 2), or an `int` or `float` for a leaf. The value of the (recursive) key is mapped by index to the labels in `__labels__` (e.g. `key1=q1` and `key2=x1`). The tree is traversed until a leaf is found. This value is interpreted as the value for the metric. If there is no value for the specific instance `null` can be reported, or the branch can be ommitted. |
 
 The reason that these labels are this important has to do with the aggregation and filtering of metrics. By specifying
 one metric which is measured for different data point, the dashboard can easily reference this metric. However, if
 necessary panels in the dashboard or alerts can also reference values for individual data points.
 
-### Get dynamic reply example
-
-```json title="get_dynamic_reply.json" linenums="1"
-{
-    "status": "success",
-    "payload": {
-        "metric_1": {
-            "__labels__": ["key1", "key2"],
-            "q1": {
-                "x1": 4,
-                "x2": 3
-            },
-            "q2": {
-                "y1": 4,
-                "y2": 3
-            }
-        }
-    },
-    "version": "0.2.0"
-}
-```
-
-#### Example 1: No labels
+### Get dynamic reply example 1: No labels
 
 ```json title="get_dynamic_reply.json" linenums="1"
 {
@@ -170,7 +148,7 @@ This will be represented in Prometheus/Grafana as:
 qi_fridge_temperature_in_mk 8.4
 ```
 
-#### Example 2: One label
+### Get dynamic reply example 2: One label
 
 ```json title="get_dynamic_reply.json" linenums="1"
 {
@@ -193,7 +171,7 @@ qi_t1{qubit=q0} 0.995
 qi_t1{qubit=q1} 0.988
 ```
 
-#### Example 2: Multiple labels
+### Get dynamic reply example 2: Multiple labels
 
 ```json title="get_dynamic_reply.json" linenums="1"
 {
