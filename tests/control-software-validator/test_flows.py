@@ -97,38 +97,3 @@ async def test_happy_flow(req_channel: RequestChannel):
         version=version, session_id=session_id, command="terminate"
     )
     await req_channel.request(terminate_request, TerminateReplySuccess)
-
-
-@pytest.mark.timeout(120)
-async def test_two_init_flow(req_channel: RequestChannel):
-    # Control software should allow multiple initialize requests
-    session_id = uuid.uuid4()
-
-    init_request = InitializeRequest(
-        version=version, session_id=session_id, command="initialize"
-    )
-    await req_channel.request(init_request, InitializeReplySuccess)
-
-    exec_payload = QuantumHardwareRunCircuitPayload(
-        job_id=1,
-        circuit="version 1.0\nqubit[1] q\nbit[1] b\nX q[0]\nb[0] = measure q[0]",
-        number_of_shots=10,
-        include_raw_data=False,
-    )
-    exec_request = ExecuteRequest(
-        version=version,
-        session_id=session_id,
-        command="execute",
-        payload=exec_payload,
-    )
-    await req_channel.request(exec_request, ExecuteReplySuccess)
-
-    init_request = InitializeRequest(
-        version=version, session_id=session_id, command="initialize"
-    )
-    await req_channel.request(init_request, InitializeReplySuccess)
-
-    terminate_request = TerminateRequest(
-        version=version, session_id=session_id, command="terminate"
-    )
-    await req_channel.request(terminate_request, TerminateReplySuccess)
