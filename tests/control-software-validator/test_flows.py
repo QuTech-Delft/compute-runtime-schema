@@ -5,6 +5,7 @@ import pytest
 import zmq
 from channels.request_channel import MockRequestChannel, RequestChannel
 from channels.subscribe_channel import MockSubscribeChannel, SubscribeChannel
+from models.execute_reply_failure import ExecuteReplyFailure
 from models.execute_reply_success import ExecuteReplySuccess
 from models.execute_request import ExecuteRequest, QuantumHardwareRunCircuitPayload
 from models.get_dynamic_reply_success import GetDynamicReplySuccess
@@ -97,3 +98,23 @@ async def test_happy_flow(req_channel: RequestChannel):
         version=version, session_id=session_id, command="terminate"
     )
     await req_channel.request(terminate_request, TerminateReplySuccess)
+
+
+@pytest.mark.timeout(20)
+async def test_exec_without_init(req_channel: RequestChannel):
+    # Test if execute request without init request returns error
+    session_id = uuid.uuid4()
+
+    exec_payload = QuantumHardwareRunCircuitPayload(
+        job_id=1,
+        circuit="version 1.0\nqubit[1] q\nbit[1] b\nX q[0]\nb[0] = measure q[0]",
+        number_of_shots=10,
+        include_raw_data=False,
+    )
+    exec_request = ExecuteRequest(
+        version=version,
+        session_id=session_id,
+        command="execute",
+        payload=exec_payload,
+    )
+    await req_channel.request(exec_request, ExecuteReplyFailure)
