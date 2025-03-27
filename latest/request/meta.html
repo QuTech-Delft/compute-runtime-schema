@@ -683,9 +683,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-dynamic-reply-example" class="md-nav__link">
+  <a href="#get-dynamic-reply-example-1-no-labels" class="md-nav__link">
     <span class="md-ellipsis">
-      Get dynamic reply example
+      Get dynamic reply example 1: No labels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-dynamic-reply-example-2-one-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get dynamic reply example 2: One label
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-dynamic-reply-example-2-multiple-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get dynamic reply example 2: Multiple labels
     </span>
   </a>
   
@@ -926,9 +944,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-dynamic-reply-example" class="md-nav__link">
+  <a href="#get-dynamic-reply-example-1-no-labels" class="md-nav__link">
     <span class="md-ellipsis">
-      Get dynamic reply example
+      Get dynamic reply example 1: No labels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-dynamic-reply-example-2-one-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get dynamic reply example 2: One label
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-dynamic-reply-example-2-multiple-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get dynamic reply example 2: Multiple labels
     </span>
   </a>
   
@@ -999,7 +1035,7 @@ by 2300.</p>
 </tr>
 <tr>
 <td><code>topology</code></td>
-<td><code>list[tuple]</code></td>
+<td><code>array[tuple]</code></td>
 <td>List of the edges between the various qubits</td>
 </tr>
 <tr>
@@ -1009,7 +1045,7 @@ by 2300.</p>
 </tr>
 <tr>
 <td><code>pgs</code></td>
-<td><code>list[str]</code></td>
+<td><code>array[str]</code></td>
 <td>Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase)</td>
 </tr>
 <tr>
@@ -1019,7 +1055,7 @@ by 2300.</p>
 </tr>
 <tr>
 <td><code>default_compiler_config</code></td>
-<td><code>dict[str,list[dict[str, Any]]]</code></td>
+<td><code>object[str,array[object[str, Any]]]</code></td>
 <td>Compiler configurations for different stages.</td>
 </tr>
 </tbody>
@@ -1081,7 +1117,7 @@ by 2300.</p>
 <a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span>
 <a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<h5 id="compiler-configuration">Compiler configuration</h5>
+<h4 id="compiler-configuration">Compiler configuration</h4>
 <p>The compiler configuration defines the pre-processing needed to convert the user-provided circuit into one that the
 backend can process. This comprises a list of steps that should be applied to the circuit using the Opensquirrel
 library. The config is represented as a dict and defines for each <em>stage</em>, a list of <em>passes</em> (ie preprocessing actions)
@@ -1121,8 +1157,8 @@ This dynamic metadata fetched on a status change from <code>CALIBRATING</code>/<
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="get-dynamic-reply-payload">Get dynamic reply payload</h3>
-<p>The payload for the message is still under advisement. The appropriate key-value pairs will be filled in when they are
-determined.</p>
+<p>The payload for this message contains an overview of one or more (or zero) metrics that can be used in a monitoring
+stack. In the table below, the format of a single metric is described. Keys between angular brackets (<code>&lt;</code>) are dynamic.</p>
 <table>
 <thead>
 <tr>
@@ -1133,13 +1169,26 @@ determined.</p>
 </thead>
 <tbody>
 <tr>
-<td>-</td>
-<td>-</td>
-<td>-</td>
+<td><code>&lt;metric_name&gt;</code></td>
+<td>object</td>
+<td>Description of a single metric. The key is used as the metric name in Prometheus/Grafana.</td>
+</tr>
+<tr>
+<td><code>__labels__</code></td>
+<td>array</td>
+<td>The strings in this array are used as individual keys for labels in Prometheus/Grafana.</td>
+</tr>
+<tr>
+<td><code>&lt;label_value&gt;</code></td>
+<td>any</td>
+<td>The value can either be an object for nested values (see example 2), or an <code>int</code> or <code>float</code> for a leaf. The value of the (recursive) key is mapped by index to the labels in <code>__labels__</code> (e.g. <code>key1=q1</code> and <code>key2=x1</code>). The tree is traversed until a leaf is found. This value is interpreted as the value for the metric. If there is no value for the specific instance <code>null</code> can be reported, or the branch can be ommitted.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="get-dynamic-reply-example">Get dynamic reply example</h3>
+<p>The reason that these labels are this important has to do with the aggregation and filtering of metrics. By specifying
+one metric which is measured for different data point, the dashboard can easily reference this metric. However, if
+necessary panels in the dashboard or alerts can also reference values for individual data points.</p>
+<h3 id="get-dynamic-reply-example-1-no-labels">Get dynamic reply example 1: No labels</h3>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">get_dynamic_reply.json</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
@@ -1149,11 +1198,69 @@ determined.</p>
 <span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="nt">&quot;payload&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">        </span><span class="c1">// to be determined</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">        </span><span class="nt">&quot;fridge_temperature_in_mk&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.4</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="p">},</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
+<p>This will be represented in Prometheus/Grafana as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>qi_fridge_temperature_in_mk 8.4
+</code></pre></div>
+<h3 id="get-dynamic-reply-example-2-one-label">Get dynamic reply example 2: One label</h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">get_dynamic_reply.json</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="nt">&quot;payload&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">        </span><span class="nt">&quot;t1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">            </span><span class="nt">&quot;__labels__&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;qubit&quot;</span><span class="p">],</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">            </span><span class="nt">&quot;q0&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.995</span><span class="p">,</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">            </span><span class="nt">&quot;q1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.988</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>This will be represented in Prometheus/Grafana as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>qi_t1{qubit=q0} 0.995
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>qi_t1{qubit=q1} 0.988
+</code></pre></div>
+<h3 id="get-dynamic-reply-example-2-multiple-labels">Get dynamic reply example 2: Multiple labels</h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">get_dynamic_reply.json</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="nt">&quot;payload&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">        </span><span class="nt">&quot;cnot_fidelity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">            </span><span class="nt">&quot;__labels__&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;qubit1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;qubit2&quot;</span><span class="p">],</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">            </span><span class="nt">&quot;q1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">                </span><span class="nt">&quot;q0&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.995</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>This will be represented in Prometheus/Grafana as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>qi_cnot_fidelity{qubit1=q1, qubit2=q0} 0.995
+</code></pre></div>
 
 
 
