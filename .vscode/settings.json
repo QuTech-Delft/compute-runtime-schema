@@ -4,5 +4,8 @@
     "editor.rulers": [
       120
     ]
-  }
+  },
+  "python.analysis.extraPaths": [
+    "tests/control-software-validator"
+  ],
 }
