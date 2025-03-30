@@ -37,6 +37,7 @@ This message does not require any additional information in the payload section.
 | `pgs` | `array[str]` | Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase) |
 | `starttime` | `float` | Timestamp of start-up of the system (return value of `time.time()`) |
 | `default_compiler_config` | `object[str,array[object[str, Any]]]` | Compiler configurations for different stages. |
+| `supports_raw_data` | `bool` | Default `False`. Whether the hardware backend supports `raw_data`. If `True`, the `include_raw_data` flag in the [execute message](execute.md#execute-request-payload) should trigger the backend to store the measurements per shot in the raw_data field of the results. |
 
 ### Get static reply example
 
