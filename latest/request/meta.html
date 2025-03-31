@@ -1058,6 +1058,11 @@ by 2300.</p>
 <td><code>object[str,array[object[str, Any]]]</code></td>
 <td>Compiler configurations for different stages.</td>
 </tr>
+<tr>
+<td><code>supports_raw_data</code></td>
+<td><code>bool</code></td>
+<td>Default <code>False</code>. Whether the hardware backend supports <code>raw_data</code>. If <code>True</code>, the <code>include_raw_data</code> flag in the <a href="execute.html#execute-request-payload">execute message</a> should trigger the backend to store the measurements per shot in the raw_data field of the results.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="get-static-reply-example">Get static reply example</h3>
