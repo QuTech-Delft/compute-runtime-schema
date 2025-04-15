@@ -30,6 +30,14 @@ class TopologyItem(RootModel[List]):
     root: List = Field(..., max_length=2, min_length=2)
 
 
+class Topology(RootModel[List[TopologyItem]]):
+    root: List[TopologyItem] = Field(
+        ...,
+        description='A class representing the topology of a quantum chip.\n\nIt is a list of tuples, where each tuple represents a unidirectional connection between two qubits. The first\nelement of the tuple is the source qubit, and the second element is the target qubit.',
+        title='Topology',
+    )
+
+
 class CompilerConfig(BaseModel):
     decomposition: Optional[List[CompilerPass]] = Field([], title='Decomposition')
     mapping: Optional[List[CompilerPass]] = Field([], title='Mapping')
@@ -39,10 +47,8 @@ class CompilerConfig(BaseModel):
 
 class QuantumHardwareStaticData(BaseModel):
     nqubits: int = Field(..., description='The number of qubits.', title='Nqubits')
-    topology: List[TopologyItem] = Field(
-        ...,
-        description='List of the edges between the various qubits',
-        title='Topology',
+    topology: Topology = Field(
+        ..., description='List of the edges between the various qubits'
     )
     name: str = Field(..., description='Name of the system.', title='Name')
     pgs: List[str] = Field(
