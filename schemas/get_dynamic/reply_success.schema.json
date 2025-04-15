@@ -1,6 +1,7 @@
 {
   "$defs": {
     "QuantumHardwareDynamicData": {
+      "additionalProperties": true,
       "title": "QuantumHardwareDynamicData",
       "type": "object"
     }

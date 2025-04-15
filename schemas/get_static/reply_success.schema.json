@@ -58,6 +58,7 @@
           "type": "string"
         },
         "arguments": {
+          "additionalProperties": true,
           "default": {},
           "description": "Arguments for the compiler pass",
           "title": "Arguments",
