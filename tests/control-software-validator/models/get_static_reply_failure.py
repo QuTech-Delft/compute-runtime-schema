@@ -3,11 +3,20 @@
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Optional
 
 from pydantic import BaseModel, Field
+
+
+class Payload(BaseModel):
+    error_msg: str = Field(
+        ...,
+        description='A descriptive error message to be passed on to the user.',
+        title='Error Msg',
+    )
 
 
 class GetStaticReplyFailure(BaseModel):
     version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     status: Literal['failure'] = Field(..., title='Status')
+    payload: Optional[Payload] = Field(None, title='QuantumHardwareFailureData')
