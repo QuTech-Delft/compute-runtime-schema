@@ -61,7 +61,7 @@ This message does not require any additional information in the payload section.
         "default_compiler_config": {
             "decomposition": [
                 {
-                    "path": "opensquirrel.decomposer.mckay_decomposer.McKayDecomposer",
+                    "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer",
                     "method": "decompose",
                     "arguments": {}
                 }
@@ -79,14 +79,6 @@ backend can process. This comprises a list of steps that should be applied to th
 library. The config is represented as a dict and defines for each _stage_, a list of _passes_ (ie preprocessing actions)
 that should be performed in the stage. Each pass includes settings such as the pass _name_, corresponding _method_
 invoked by opensquirrel and additional keyword arguments.
-
-Currently, the following stages are supported:
-
-* `decomposition`:
-  * `path`: `opensquirrel.<path_to_decomposer_class>`.
-See the _decomposers_ listed in [the opensquirrel docs](https://qutech-delft.github.io/OpenSquirrel/reference).
-  * `method`: `decompose`
-  * `arguments`: arguments expected for the initialization of the decomposer class.
 
 If no `default_compiler_config` is provided, there will be **no** pre-processing steps applied to the circuit.
 The backend will receive the cQASM string the same way it was provided by the user.
