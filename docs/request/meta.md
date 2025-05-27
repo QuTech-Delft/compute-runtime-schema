@@ -58,6 +58,7 @@ This message does not require any additional information in the payload section.
             "Y"
         ],
         "starttime": 1690061619.610174,
+        "supports_raw_data": true,
         "default_compiler_config": {
             "decomposition": [
                 {
