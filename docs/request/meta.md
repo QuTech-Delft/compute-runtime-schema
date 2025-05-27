@@ -34,7 +34,7 @@ This message does not require any additional information in the payload section.
 | `nqubits` | `int` | The number of qubits |
 | `topology` | `array[tuple]` | List of the edges between the various qubits |
 | `name` | `str` | Name of the system |
-| `pgs` | `array[str]` | Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase) |
+| `pgs` | `array[str]` | Supported primitive gates set of the system. Gate names as described `instructions` (bottom of file) in [QuIS](https://github.com/QuTech-Delft/QuIS/blob/develop/quis/quis.json) |
 | `starttime` | `float` | Timestamp of start-up of the system (return value of `time.time()`) |
 | `default_compiler_config` | `object[str,array[object[str, Any]]]` | Compiler configurations for different stages. |
 | `supports_raw_data` | `bool` | Default `False`. Whether the hardware backend supports `raw_data`. If `True`, the `include_raw_data` flag in the [execute message](execute.md#execute-request-payload) should trigger the backend to store the measurements per shot in the raw_data field of the results. |
