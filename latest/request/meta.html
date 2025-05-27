@@ -1093,7 +1093,8 @@ by 2300.</p>
 <span class="normal"><a href="#__codelineno-1-25">25</a></span>
 <span class="normal"><a href="#__codelineno-1-26">26</a></span>
 <span class="normal"><a href="#__codelineno-1-27">27</a></span>
-<span class="normal"><a href="#__codelineno-1-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">{</span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">{</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="nt">&quot;payload&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">        </span><span class="nt">&quot;nqubits&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
@@ -1109,18 +1110,19 @@ by 2300.</p>
 <a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">            </span><span class="s2">&quot;Y&quot;</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">        </span><span class="p">],</span>
 <a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">        </span><span class="nt">&quot;starttime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1690061619.610174</span><span class="p">,</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">        </span><span class="nt">&quot;default_compiler_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">            </span><span class="nt">&quot;decomposition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">                </span><span class="p">{</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">                    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;opensquirrel.decomposer.mckay_decomposer.McKayDecomposer&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">                    </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;decompose&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">                    </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">                </span><span class="p">}</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">            </span><span class="p">]</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">        </span><span class="nt">&quot;supports_raw_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">        </span><span class="nt">&quot;default_compiler_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">            </span><span class="nt">&quot;decomposition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">                </span><span class="p">{</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">                    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">                    </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;decompose&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">                    </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">            </span><span class="p">]</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h4 id="compiler-configuration">Compiler configuration</h4>
 <p>The compiler configuration defines the pre-processing needed to convert the user-provided circuit into one that the
@@ -1128,14 +1130,6 @@ backend can process. This comprises a list of steps that should be applied to th
 library. The config is represented as a dict and defines for each <em>stage</em>, a list of <em>passes</em> (ie preprocessing actions)
 that should be performed in the stage. Each pass includes settings such as the pass <em>name</em>, corresponding <em>method</em>
 invoked by opensquirrel and additional keyword arguments.</p>
-<p>Currently, the following stages are supported:</p>
-<ul>
-<li><code>decomposition</code>:</li>
-<li><code>path</code>: <code>opensquirrel.&lt;path_to_decomposer_class&gt;</code>.
-See the <em>decomposers</em> listed in <a href="https://qutech-delft.github.io/OpenSquirrel/reference">the opensquirrel docs</a>.</li>
-<li><code>method</code>: <code>decompose</code></li>
-<li><code>arguments</code>: arguments expected for the initialization of the decomposer class.</li>
-</ul>
 <p>If no <code>default_compiler_config</code> is provided, there will be <strong>no</strong> pre-processing steps applied to the circuit.
 The backend will receive the cQASM string the same way it was provided by the user.</p>
 <h2 id="get-dynamic">Get dynamic</h2>
