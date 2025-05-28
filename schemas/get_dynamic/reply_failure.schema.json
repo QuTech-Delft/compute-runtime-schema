@@ -10,6 +10,20 @@
       "const": "failure",
       "title": "Status",
       "type": "string"
+    },
+    "payload": {
+      "properties": {
+        "error_msg": {
+          "description": "A descriptive error message to be passed on to the user.",
+          "title": "Error Msg",
+          "type": "string"
+        }
+      },
+      "required": [
+        "error_msg"
+      ],
+      "title": "QuantumHardwareFailureData",
+      "type": "object"
     }
   },
   "required": [
