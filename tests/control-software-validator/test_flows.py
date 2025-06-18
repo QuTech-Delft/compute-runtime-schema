@@ -74,7 +74,7 @@ async def test_publish_state(sub_channel: SubscribeChannel) -> None:
 async def test_static_data_request(req_channel: RequestChannel) -> None:
     # Test if static data reply is correctly formatted
     static_data_request = V2QuantumHardwareStaticDataRequest(
-        version=version, command="get_static"
+        version=version, command="get_static", session_id=uuid.uuid4()
     )
     await req_channel.request(static_data_request, V2QuantumHardwareStaticDataResponse)
 
@@ -83,7 +83,7 @@ async def test_static_data_request(req_channel: RequestChannel) -> None:
 async def test_dynamic_data_request(req_channel: RequestChannel) -> None:
     # Test if dynamic data reply is correctly formatted
     dynamic_data_request = V2QuantumHardwareDynamicDataRequest(
-        version=version, command="get_dynamic"
+        version=version, command="get_dynamic", session_id=uuid.uuid4()
     )
     await req_channel.request(
         dynamic_data_request, V2QuantumHardwareDynamicDataResponse
