@@ -1,4 +1,5 @@
 {
+  "description": "A simple success response to an initialize or terminate request.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",

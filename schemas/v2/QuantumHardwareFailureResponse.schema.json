@@ -15,6 +15,7 @@
       "type": "object"
     }
   },
+  "description": "Response that indicates a failure in the operation.\n\nCan be sent in response to any request.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",

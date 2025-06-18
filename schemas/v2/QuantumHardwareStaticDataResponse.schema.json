@@ -153,6 +153,7 @@
       "type": "array"
     }
   },
+  "description": "A successful response to a static data request.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",

@@ -29,7 +29,7 @@
       "type": "object"
     }
   },
-  "description": "This message is used to publish the state of the hardware controller system (HWCS).\n\nUnlike the other messages in this file, this is part of a pub/sub protocol rather than a request/response protocol.\nBecause of this, proper versioning is difficult to implement (there is no handshake with the HWCS to determined the\nprotocol version). Keep this in mind if we ever need to implement backwards incompatible changes to this message.",
+  "description": "This message is used to publish the state of the hardware controller system (HWCS).",
   "properties": {
     "version": {
       "default": "0.2.0",

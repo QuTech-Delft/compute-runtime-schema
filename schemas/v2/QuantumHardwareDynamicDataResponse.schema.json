@@ -6,6 +6,7 @@
       "type": "object"
     }
   },
+  "description": "A successful response to a dynamic data request.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",

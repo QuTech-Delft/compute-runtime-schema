@@ -40,6 +40,7 @@
       "type": "object"
     }
   },
+  "description": "A successful response to a circuit execution request.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",

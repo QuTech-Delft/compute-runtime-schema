@@ -1,5 +1,5 @@
 {
-  "description": "This message signals to the 2300 that execution is about to begin.\n\nThe initialize should be picked up as a request for locking 2300.",
+  "description": "This message signals that execution is about to begin.\n\nThe initialize should be picked up as a request for locking.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",
