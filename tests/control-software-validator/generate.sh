@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory to search
-schemas="../../schemas"
+schemas="../../schemas/v2"
 models="./models"
 
 # Loop through all files in the schemas directory and subdirectories
