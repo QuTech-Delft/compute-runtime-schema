@@ -9,11 +9,11 @@ This message requests a backend to execute a user generated circuit. This can on
 initialized (in reality "locked").
 
 !!! info
-    The schemas for validation inherit from the **extended schema** and can be found in:
+    The schemas for validation  can be found in:
 
-    * `/schemas/execute/request.schema.json`
-    * `/schemas/execute/reply_success.schema.json`
-    * `/schemas/execute/reply_failure.schema.json`
+    * `/schemas/<version>/QuantumHardwareExecuteRequest.schema.json`
+    * `/schemas/<version>/QuantumHardwareExecuteResponse.schema.json`
+    * `/schemas/<version>/QuantumHardwareFailureResponse.schema.json`
 
 ### Execute request payload
 

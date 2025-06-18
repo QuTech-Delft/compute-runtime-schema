@@ -10,7 +10,7 @@
       "title": "HWCSState",
       "type": "string"
     },
-    "PublishStatePayload": {
+    "PublishStatePayloadSchema": {
       "properties": {
         "timestamp": {
           "description": "Timestamp of the instantiation of the message (return value of time.time())",
@@ -25,11 +25,10 @@
         "timestamp",
         "state"
       ],
-      "title": "PublishStatePayload",
+      "title": "PublishStatePayloadSchema",
       "type": "object"
     }
   },
-  "description": "System 2300 publishes a state message to inform subscribers of its current state.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",
@@ -42,8 +41,7 @@
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/PublishStatePayload",
-      "description": "The return value(s) of the executed command."
+      "$ref": "#/$defs/PublishStatePayloadSchema"
     }
   },
   "required": [

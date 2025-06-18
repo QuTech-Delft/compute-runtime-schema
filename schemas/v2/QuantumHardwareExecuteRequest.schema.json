@@ -1,7 +1,6 @@
 {
   "$defs": {
-    "QuantumHardwareRunCircuitPayload": {
-      "description": "Data that specifies a run that can be used as input for the quantum execution manager.",
+    "RunCircuitPayloadSchema": {
       "properties": {
         "job_id": {
           "description": "Client identifier for the execution",
@@ -31,11 +30,10 @@
         "circuit",
         "number_of_shots"
       ],
-      "title": "QuantumHardwareRunCircuitPayload",
+      "title": "RunCircuitPayloadSchema",
       "type": "object"
     }
   },
-  "description": "Request execution of a circuit.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",
@@ -54,7 +52,7 @@
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/QuantumHardwareRunCircuitPayload"
+      "$ref": "#/$defs/RunCircuitPayloadSchema"
     }
   },
   "required": [

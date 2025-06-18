@@ -1,5 +1,4 @@
 {
-  "description": "The reply for a successful operation.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",
@@ -12,17 +11,17 @@
       "title": "Session Id",
       "type": "string"
     },
-    "status": {
-      "const": "success",
-      "title": "Status",
+    "command": {
+      "const": "terminate",
+      "title": "Command",
       "type": "string"
     }
   },
   "required": [
     "version",
     "session_id",
-    "status"
+    "command"
   ],
-  "title": "Operation success reply",
+  "title": "Terminate request",
   "type": "object"
 }

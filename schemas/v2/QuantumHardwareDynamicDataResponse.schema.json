@@ -1,12 +1,11 @@
 {
   "$defs": {
-    "QuantumHardwareDynamicData": {
+    "DynamicDataSchema": {
       "additionalProperties": true,
-      "title": "QuantumHardwareDynamicData",
+      "title": "DynamicDataSchema",
       "type": "object"
     }
   },
-  "description": "The reply containing system information for 2300.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",
@@ -19,8 +18,7 @@
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/QuantumHardwareDynamicData",
-      "description": "The return value(s) of the executed command."
+      "$ref": "#/$defs/DynamicDataSchema"
     }
   },
   "required": [

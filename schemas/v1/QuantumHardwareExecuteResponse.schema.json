@@ -1,6 +1,6 @@
 {
   "$defs": {
-    "QuantumHardwareRunCircuitResult": {
+    "RunCircuitResultSchema": {
       "description": "The return value(s) of the executed command.",
       "properties": {
         "job_id": {
@@ -60,7 +60,7 @@
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/QuantumHardwareRunCircuitResult"
+      "$ref": "#/$defs/RunCircuitResultSchema"
     }
   },
   "required": [

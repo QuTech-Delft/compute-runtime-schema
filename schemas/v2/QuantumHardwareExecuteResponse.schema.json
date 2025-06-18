@@ -1,0 +1,72 @@
+{
+  "$defs": {
+    "RunCircuitResultSchema": {
+      "properties": {
+        "job_id": {
+          "description": "Client defined identifier for the execution.",
+          "title": "Job Id",
+          "type": "integer"
+        },
+        "results": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "description": "Mapping of measured bitstring (little endian notation; q[n]...q[0]) to count of occurrences.",
+          "title": "Results",
+          "type": "object"
+        },
+        "raw_data": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "A list of bitstrings (little endian notation; `q[n]...q[0]`) ordered by the shot in which it             was measured.",
+          "title": "Raw Data"
+        }
+      },
+      "required": [
+        "job_id",
+        "results"
+      ],
+      "title": "Execute Payload",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "session_id": {
+      "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
+      "format": "uuid",
+      "title": "Session Id",
+      "type": "string"
+    },
+    "status": {
+      "const": "success",
+      "title": "Status",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/RunCircuitResultSchema"
+    }
+  },
+  "required": [
+    "version",
+    "session_id",
+    "status",
+    "payload"
+  ],
+  "title": "Operation success reply",
+  "type": "object"
+}

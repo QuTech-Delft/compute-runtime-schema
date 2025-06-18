@@ -1,0 +1,26 @@
+{
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "command": {
+      "const": "get_static",
+      "title": "Command",
+      "type": "string"
+    },
+    "session_id": {
+      "format": "uuid",
+      "title": "Session Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "command",
+    "session_id"
+  ],
+  "title": "QuantumHardwareStaticDataRequest",
+  "type": "object"
+}

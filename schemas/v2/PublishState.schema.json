@@ -1,0 +1,56 @@
+{
+  "$defs": {
+    "HWCSState": {
+      "enum": [
+        "IDLE",
+        "EXECUTING",
+        "CALIBRATING",
+        "OFFLINE"
+      ],
+      "title": "HWCSState",
+      "type": "string"
+    },
+    "PublishStatePayloadSchema": {
+      "properties": {
+        "timestamp": {
+          "description": "Timestamp of the instantiation of the message (return value of time.time())",
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "state": {
+          "$ref": "#/$defs/HWCSState"
+        }
+      },
+      "required": [
+        "timestamp",
+        "state"
+      ],
+      "title": "PublishStatePayloadSchema",
+      "type": "object"
+    }
+  },
+  "description": "This message is used to publish the state of the hardware controller system (HWCS).\n\nUnlike the other messages in this file, this is part of a pub/sub protocol rather than a request/response protocol.\nBecause of this, proper versioning is difficult to implement (there is no handshake with the HWCS to determined the\nprotocol version). Keep this in mind if we ever need to implement backwards incompatible changes to this message.",
+  "properties": {
+    "version": {
+      "default": "0.2.0",
+      "description": "Version of the message schema. Has been made optional to allow for moving to the new versioning scheme.",
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "command": {
+      "const": "publish_state",
+      "title": "Command",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/PublishStatePayloadSchema"
+    }
+  },
+  "required": [
+    "command",
+    "payload"
+  ],
+  "title": "Publish state message",
+  "type": "object"
+}

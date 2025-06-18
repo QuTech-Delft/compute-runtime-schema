@@ -1,5 +1,4 @@
 {
-  "description": "Reply for when hardware data request fails.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",
@@ -16,6 +15,6 @@
     "version",
     "status"
   ],
-  "title": "Hardware data failure",
+  "title": "Old style hardware metadata failure messages. This is deprecated and should not be used. Use QuantumHardwareFailureResponse instead.",
   "type": "object"
 }

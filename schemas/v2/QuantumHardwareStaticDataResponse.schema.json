@@ -72,8 +72,14 @@
       "title": "CompilerPass",
       "type": "object"
     },
-    "QuantumHardwareStaticData": {
+    "StaticDataSchema": {
       "properties": {
+        "protocol_version": {
+          "default": 2,
+          "description": "Version of the Compute Runtime Schema to use",
+          "title": "Protocol Version",
+          "type": "integer"
+        },
         "nqubits": {
           "description": "The number of qubits.",
           "title": "Nqubits",
@@ -125,7 +131,7 @@
         "pgs",
         "starttime"
       ],
-      "title": "QuantumHardwareStaticData",
+      "title": "StaticDataSchema",
       "type": "object"
     },
     "Topology": {
@@ -147,7 +153,6 @@
       "type": "array"
     }
   },
-  "description": "The reply containing system information for 2300.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",
@@ -160,8 +165,7 @@
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/QuantumHardwareStaticData",
-      "description": "The return value(s) of the executed command."
+      "$ref": "#/$defs/StaticDataSchema"
     }
   },
   "required": [

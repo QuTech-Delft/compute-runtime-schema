@@ -1,6 +1,6 @@
 {
   "$defs": {
-    "QuantumHardwareFailureData": {
+    "FailureDataSchema": {
       "properties": {
         "error_msg": {
           "description": "A descriptive error message to be passed on to the user.",
@@ -11,11 +11,10 @@
       "required": [
         "error_msg"
       ],
-      "title": "QuantumHardwareFailureData",
+      "title": "FailureDataSchema",
       "type": "object"
     }
   },
-  "description": "The reply for a failed operation.",
   "properties": {
     "version": {
       "pattern": "^\\d+\\.\\d+\\.\\d$",
@@ -34,7 +33,7 @@
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/QuantumHardwareFailureData"
+      "$ref": "#/$defs/FailureDataSchema"
     }
   },
   "required": [

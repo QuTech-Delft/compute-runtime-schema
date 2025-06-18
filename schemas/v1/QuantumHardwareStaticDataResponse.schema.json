@@ -1,0 +1,85 @@
+{
+  "$defs": {
+    "StaticDataSchema": {
+      "properties": {
+        "nqubits": {
+          "description": "The number of qubits.",
+          "title": "Nqubits",
+          "type": "integer"
+        },
+        "topology": {
+          "$ref": "#/$defs/Topology",
+          "description": "List of the edges between the various qubits"
+        },
+        "name": {
+          "description": "Name of the system.",
+          "title": "Name",
+          "type": "string"
+        },
+        "pgs": {
+          "description": "Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase).",
+          "items": {
+            "type": "string"
+          },
+          "title": "Pgs",
+          "type": "array"
+        },
+        "starttime": {
+          "description": "Timestamp of start-up of the system (return value of time.time())",
+          "title": "Starttime",
+          "type": "number"
+        }
+      },
+      "required": [
+        "nqubits",
+        "topology",
+        "name",
+        "pgs",
+        "starttime"
+      ],
+      "title": "StaticDataSchema",
+      "type": "object"
+    },
+    "Topology": {
+      "description": "A class representing the topology of a quantum chip.\n\nIt is a list of tuples, where each tuple represents a unidirectional connection between two qubits. The first\nelement of the tuple is the source qubit, and the second element is the target qubit.",
+      "items": {
+        "maxItems": 2,
+        "minItems": 2,
+        "prefixItems": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "integer"
+          }
+        ],
+        "type": "array"
+      },
+      "title": "Topology",
+      "type": "array"
+    }
+  },
+  "description": "The reply containing system information for 2300.",
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "status": {
+      "const": "success",
+      "title": "Status",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/StaticDataSchema"
+    }
+  },
+  "required": [
+    "version",
+    "status",
+    "payload"
+  ],
+  "title": "Get hardware data reply",
+  "type": "object"
+}

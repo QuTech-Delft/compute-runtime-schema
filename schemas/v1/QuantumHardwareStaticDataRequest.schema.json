@@ -6,7 +6,7 @@
       "type": "string"
     },
     "command": {
-      "const": "get_dynamic",
+      "const": "get_static",
       "title": "Command",
       "type": "string"
     }
@@ -15,6 +15,6 @@
     "version",
     "command"
   ],
-  "title": "GetDynamicRequest",
+  "title": "QuantumHardwareStaticDataRequest",
   "type": "object"
 }
