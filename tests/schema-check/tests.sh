@@ -31,4 +31,4 @@ check-jsonschema --schemafile ../../schemas/v$max_version/QuantumHardwareDynamic
 check-jsonschema --schemafile ../../schemas/v$max_version/QuantumHardwareFailureResponse.schema.json ./data/get_dynamic/reply.failure.json
 
 echo Test publish_state
-check-jsonschema --schemafile ../../schemas/max_version/PublishState.schema.json ./data/publish_state/message.json
+check-jsonschema --schemafile ../../schemas/v$max_version/PublishState.schema.json ./data/publish_state/message.json
