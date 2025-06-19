@@ -15,7 +15,7 @@ class DynamicDataSchema(BaseModel):
     )
 
 
-class V2QuantumHardwareDynamicDataResponse(BaseModel):
+class QuantumHardwareDynamicDataResponse(BaseModel):
     version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     status: Literal['success'] = Field(..., title='Status')
     payload: DynamicDataSchema

@@ -29,7 +29,7 @@ class RunCircuitPayloadSchema(BaseModel):
     )
 
 
-class V2QuantumHardwareExecuteRequest(BaseModel):
+class QuantumHardwareExecuteRequest(BaseModel):
     version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     session_id: UUID = Field(
         ...,

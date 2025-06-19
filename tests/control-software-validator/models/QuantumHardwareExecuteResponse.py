@@ -25,7 +25,7 @@ class RunCircuitResultSchema(BaseModel):
     )
 
 
-class V2QuantumHardwareExecuteResponse(BaseModel):
+class QuantumHardwareExecuteResponse(BaseModel):
     version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     session_id: UUID = Field(
         ...,

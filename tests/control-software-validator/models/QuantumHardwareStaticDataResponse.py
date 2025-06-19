@@ -79,7 +79,7 @@ class StaticDataSchema(BaseModel):
     )
 
 
-class V2QuantumHardwareStaticDataResponse(BaseModel):
+class QuantumHardwareStaticDataResponse(BaseModel):
     version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     status: Literal['success'] = Field(..., title='Status')
     payload: StaticDataSchema

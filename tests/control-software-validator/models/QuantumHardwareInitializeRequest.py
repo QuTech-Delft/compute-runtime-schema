@@ -9,7 +9,7 @@ from uuid import UUID
 from pydantic import BaseModel, Field
 
 
-class V2QuantumHardwareInitializeRequest(BaseModel):
+class QuantumHardwareInitializeRequest(BaseModel):
     version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     session_id: UUID = Field(
         ...,

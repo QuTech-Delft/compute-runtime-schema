@@ -8,6 +8,6 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 
-class V2QuantumHardwareDataFailureResponse(BaseModel):
+class QuantumHardwareDataFailureResponse(BaseModel):
     version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     status: Literal['failure'] = Field(..., title='Status')

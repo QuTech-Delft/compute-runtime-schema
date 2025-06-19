@@ -25,7 +25,7 @@ class PublishStatePayloadSchema(BaseModel):
     state: HWCSState
 
 
-class V2PublishState(BaseModel):
+class PublishState(BaseModel):
     version: Optional[str] = Field(
         '0.2.0',
         description='Version of the message schema. Has been made optional to allow for moving to the new versioning scheme.',
