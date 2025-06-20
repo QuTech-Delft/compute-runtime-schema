@@ -1000,11 +1000,15 @@ by 2300.</p>
 <p>Get system information from 2300. This information is retrieved only once, normally at startup time for 2200.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>The schemas for validation inherit from the <strong>base schema</strong> and can be found in:</p>
+<p>The schemas for validation can be found in:</p>
 <ul>
-<li><code>/schemas/get_static/request.schema.json</code></li>
-<li><code>/schemas/get_static/reply_success.schema.json</code></li>
-<li><code>/schemas/get_static/reply_failure.schema.json</code></li>
+<li><code>/schemas/&lt;version&gt;/QuantumHardwareStaticDataRequest.schema.json</code></li>
+<li><code>/schemas/&lt;version&gt;/QuantumHardwareStaticDataResponse.schema.json</code></li>
+<li><code>/schemas/&lt;version&gt;/QuantumHardwareFailureResponse.schema.json</code></li>
+</ul>
+<p>or the alternative failure response for version 2 and older:</p>
+<ul>
+<li><code>/schemas/&lt;version&gt;/QuantumHardwareDataFailureResponse.schema.json</code></li>
 </ul>
 </div>
 <h3 id="get-static-request-payload">Get static request payload</h3>
@@ -1137,11 +1141,15 @@ The backend will receive the cQASM string the same way it was provided by the us
 This dynamic metadata fetched on a status change from <code>CALIBRATING</code>/<code>OFFLINE</code> to <code>IDLE</code> or on startup of 2200.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>The schemas for validation inherit from the <strong>base schema</strong> and can be found in:</p>
+<p>The schemas for validation can be found in:</p>
 <ul>
-<li><code>/schemas/get_dynamic/request.schema.json</code></li>
-<li><code>/schemas/get_dynamic/reply_success.schema.json</code></li>
-<li><code>/schemas/get_dynamic/reply_failure.schema.json</code></li>
+<li><code>/schemas/&lt;version&gt;/QuantumHardwareDynamicDataRequest.schema.json</code></li>
+<li><code>/schemas/&lt;version&gt;/QuantumHardwareDynamicDataResponse.schema.json</code></li>
+<li><code>/schemas/&lt;version&gt;/QuantumHardwareFailureResponse.schema.json</code></li>
+</ul>
+<p>or the alternative failure response for version 2 and older:</p>
+<ul>
+<li><code>/schemas/&lt;version&gt;/QuantumHardwareDataFailureResponse.schema.json</code></li>
 </ul>
 </div>
 <h3 id="get-dynamic-request-payload">Get dynamic request payload</h3>
