@@ -8,11 +8,11 @@ This message signals to the 2300 that execution is about to begin. The initializ
 locking 2300. However, this interpretation is left to this component.
 
 !!! info
-    The schemas for validation inherit from the **extended schema** and can be found in:
+    The schemas for validation can be found in:
 
-    * `/schemas/initialize/request.schema.json`
-    * `/schemas/initialize/reply_success.schema.json`
-    * `/schemas/initialize/reply_failure.schema.json`
+    * `/schemas/<version>/QuantumHardwareInitializeRequest.schema.json`
+    * `/schemas/<version>/QuantumHardwareSimpleSuccessResponse.schema.json`
+    * `/schemas/<version>/QuantumHardwareFailureResponse.schema.json`
 
 ### Initialize request payload
 
@@ -48,11 +48,11 @@ The opposing message for the initialize request. When 2300 receives this request
 has stopped and the system can resume normal operations.
 
 !!! info
-    The schemas for validation inherit from the **extended schema** and can be found in:
+    The schemas for validation can be found in:
 
-    * `/schemas/terminate/request.schema.json`
-    * `/schemas/terminate/reply_success.schema.json`
-    * `/schemas/terminate/reply_failure.schema.json`
+    * `/schemas/<version>/QuantumHardwareTerminateRequest.schema.json`
+    * `/schemas/<version>/QuantumHardwareSimpleSuccessResponse.schema.json`
+    * `/schemas/<version>/QuantumHardwareFailureResponse.schema.json`
 
 ### Terminate request payload
 

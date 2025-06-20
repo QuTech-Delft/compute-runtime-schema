@@ -1,0 +1,21 @@
+{
+  "description": "Simplified failure response that can only be used for dynamic/static data requests.",
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "status": {
+      "const": "failure",
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "status"
+  ],
+  "title": "Old style hardware metadata failure messages. This is deprecated and should not be used. Use QuantumHardwareFailureResponse instead.",
+  "type": "object"
+}

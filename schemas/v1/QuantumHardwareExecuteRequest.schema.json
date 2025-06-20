@@ -1,0 +1,68 @@
+{
+  "$defs": {
+    "RunCircuitPayloadSchema": {
+      "description": "Data that specifies a run that can be used as input for the quantum execution manager.",
+      "properties": {
+        "job_id": {
+          "description": "Client identifier for the execution",
+          "title": "Job Id",
+          "type": "integer"
+        },
+        "circuit": {
+          "description": "Circuit description in cQASM language",
+          "title": "Circuit",
+          "type": "string"
+        },
+        "number_of_shots": {
+          "description": "Number of shots to be executed for the circuit.",
+          "exclusiveMinimum": 0,
+          "title": "Number Of Shots",
+          "type": "integer"
+        },
+        "include_raw_data": {
+          "default": false,
+          "description": "Whether or not to return all bitstrings in the order in which they were measured.",
+          "title": "Include Raw Data",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "job_id",
+        "circuit",
+        "number_of_shots"
+      ],
+      "title": "RunCircuitPayloadSchema",
+      "type": "object"
+    }
+  },
+  "description": "Request execution of a circuit.",
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "session_id": {
+      "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
+      "format": "uuid",
+      "title": "Session Id",
+      "type": "string"
+    },
+    "command": {
+      "const": "execute",
+      "title": "Command",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/RunCircuitPayloadSchema"
+    }
+  },
+  "required": [
+    "version",
+    "session_id",
+    "command",
+    "payload"
+  ],
+  "title": "Execution request",
+  "type": "object"
+}

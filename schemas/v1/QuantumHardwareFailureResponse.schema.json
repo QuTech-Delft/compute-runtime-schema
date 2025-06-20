@@ -1,0 +1,47 @@
+{
+  "$defs": {
+    "FailureDataSchema": {
+      "properties": {
+        "error_msg": {
+          "description": "A descriptive error message to be passed on to the user.",
+          "title": "Error Msg",
+          "type": "string"
+        }
+      },
+      "required": [
+        "error_msg"
+      ],
+      "title": "FailureDataSchema",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "session_id": {
+      "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
+      "format": "uuid",
+      "title": "Session Id",
+      "type": "string"
+    },
+    "status": {
+      "const": "failure",
+      "title": "Status",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/FailureDataSchema"
+    }
+  },
+  "required": [
+    "version",
+    "session_id",
+    "status",
+    "payload"
+  ],
+  "title": "Operation failure reply",
+  "type": "object"
+}

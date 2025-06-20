@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "command": {
+      "const": "get_static",
+      "title": "Command",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "command"
+  ],
+  "title": "QuantumHardwareStaticDataRequest",
+  "type": "object"
+}

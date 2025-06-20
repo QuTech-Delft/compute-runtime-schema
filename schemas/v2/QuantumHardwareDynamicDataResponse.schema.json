@@ -1,0 +1,32 @@
+{
+  "$defs": {
+    "DynamicDataSchema": {
+      "additionalProperties": true,
+      "title": "DynamicDataSchema",
+      "type": "object"
+    }
+  },
+  "description": "A successful response to a dynamic data request.",
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "status": {
+      "const": "success",
+      "title": "Status",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/DynamicDataSchema"
+    }
+  },
+  "required": [
+    "version",
+    "status",
+    "payload"
+  ],
+  "title": "Get hardware data reply",
+  "type": "object"
+}

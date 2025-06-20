@@ -1,0 +1,28 @@
+{
+  "description": "This message signals that execution is about to begin.\n\nThe initialize should be picked up as a request for locking.",
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "session_id": {
+      "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
+      "format": "uuid",
+      "title": "Session Id",
+      "type": "string"
+    },
+    "command": {
+      "const": "initialize",
+      "title": "Command",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "session_id",
+    "command"
+  ],
+  "title": "Initialize request",
+  "type": "object"
+}

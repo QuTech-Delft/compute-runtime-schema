@@ -9,9 +9,9 @@ System 2300 publishes a state message to inform subscribers of its current state
 ("am I still responsive") and the state the system is in.
 
 !!! info
-    The schemas for validation inherit from the **base schema** and can be found in:
+    The schemas for validation inherit can be found in:
 
-    * `/schemas/publish_state/message.schema.json`
+    * `/schemas/<version>/PublishState.schema.json`
 
 ### Publish state payload
 

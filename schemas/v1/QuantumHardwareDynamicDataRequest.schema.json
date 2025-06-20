@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "command": {
+      "const": "get_dynamic",
+      "title": "Command",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "command"
+  ],
+  "title": "QuantumHardwareDynamicDataRequest",
+  "type": "object"
+}

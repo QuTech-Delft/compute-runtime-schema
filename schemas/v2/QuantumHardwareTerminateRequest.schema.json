@@ -1,0 +1,28 @@
+{
+  "description": "This message signals the end of a session.",
+  "properties": {
+    "version": {
+      "pattern": "^\\d+\\.\\d+\\.\\d$",
+      "title": "Version",
+      "type": "string"
+    },
+    "session_id": {
+      "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
+      "format": "uuid",
+      "title": "Session Id",
+      "type": "string"
+    },
+    "command": {
+      "const": "terminate",
+      "title": "Command",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "session_id",
+    "command"
+  ],
+  "title": "Terminate request",
+  "type": "object"
+}
