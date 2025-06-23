@@ -1,0 +1,32 @@
+{
+  "$defs": {
+    "DynamicDataSchema": {
+      "additionalProperties": true,
+      "title": "DynamicDataSchema",
+      "type": "object"
+    }
+  },
+  "description": "A successful response to a dynamic data request.",
+  "properties": {
+    "status": {
+      "const": "success",
+      "title": "Status",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/DynamicDataSchema"
+    },
+    "session_id": {
+      "format": "uuid",
+      "title": "Session Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "status",
+    "payload",
+    "session_id"
+  ],
+  "title": "Get hardware data reply",
+  "type": "object"
+}
