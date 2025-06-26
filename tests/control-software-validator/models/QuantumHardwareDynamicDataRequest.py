@@ -10,6 +10,5 @@ from pydantic import BaseModel, Field
 
 
 class QuantumHardwareDynamicDataRequest(BaseModel):
-    version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     command: Literal['get_dynamic'] = Field(..., title='Command')
     session_id: UUID = Field(..., title='Session Id')
