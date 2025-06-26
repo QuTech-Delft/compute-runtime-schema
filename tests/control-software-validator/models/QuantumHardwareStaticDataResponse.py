@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from typing import Any, Dict, List, Literal, Optional
+from uuid import UUID
 
 from pydantic import BaseModel, Field, RootModel
 
@@ -46,11 +47,7 @@ class CompilerConfig(BaseModel):
 
 
 class StaticDataSchema(BaseModel):
-    protocol_version: Optional[int] = Field(
-        2,
-        description='Version of the Compute Runtime Schema to use',
-        title='Protocol Version',
-    )
+    protocol_version: Literal[3] = Field(..., title='Protocol Version')
     nqubits: int = Field(..., description='The number of qubits.', title='Nqubits')
     topology: Topology = Field(
         ..., description='List of the edges between the various qubits'
@@ -80,6 +77,6 @@ class StaticDataSchema(BaseModel):
 
 
 class QuantumHardwareStaticDataResponse(BaseModel):
-    version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     status: Literal['success'] = Field(..., title='Status')
+    session_id: UUID = Field(..., title='Session Id')
     payload: StaticDataSchema

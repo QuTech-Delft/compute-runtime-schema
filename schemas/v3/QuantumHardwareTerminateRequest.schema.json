@@ -1,0 +1,22 @@
+{
+  "description": "This message signals the end of a session.",
+  "properties": {
+    "session_id": {
+      "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
+      "format": "uuid",
+      "title": "Session Id",
+      "type": "string"
+    },
+    "command": {
+      "const": "terminate",
+      "title": "Command",
+      "type": "string"
+    }
+  },
+  "required": [
+    "session_id",
+    "command"
+  ],
+  "title": "Terminate request",
+  "type": "object"
+}

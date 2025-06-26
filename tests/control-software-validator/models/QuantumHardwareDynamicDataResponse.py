@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from typing import Literal
+from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -16,6 +17,6 @@ class DynamicDataSchema(BaseModel):
 
 
 class QuantumHardwareDynamicDataResponse(BaseModel):
-    version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     status: Literal['success'] = Field(..., title='Status')
     payload: DynamicDataSchema
+    session_id: UUID = Field(..., title='Session Id')

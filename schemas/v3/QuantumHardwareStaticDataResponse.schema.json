@@ -1,0 +1,179 @@
+{
+  "$defs": {
+    "CompilerConfig": {
+      "description": "Specifies a series of compiler passes to be applied to the circuit before execution.",
+      "properties": {
+        "decomposition": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/CompilerPass"
+          },
+          "title": "Decomposition",
+          "type": "array"
+        },
+        "mapping": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/CompilerPass"
+          },
+          "title": "Mapping",
+          "type": "array"
+        },
+        "optimization": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/CompilerPass"
+          },
+          "title": "Optimization",
+          "type": "array"
+        },
+        "routing": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/CompilerPass"
+          },
+          "title": "Routing",
+          "type": "array"
+        }
+      },
+      "title": "CompilerConfig",
+      "type": "object"
+    },
+    "CompilerPass": {
+      "properties": {
+        "path": {
+          "description": "Path to OpenSquirrel object that does the compiler pass",
+          "examples": [
+            "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+          ],
+          "title": "Path",
+          "type": "string"
+        },
+        "method": {
+          "description": "Method on OpenSquirrel object that does the compiler pass",
+          "examples": [
+            "decompose"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "arguments": {
+          "additionalProperties": true,
+          "default": {},
+          "description": "Arguments for the compiler pass",
+          "title": "Arguments",
+          "type": "object"
+        }
+      },
+      "required": [
+        "path",
+        "method"
+      ],
+      "title": "CompilerPass",
+      "type": "object"
+    },
+    "StaticDataSchema": {
+      "properties": {
+        "protocol_version": {
+          "const": 3,
+          "title": "Protocol Version",
+          "type": "integer"
+        },
+        "nqubits": {
+          "description": "The number of qubits.",
+          "title": "Nqubits",
+          "type": "integer"
+        },
+        "topology": {
+          "$ref": "#/$defs/Topology",
+          "description": "List of the edges between the various qubits"
+        },
+        "name": {
+          "description": "Name of the system.",
+          "title": "Name",
+          "type": "string"
+        },
+        "pgs": {
+          "description": "Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase).",
+          "items": {
+            "type": "string"
+          },
+          "title": "Pgs",
+          "type": "array"
+        },
+        "default_compiler_config": {
+          "$ref": "#/$defs/CompilerConfig",
+          "default": {
+            "decomposition": [],
+            "mapping": [],
+            "optimization": [],
+            "routing": []
+          },
+          "description": "A suitable default compiler configuration for the hardware backend"
+        },
+        "starttime": {
+          "description": "Timestamp of start-up of the system (return value of time.time())",
+          "title": "Starttime",
+          "type": "number"
+        },
+        "supports_raw_data": {
+          "default": false,
+          "description": "Whether the hardware backend supports shot memory. If True, the include_raw_data flag in the QuantumHardwareRunCircuitPayload should trigger the backend to store shot memory in the raw_data field of the results.",
+          "title": "Supports Raw Data",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "protocol_version",
+        "nqubits",
+        "topology",
+        "name",
+        "pgs",
+        "starttime"
+      ],
+      "title": "StaticDataSchema",
+      "type": "object"
+    },
+    "Topology": {
+      "description": "A class representing the topology of a quantum chip.\n\nIt is a list of tuples, where each tuple represents a unidirectional connection between two qubits. The first\nelement of the tuple is the source qubit, and the second element is the target qubit.",
+      "items": {
+        "maxItems": 2,
+        "minItems": 2,
+        "prefixItems": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "integer"
+          }
+        ],
+        "type": "array"
+      },
+      "title": "Topology",
+      "type": "array"
+    }
+  },
+  "description": "A successful response to a static data request.",
+  "properties": {
+    "status": {
+      "const": "success",
+      "title": "Status",
+      "type": "string"
+    },
+    "session_id": {
+      "format": "uuid",
+      "title": "Session Id",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/StaticDataSchema"
+    }
+  },
+  "required": [
+    "status",
+    "session_id",
+    "payload"
+  ],
+  "title": "Get hardware data reply",
+  "type": "object"
+}

@@ -74,7 +74,7 @@ async def test_publish_state(sub_channel: SubscribeChannel) -> None:
 async def test_static_data_request(req_channel: RequestChannel) -> None:
     # Test if static data reply is correctly formatted
     static_data_request = QuantumHardwareStaticDataRequest(
-        version=version, command="get_static", session_id=uuid.uuid4()
+        command="get_static", session_id=uuid.uuid4()
     )
     await req_channel.request(static_data_request, QuantumHardwareStaticDataResponse)
 
@@ -83,7 +83,7 @@ async def test_static_data_request(req_channel: RequestChannel) -> None:
 async def test_dynamic_data_request(req_channel: RequestChannel) -> None:
     # Test if dynamic data reply is correctly formatted
     dynamic_data_request = QuantumHardwareDynamicDataRequest(
-        version=version, command="get_dynamic", session_id=uuid.uuid4()
+        command="get_dynamic", session_id=uuid.uuid4()
     )
     await req_channel.request(dynamic_data_request, QuantumHardwareDynamicDataResponse)
 
@@ -94,7 +94,7 @@ async def test_happy_flow(req_channel: RequestChannel):
     session_id = uuid.uuid4()
 
     init_request = QuantumHardwareInitializeRequest(
-        version=version, session_id=session_id, command="initialize"
+        session_id=session_id, command="initialize"
     )
     await req_channel.request(init_request, QuantumHardwareSimpleSuccessResponse)
 
@@ -105,7 +105,6 @@ async def test_happy_flow(req_channel: RequestChannel):
         include_raw_data=False,
     )
     exec_request = QuantumHardwareExecuteRequest(
-        version=version,
         session_id=session_id,
         command="execute",
         payload=exec_payload,
@@ -113,7 +112,7 @@ async def test_happy_flow(req_channel: RequestChannel):
     await req_channel.request(exec_request, QuantumHardwareExecuteResponse)
 
     terminate_request = QuantumHardwareTerminateRequest(
-        version=version, session_id=session_id, command="terminate"
+        session_id=session_id, command="terminate"
     )
     await req_channel.request(terminate_request, QuantumHardwareSimpleSuccessResponse)
 
@@ -130,7 +129,6 @@ async def test_exec_without_init(req_channel: RequestChannel):
         include_raw_data=False,
     )
     exec_request = QuantumHardwareExecuteRequest(
-        version=version,
         session_id=session_id,
         command="execute",
         payload=exec_payload,

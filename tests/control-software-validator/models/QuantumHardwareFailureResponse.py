@@ -18,7 +18,6 @@ class FailureDataSchema(BaseModel):
 
 
 class QuantumHardwareFailureResponse(BaseModel):
-    version: str = Field(..., pattern='^\\d+\\.\\d+\\.\\d$', title='Version')
     session_id: UUID = Field(
         ...,
         description='An arbitrary string, filled in in the request, which is copied into the reply object.',

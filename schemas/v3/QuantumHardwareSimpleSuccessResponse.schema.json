@@ -1,0 +1,22 @@
+{
+  "description": "A simple success response to an initialize or terminate request.",
+  "properties": {
+    "session_id": {
+      "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
+      "format": "uuid",
+      "title": "Session Id",
+      "type": "string"
+    },
+    "status": {
+      "const": "success",
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "session_id",
+    "status"
+  ],
+  "title": "Operation success reply",
+  "type": "object"
+}

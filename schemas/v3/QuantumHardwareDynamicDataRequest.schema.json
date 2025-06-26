@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "command": {
+      "const": "get_dynamic",
+      "title": "Command",
+      "type": "string"
+    },
+    "session_id": {
+      "format": "uuid",
+      "title": "Session Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "command",
+    "session_id"
+  ],
+  "title": "QuantumHardwareDynamicDataRequest",
+  "type": "object"
+}

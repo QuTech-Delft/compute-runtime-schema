@@ -1,0 +1,49 @@
+{
+  "$defs": {
+    "HWCSState": {
+      "enum": [
+        "IDLE",
+        "EXECUTING",
+        "CALIBRATING",
+        "OFFLINE"
+      ],
+      "title": "HWCSState",
+      "type": "string"
+    },
+    "PublishStatePayloadSchema": {
+      "properties": {
+        "timestamp": {
+          "description": "Timestamp of the instantiation of the message (return value of time.time())",
+          "title": "Timestamp",
+          "type": "number"
+        },
+        "state": {
+          "$ref": "#/$defs/HWCSState"
+        }
+      },
+      "required": [
+        "timestamp",
+        "state"
+      ],
+      "title": "PublishStatePayloadSchema",
+      "type": "object"
+    }
+  },
+  "description": "This message is used to publish the state of the hardware controller system (HWCS).",
+  "properties": {
+    "command": {
+      "const": "publish_state",
+      "title": "Command",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/PublishStatePayloadSchema"
+    }
+  },
+  "required": [
+    "command",
+    "payload"
+  ],
+  "title": "Publish state message",
+  "type": "object"
+}

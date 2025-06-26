@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import BaseModel, Field
 
@@ -26,11 +26,5 @@ class PublishStatePayloadSchema(BaseModel):
 
 
 class PublishState(BaseModel):
-    version: Optional[str] = Field(
-        '0.2.0',
-        description='Version of the message schema. Has been made optional to allow for moving to the new versioning scheme.',
-        pattern='^\\d+\\.\\d+\\.\\d$',
-        title='Version',
-    )
     command: Literal['publish_state'] = Field(..., title='Command')
     payload: PublishStatePayloadSchema
