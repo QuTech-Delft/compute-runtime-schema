@@ -39,7 +39,6 @@ implementations of 2300 might impose different requirements. These will be descr
         "include_raw_data": true,
         "number_of_shots": 4
     },
-    "version": "0.2.0"
 }
 ```
 
@@ -70,6 +69,5 @@ implementations of 2300 might impose different requirements. These will be descr
             "000"
         ]
     },
-    "version": "0.2.0"
 }
 ```

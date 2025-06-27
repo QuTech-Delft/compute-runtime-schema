@@ -27,7 +27,7 @@ This message does not require any additional information in the payload section.
 ```json title="get_static_request.json" linenums="1"
 {
     "command": "get_static",
-    "version": "0.2.0"
+    "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
 }
 ```
 
@@ -36,6 +36,7 @@ This message does not require any additional information in the payload section.
 | Key | Type | Value |
 | --- | --- | --- |
 | `nqubits` | `int` | The number of qubits |
+| `protocol_version` | `int` | The version of this protocol that is being used |
 | `topology` | `array[tuple]` | List of the edges between the various qubits |
 | `name` | `str` | Name of the system |
 | `pgs` | `array[str]` | Supported primitive gates set of the system. Gate names as described `instructions` (bottom of file) in [QuIS](https://github.com/QuTech-Delft/QuIS/blob/develop/quis/quis.json) |
@@ -50,6 +51,7 @@ This message does not require any additional information in the payload section.
     "status": "success",
     "payload": {
         "nqubits": 5,
+        "protocol_version": 3,
         "topology": [
             [0, 2],
             [1, 2],
@@ -73,7 +75,7 @@ This message does not require any additional information in the payload section.
             ]
         }
     },
-    "version": "0.2.0"
+    "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
 }
 ```
 
@@ -113,7 +115,7 @@ This message does not require any additional information in the payload section.
 ```json title="get_dynamic_request.json" linenums="1"
 {
     "command": "get_dynamic",
-    "version": "0.2.0"
+    "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
 }
 ```
 
@@ -137,10 +139,10 @@ necessary panels in the dashboard or alerts can also reference values for indivi
 ```json title="get_dynamic_reply.json" linenums="1"
 {
     "status": "success",
+    "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "payload": {
         "fridge_temperature_in_mk": 8.4
     },
-    "version": "0.2.0"
 }
 ```
 
@@ -162,7 +164,7 @@ qi_fridge_temperature_in_mk 8.4
             "q1": 0.988
         }
     },
-    "version": "0.2.0"
+    "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
 }
 ```
 
@@ -186,7 +188,7 @@ qi_t1{qubit=q1} 0.988
             }
         }
     },
-    "version": "0.2.0"
+    "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
 }
 ```
 
