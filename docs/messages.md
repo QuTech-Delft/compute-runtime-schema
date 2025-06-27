@@ -20,7 +20,6 @@ for these messages and should be inherited from for every relevant message.
 | --- | --- | --- |
 | `command` | `str` | A string identifying the function to be executed. |
 | `payload` | `dict` | Arguments for the function to be executed. Presence of this key-value pair depends on the specific command. |
-| `version` | `str` | String containing the version number of the message format. This allows modification of the interface in a backwards compatible manner. The version will adhere to the [semantic versioning rules](<https://semver.org/>). Presently we are still using a beta numbering (`0.y.z`). |
 
 ```json title="base_request.json" linenums="1"
 {
@@ -28,7 +27,6 @@ for these messages and should be inherited from for every relevant message.
     "payload": {
         // optional
     },
-    "version": "0.2.0"
 }
 ```
 
@@ -39,7 +37,6 @@ for these messages and should be inherited from for every relevant message.
 | `status` | `str` | "success" or "failure", depending on whether the command executed successfully. |
 | `payload` | `dict` | The return value(s) of the executed command (presence of this key-value pair then depends on the specific command). |
 | `payload.error_msg` | `str` | If `"status" == "failure"`: a string describing the failure in more detail. |
-| `version` | `str` | String containing the version number of the message format. This allows modification of the interface in a backwards compatible manner. The version will adhere to the [semantic versioning rules](<https://semver.org/>). Presently we are still using a beta numbering (`0.y.z`). |
 
 #### Base reply success
 
@@ -49,7 +46,6 @@ for these messages and should be inherited from for every relevant message.
     "payload": {
         // optional
     },
-    "version": "0.2.0"
 }
 ```
 
@@ -61,7 +57,6 @@ for these messages and should be inherited from for every relevant message.
     "payload": {
         "error_msg": "Lorem ipsum"
     },
-    "version": "0.2.0"
 }
 ```
 
@@ -88,7 +83,6 @@ inherited from for every relevant message.
     "payload": {
         // optional
     },
-    "version": "0.2.0"
 }
 ```
 
@@ -105,6 +99,5 @@ inherited from for every relevant message.
     "payload": {
         // optional
     },
-    "version": "0.2.0"
 }
 ```

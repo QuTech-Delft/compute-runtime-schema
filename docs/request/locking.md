@@ -24,7 +24,6 @@ This message does not require any additional information in the payload section.
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "initialize",
-    "version": "0.2.0"
 }
 ```
 
@@ -38,7 +37,6 @@ This message does not require any additional information in the payload section.
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
-    "version": "0.2.0"
 }
 ```
 
@@ -64,7 +62,6 @@ This message does not require any additional information in the payload section.
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "command": "terminate",
-    "version": "0.2.0"
 }
 ```
 
@@ -78,6 +75,5 @@ This message does not require any additional information in the payload section.
 {
     "session_id": "eb4fdc2c-755b-47d8-af76-bbca2dce554d",
     "status": "success",
-    "version": "0.2.0"
 }
 ```

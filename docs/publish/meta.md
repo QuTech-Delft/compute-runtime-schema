@@ -37,6 +37,5 @@ published message.
         "state": "IDLE",
         "timestamp": 1690061619.610174
     },
-    "version": "0.2.0"
 }
 ```
