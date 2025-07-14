@@ -4,6 +4,9 @@
       "properties": {
         "job_id": {
           "description": "Client defined identifier for the execution.",
+          "examples": [
+            1
+          ],
           "title": "Job Id",
           "type": "integer"
         },
@@ -12,6 +15,14 @@
             "type": "integer"
           },
           "description": "Mapping of measured bitstring (little endian notation; q[n]...q[0]) to count of occurrences.",
+          "examples": [
+            {
+              "0000000000": 250,
+              "0000000001": 250,
+              "0000000010": 250,
+              "0000000011": 250
+            }
+          ],
           "title": "Results",
           "type": "object"
         },
@@ -29,6 +40,14 @@
           ],
           "default": null,
           "description": "A list of bitstrings (little endian notation; `q[n]...q[0]`) ordered by the shot in which it             was measured.",
+          "examples": [
+            [
+              "0000000000",
+              "0000000001",
+              "0000000010",
+              "0000000011"
+            ]
+          ],
           "title": "Raw Data"
         }
       },
@@ -43,23 +62,50 @@
   "description": "A successful response to a circuit execution request.",
   "properties": {
     "version": {
+      "description": "The version of the protocol",
+      "examples": [
+        "0.2.0"
+      ],
       "pattern": "^\\d+\\.\\d+\\.\\d$",
       "title": "Version",
       "type": "string"
     },
     "session_id": {
       "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
+      "examples": [
+        "8e7e2b6c-2b3c-4d9f-8b12-6a4d9b1e3f5a"
+      ],
       "format": "uuid",
       "title": "Session Id",
       "type": "string"
     },
     "status": {
       "const": "success",
+      "examples": [
+        "success"
+      ],
       "title": "Status",
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/RunCircuitResultSchema"
+      "$ref": "#/$defs/RunCircuitResultSchema",
+      "examples": [
+        {
+          "job_id": 1,
+          "raw_data": [
+            "0000000000",
+            "0000000001",
+            "0000000010",
+            "0000000011"
+          ],
+          "results": {
+            "0000000000": 250,
+            "0000000001": 250,
+            "0000000010": 250,
+            "0000000011": 250
+          }
+        }
+      ]
     }
   },
   "required": [

@@ -14,11 +14,17 @@
       "properties": {
         "timestamp": {
           "description": "Timestamp of the instantiation of the message (return value of time.time())",
+          "examples": [
+            1752241667.1091666
+          ],
           "title": "Timestamp",
           "type": "number"
         },
         "state": {
-          "$ref": "#/$defs/HWCSState"
+          "$ref": "#/$defs/HWCSState",
+          "examples": [
+            "IDLE"
+          ]
         }
       },
       "required": [
@@ -31,17 +37,30 @@
   },
   "properties": {
     "version": {
+      "description": "The version of the protocol",
+      "examples": [
+        "0.2.0"
+      ],
       "pattern": "^\\d+\\.\\d+\\.\\d$",
       "title": "Version",
       "type": "string"
     },
     "command": {
       "const": "publish_state",
+      "examples": [
+        "publish_state"
+      ],
       "title": "Command",
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/PublishStatePayloadSchema"
+      "$ref": "#/$defs/PublishStatePayloadSchema",
+      "examples": [
+        {
+          "state": "IDLE",
+          "timestamp": 1752241667.1091666
+        }
+      ]
     }
   },
   "required": [

@@ -5,6 +5,16 @@
       "properties": {
         "decomposition": {
           "default": [],
+          "description": "The decomposition stage compiler config",
+          "examples": [
+            [
+              {
+                "arguments": {},
+                "method": "decompose",
+                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+              }
+            ]
+          ],
           "items": {
             "$ref": "#/$defs/CompilerPass"
           },
@@ -13,6 +23,16 @@
         },
         "mapping": {
           "default": [],
+          "description": "The mapping stage compiler config",
+          "examples": [
+            [
+              {
+                "arguments": {},
+                "method": "decompose",
+                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+              }
+            ]
+          ],
           "items": {
             "$ref": "#/$defs/CompilerPass"
           },
@@ -21,6 +41,16 @@
         },
         "optimization": {
           "default": [],
+          "description": "The optimization stage compiler config",
+          "examples": [
+            [
+              {
+                "arguments": {},
+                "method": "decompose",
+                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+              }
+            ]
+          ],
           "items": {
             "$ref": "#/$defs/CompilerPass"
           },
@@ -29,6 +59,16 @@
         },
         "routing": {
           "default": [],
+          "description": "The routing stage compiler config",
+          "examples": [
+            [
+              {
+                "arguments": {},
+                "method": "decompose",
+                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+              }
+            ]
+          ],
           "items": {
             "$ref": "#/$defs/CompilerPass"
           },
@@ -61,6 +101,9 @@
           "additionalProperties": true,
           "default": {},
           "description": "Arguments for the compiler pass",
+          "examples": [
+            {}
+          ],
           "title": "Arguments",
           "type": "object"
         }
@@ -76,25 +119,61 @@
       "properties": {
         "protocol_version": {
           "const": 3,
+          "examples": [
+            3
+          ],
           "title": "Protocol Version",
           "type": "integer"
         },
         "nqubits": {
           "description": "The number of qubits.",
+          "examples": [
+            3
+          ],
           "title": "Nqubits",
           "type": "integer"
         },
         "topology": {
           "$ref": "#/$defs/Topology",
-          "description": "List of the edges between the various qubits"
+          "description": "List of the edges between the various qubits",
+          "examples": [
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                2
+              ]
+            ]
+          ]
         },
         "name": {
           "description": "Name of the system.",
+          "examples": [
+            "Spin2"
+          ],
           "title": "Name",
           "type": "string"
         },
         "pgs": {
           "description": "Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase).",
+          "examples": [
+            [
+              "X",
+              "Y",
+              "Z"
+            ]
+          ],
           "items": {
             "type": "string"
           },
@@ -109,16 +188,54 @@
             "optimization": [],
             "routing": []
           },
-          "description": "A suitable default compiler configuration for the hardware backend"
+          "description": "A suitable default compiler configuration for the hardware backend",
+          "examples": [
+            {
+              "decomposition": [
+                {
+                  "arguments": {},
+                  "method": "decompose",
+                  "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                }
+              ],
+              "mapping": [
+                {
+                  "arguments": {},
+                  "method": "decompose",
+                  "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                }
+              ],
+              "optimization": [
+                {
+                  "arguments": {},
+                  "method": "decompose",
+                  "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                }
+              ],
+              "routing": [
+                {
+                  "arguments": {},
+                  "method": "decompose",
+                  "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                }
+              ]
+            }
+          ]
         },
         "starttime": {
           "description": "Timestamp of start-up of the system (return value of time.time())",
+          "examples": [
+            1752241667.1091666
+          ],
           "title": "Starttime",
           "type": "number"
         },
         "supports_raw_data": {
           "default": false,
           "description": "Whether the hardware backend supports shot memory. If True, the include_raw_data flag in the QuantumHardwareRunCircuitPayload should trigger the backend to store shot memory in the raw_data field of the results.",
+          "examples": [
+            false
+          ],
           "title": "Supports Raw Data",
           "type": "boolean"
         }
@@ -157,16 +274,84 @@
   "properties": {
     "status": {
       "const": "success",
+      "examples": [
+        "success"
+      ],
       "title": "Status",
       "type": "string"
     },
     "session_id": {
+      "examples": [
+        "8e7e2b6c-2b3c-4d9f-8b12-6a4d9b1e3f5a"
+      ],
       "format": "uuid",
       "title": "Session Id",
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/StaticDataSchema"
+      "$ref": "#/$defs/StaticDataSchema",
+      "examples": [
+        {
+          "default_compiler_config": {
+            "decomposition": [
+              {
+                "arguments": {},
+                "method": "decompose",
+                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+              }
+            ],
+            "mapping": [
+              {
+                "arguments": {},
+                "method": "decompose",
+                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+              }
+            ],
+            "optimization": [
+              {
+                "arguments": {},
+                "method": "decompose",
+                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+              }
+            ],
+            "routing": [
+              {
+                "arguments": {},
+                "method": "decompose",
+                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+              }
+            ]
+          },
+          "name": "Spin2",
+          "nqubits": 3,
+          "pgs": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "protocol_version": 3,
+          "starttime": 1752241667.1091666,
+          "supports_raw_data": false,
+          "topology": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        }
+      ]
     }
   },
   "required": [

@@ -1,16 +1,26 @@
 {
   "properties": {
     "version": {
+      "description": "The version of the protocol",
+      "examples": [
+        "0.2.0"
+      ],
       "pattern": "^\\d+\\.\\d+\\.\\d$",
       "title": "Version",
       "type": "string"
     },
     "command": {
       "const": "get_dynamic",
+      "examples": [
+        "get_dynamic"
+      ],
       "title": "Command",
       "type": "string"
     },
     "session_id": {
+      "examples": [
+        "8e7e2b6c-2b3c-4d9f-8b12-6a4d9b1e3f5a"
+      ],
       "format": "uuid",
       "title": "Session Id",
       "type": "string"

@@ -4,20 +4,53 @@
       "properties": {
         "nqubits": {
           "description": "The number of qubits.",
+          "examples": [
+            3
+          ],
           "title": "Nqubits",
           "type": "integer"
         },
         "topology": {
           "$ref": "#/$defs/Topology",
-          "description": "List of the edges between the various qubits"
+          "description": "List of the edges between the various qubits",
+          "examples": [
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                2
+              ]
+            ]
+          ]
         },
         "name": {
           "description": "Name of the system.",
+          "examples": [
+            "Spin2"
+          ],
           "title": "Name",
           "type": "string"
         },
         "pgs": {
           "description": "Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase).",
+          "examples": [
+            [
+              "X",
+              "Y",
+              "Z"
+            ]
+          ],
           "items": {
             "type": "string"
           },
@@ -26,6 +59,9 @@
         },
         "starttime": {
           "description": "Timestamp of start-up of the system (return value of time.time())",
+          "examples": [
+            1752241667.1091666
+          ],
           "title": "Starttime",
           "type": "number"
         }
@@ -62,17 +98,54 @@
   "description": "The reply containing system information for 2300.",
   "properties": {
     "version": {
+      "description": "The version of the protocol",
+      "examples": [
+        "0.2.0"
+      ],
       "pattern": "^\\d+\\.\\d+\\.\\d$",
       "title": "Version",
       "type": "string"
     },
     "status": {
       "const": "success",
+      "examples": [
+        "success"
+      ],
       "title": "Status",
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/StaticDataSchema"
+      "$ref": "#/$defs/StaticDataSchema",
+      "examples": [
+        {
+          "name": "Spin2",
+          "nqubits": 3,
+          "pgs": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "starttime": 1752241667.1091666,
+          "topology": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        }
+      ]
     }
   },
   "required": [

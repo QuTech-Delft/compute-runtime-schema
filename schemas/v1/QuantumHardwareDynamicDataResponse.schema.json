@@ -9,17 +9,27 @@
   "description": "The reply containing system information for 2300.",
   "properties": {
     "version": {
+      "description": "The version of the protocol",
+      "examples": [
+        "0.2.0"
+      ],
       "pattern": "^\\d+\\.\\d+\\.\\d$",
       "title": "Version",
       "type": "string"
     },
     "status": {
       "const": "success",
+      "examples": [
+        "success"
+      ],
       "title": "Status",
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/DynamicDataSchema"
+      "$ref": "#/$defs/DynamicDataSchema",
+      "examples": [
+        {}
+      ]
     }
   },
   "required": [
