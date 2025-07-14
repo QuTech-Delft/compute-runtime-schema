@@ -13,6 +13,7 @@ class FailureDataSchema(BaseModel):
     error_msg: str = Field(
         ...,
         description='A descriptive error message to be passed on to the user.',
+        examples=['Some Error'],
         title='Error Msg',
     )
 
@@ -21,7 +22,8 @@ class QuantumHardwareFailureResponse(BaseModel):
     session_id: UUID = Field(
         ...,
         description='An arbitrary string, filled in in the request, which is copied into the reply object.',
+        examples=['8e7e2b6c-2b3c-4d9f-8b12-6a4d9b1e3f5a'],
         title='Session Id',
     )
-    status: Literal['failure'] = Field(..., title='Status')
-    payload: FailureDataSchema
+    status: Literal['failure'] = Field(..., examples=['failure'], title='Status')
+    payload: FailureDataSchema = Field(..., examples=[{'error_msg': 'Some Error'}])

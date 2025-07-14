@@ -20,11 +20,16 @@ class PublishStatePayloadSchema(BaseModel):
     timestamp: float = Field(
         ...,
         description='Timestamp of the instantiation of the message (return value of time.time())',
+        examples=[1752241667.1091666],
         title='Timestamp',
     )
-    state: HWCSState
+    state: HWCSState = Field(..., examples=['IDLE'])
 
 
 class PublishState(BaseModel):
-    command: Literal['publish_state'] = Field(..., title='Command')
-    payload: PublishStatePayloadSchema
+    command: Literal['publish_state'] = Field(
+        ..., examples=['publish_state'], title='Command'
+    )
+    payload: PublishStatePayloadSchema = Field(
+        ..., examples=[{'state': 'IDLE', 'timestamp': 1752241667.1091666}]
+    )

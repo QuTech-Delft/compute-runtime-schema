@@ -11,20 +11,28 @@ from pydantic import BaseModel, Field
 
 class RunCircuitPayloadSchema(BaseModel):
     job_id: int = Field(
-        ..., description='Client identifier for the execution', title='Job Id'
+        ...,
+        description='Client identifier for the execution',
+        examples=[1],
+        title='Job Id',
     )
     circuit: str = Field(
-        ..., description='Circuit description in cQASM language', title='Circuit'
+        ...,
+        description='Circuit description in cQASM language',
+        examples=['version 3.0\n\nqubit[10] q\n'],
+        title='Circuit',
     )
     number_of_shots: int = Field(
         ...,
         description='Number of shots to be executed for the circuit.',
+        examples=[100],
         gt=0,
         title='Number Of Shots',
     )
     include_raw_data: Optional[bool] = Field(
         False,
         description='Whether or not to return all bitstrings in the order in which they were measured.',
+        examples=[False],
         title='Include Raw Data',
     )
 
@@ -33,7 +41,18 @@ class QuantumHardwareExecuteRequest(BaseModel):
     session_id: UUID = Field(
         ...,
         description='An arbitrary string, filled in in the request, which is copied into the reply object.',
+        examples=['8e7e2b6c-2b3c-4d9f-8b12-6a4d9b1e3f5a'],
         title='Session Id',
     )
-    command: Literal['execute'] = Field(..., title='Command')
-    payload: RunCircuitPayloadSchema
+    command: Literal['execute'] = Field(..., examples=['execute'], title='Command')
+    payload: RunCircuitPayloadSchema = Field(
+        ...,
+        examples=[
+            {
+                'circuit': 'version 3.0\n\nqubit[10] q\n',
+                'include_raw_data': False,
+                'job_id': 1,
+                'number_of_shots': 100,
+            }
+        ],
+    )

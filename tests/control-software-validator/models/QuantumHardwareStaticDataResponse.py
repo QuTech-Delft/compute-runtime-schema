@@ -23,7 +23,10 @@ class CompilerPass(BaseModel):
         title='Method',
     )
     arguments: Optional[Dict[str, Any]] = Field(
-        {}, description='Arguments for the compiler pass', title='Arguments'
+        {},
+        description='Arguments for the compiler pass',
+        examples=[{}],
+        title='Arguments',
     )
 
 
@@ -40,22 +43,81 @@ class Topology(RootModel[List[TopologyItem]]):
 
 
 class CompilerConfig(BaseModel):
-    decomposition: Optional[List[CompilerPass]] = Field([], title='Decomposition')
-    mapping: Optional[List[CompilerPass]] = Field([], title='Mapping')
-    optimization: Optional[List[CompilerPass]] = Field([], title='Optimization')
-    routing: Optional[List[CompilerPass]] = Field([], title='Routing')
+    decomposition: Optional[List[CompilerPass]] = Field(
+        [],
+        description='The decomposition stage compiler config',
+        examples=[
+            [
+                {
+                    'arguments': {},
+                    'method': 'decompose',
+                    'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                }
+            ]
+        ],
+        title='Decomposition',
+    )
+    mapping: Optional[List[CompilerPass]] = Field(
+        [],
+        description='The mapping stage compiler config',
+        examples=[
+            [
+                {
+                    'arguments': {},
+                    'method': 'decompose',
+                    'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                }
+            ]
+        ],
+        title='Mapping',
+    )
+    optimization: Optional[List[CompilerPass]] = Field(
+        [],
+        description='The optimization stage compiler config',
+        examples=[
+            [
+                {
+                    'arguments': {},
+                    'method': 'decompose',
+                    'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                }
+            ]
+        ],
+        title='Optimization',
+    )
+    routing: Optional[List[CompilerPass]] = Field(
+        [],
+        description='The routing stage compiler config',
+        examples=[
+            [
+                {
+                    'arguments': {},
+                    'method': 'decompose',
+                    'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                }
+            ]
+        ],
+        title='Routing',
+    )
 
 
 class StaticDataSchema(BaseModel):
-    protocol_version: Literal[3] = Field(..., title='Protocol Version')
-    nqubits: int = Field(..., description='The number of qubits.', title='Nqubits')
-    topology: Topology = Field(
-        ..., description='List of the edges between the various qubits'
+    protocol_version: Literal[3] = Field(..., examples=[3], title='Protocol Version')
+    nqubits: int = Field(
+        ..., description='The number of qubits.', examples=[3], title='Nqubits'
     )
-    name: str = Field(..., description='Name of the system.', title='Name')
+    topology: Topology = Field(
+        ...,
+        description='List of the edges between the various qubits',
+        examples=[[[0, 1], [1, 2], [2, 0], [3, 2]]],
+    )
+    name: str = Field(
+        ..., description='Name of the system.', examples=['Spin2'], title='Name'
+    )
     pgs: List[str] = Field(
         ...,
         description='Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase).',
+        examples=[['X', 'Y', 'Z']],
         title='Pgs',
     )
     default_compiler_config: Optional[CompilerConfig] = Field(
@@ -63,20 +125,99 @@ class StaticDataSchema(BaseModel):
             {'decomposition': [], 'mapping': [], 'optimization': [], 'routing': []}
         ),
         description='A suitable default compiler configuration for the hardware backend',
+        examples=[
+            {
+                'decomposition': [
+                    {
+                        'arguments': {},
+                        'method': 'decompose',
+                        'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                    }
+                ],
+                'mapping': [
+                    {
+                        'arguments': {},
+                        'method': 'decompose',
+                        'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                    }
+                ],
+                'optimization': [
+                    {
+                        'arguments': {},
+                        'method': 'decompose',
+                        'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                    }
+                ],
+                'routing': [
+                    {
+                        'arguments': {},
+                        'method': 'decompose',
+                        'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                    }
+                ],
+            }
+        ],
     )
     starttime: float = Field(
         ...,
         description='Timestamp of start-up of the system (return value of time.time())',
+        examples=[1752241667.1091666],
         title='Starttime',
     )
     supports_raw_data: Optional[bool] = Field(
         False,
         description='Whether the hardware backend supports shot memory. If True, the include_raw_data flag in the QuantumHardwareRunCircuitPayload should trigger the backend to store shot memory in the raw_data field of the results.',
+        examples=[False],
         title='Supports Raw Data',
     )
 
 
 class QuantumHardwareStaticDataResponse(BaseModel):
-    status: Literal['success'] = Field(..., title='Status')
-    session_id: UUID = Field(..., title='Session Id')
-    payload: StaticDataSchema
+    status: Literal['success'] = Field(..., examples=['success'], title='Status')
+    session_id: UUID = Field(
+        ..., examples=['8e7e2b6c-2b3c-4d9f-8b12-6a4d9b1e3f5a'], title='Session Id'
+    )
+    payload: StaticDataSchema = Field(
+        ...,
+        examples=[
+            {
+                'default_compiler_config': {
+                    'decomposition': [
+                        {
+                            'arguments': {},
+                            'method': 'decompose',
+                            'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                        }
+                    ],
+                    'mapping': [
+                        {
+                            'arguments': {},
+                            'method': 'decompose',
+                            'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                        }
+                    ],
+                    'optimization': [
+                        {
+                            'arguments': {},
+                            'method': 'decompose',
+                            'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                        }
+                    ],
+                    'routing': [
+                        {
+                            'arguments': {},
+                            'method': 'decompose',
+                            'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                        }
+                    ],
+                },
+                'name': 'Spin2',
+                'nqubits': 3,
+                'pgs': ['X', 'Y', 'Z'],
+                'protocol_version': 3,
+                'starttime': 1752241667.1091666,
+                'supports_raw_data': False,
+                'topology': [[0, 1], [1, 2], [2, 0], [3, 2]],
+            }
+        ],
+    )
