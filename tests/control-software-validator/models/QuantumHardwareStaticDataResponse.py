@@ -59,7 +59,7 @@ class CompilerConfig(BaseModel):
     )
     mapping: Optional[List[CompilerPass]] = Field(
         [],
-        description='The mapping stage compiler cpassesonfig',
+        description='The mapping stage compiler passes',
         examples=[
             [
                 {

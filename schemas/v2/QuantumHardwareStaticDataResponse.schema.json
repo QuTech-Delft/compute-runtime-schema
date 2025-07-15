@@ -25,7 +25,7 @@
         },
         "mapping": {
           "default": [],
-          "description": "The mapping stage compiler cpassesonfig",
+          "description": "The mapping stage compiler passes",
           "examples": [
             [
               {
