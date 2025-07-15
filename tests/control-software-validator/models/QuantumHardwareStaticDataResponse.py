@@ -25,7 +25,7 @@ class CompilerPass(BaseModel):
     arguments: Optional[Dict[str, Any]] = Field(
         {},
         description='Arguments for the compiler pass',
-        examples=[{}],
+        examples=[{'param_1': 'value_1'}],
         title='Arguments',
     )
 
@@ -45,11 +45,11 @@ class Topology(RootModel[List[TopologyItem]]):
 class CompilerConfig(BaseModel):
     decomposition: Optional[List[CompilerPass]] = Field(
         [],
-        description='The decomposition stage compiler config',
+        description='The decomposition stage compiler passes',
         examples=[
             [
                 {
-                    'arguments': {},
+                    'arguments': {'param_1': 'value_1'},
                     'method': 'decompose',
                     'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
                 }
@@ -59,11 +59,11 @@ class CompilerConfig(BaseModel):
     )
     mapping: Optional[List[CompilerPass]] = Field(
         [],
-        description='The mapping stage compiler config',
+        description='The mapping stage compiler cpassesonfig',
         examples=[
             [
                 {
-                    'arguments': {},
+                    'arguments': {'param_1': 'value_1'},
                     'method': 'decompose',
                     'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
                 }
@@ -73,11 +73,11 @@ class CompilerConfig(BaseModel):
     )
     optimization: Optional[List[CompilerPass]] = Field(
         [],
-        description='The optimization stage compiler config',
+        description='The optimization stage compiler passes',
         examples=[
             [
                 {
-                    'arguments': {},
+                    'arguments': {'param_1': 'value_1'},
                     'method': 'decompose',
                     'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
                 }
@@ -87,11 +87,11 @@ class CompilerConfig(BaseModel):
     )
     routing: Optional[List[CompilerPass]] = Field(
         [],
-        description='The routing stage compiler config',
+        description='The routing stage compiler passes',
         examples=[
             [
                 {
-                    'arguments': {},
+                    'arguments': {'param_1': 'value_1'},
                     'method': 'decompose',
                     'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
                 }
@@ -129,28 +129,28 @@ class StaticDataSchema(BaseModel):
             {
                 'decomposition': [
                     {
-                        'arguments': {},
+                        'arguments': {'param_1': 'value_1'},
                         'method': 'decompose',
                         'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
                     }
                 ],
                 'mapping': [
                     {
-                        'arguments': {},
+                        'arguments': {'param_1': 'value_1'},
                         'method': 'decompose',
                         'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
                     }
                 ],
                 'optimization': [
                     {
-                        'arguments': {},
+                        'arguments': {'param_1': 'value_1'},
                         'method': 'decompose',
                         'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
                     }
                 ],
                 'routing': [
                     {
-                        'arguments': {},
+                        'arguments': {'param_1': 'value_1'},
                         'method': 'decompose',
                         'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
                     }
@@ -184,28 +184,28 @@ class QuantumHardwareStaticDataResponse(BaseModel):
                 'default_compiler_config': {
                     'decomposition': [
                         {
-                            'arguments': {},
+                            'arguments': {'param_1': 'value_1'},
                             'method': 'decompose',
                             'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
                         }
                     ],
                     'mapping': [
                         {
-                            'arguments': {},
+                            'arguments': {'param_1': 'value_1'},
                             'method': 'decompose',
                             'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
                         }
                     ],
                     'optimization': [
                         {
-                            'arguments': {},
+                            'arguments': {'param_1': 'value_1'},
                             'method': 'decompose',
                             'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
                         }
                     ],
                     'routing': [
                         {
-                            'arguments': {},
+                            'arguments': {'param_1': 'value_1'},
                             'method': 'decompose',
                             'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
                         }
