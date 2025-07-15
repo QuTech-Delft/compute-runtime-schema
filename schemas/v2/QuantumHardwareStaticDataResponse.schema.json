@@ -5,11 +5,13 @@
       "properties": {
         "decomposition": {
           "default": [],
-          "description": "The decomposition stage compiler config",
+          "description": "The decomposition stage compiler passes",
           "examples": [
             [
               {
-                "arguments": {},
+                "arguments": {
+                  "param_1": "value_1"
+                },
                 "method": "decompose",
                 "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
               }
@@ -23,11 +25,13 @@
         },
         "mapping": {
           "default": [],
-          "description": "The mapping stage compiler config",
+          "description": "The mapping stage compiler cpassesonfig",
           "examples": [
             [
               {
-                "arguments": {},
+                "arguments": {
+                  "param_1": "value_1"
+                },
                 "method": "decompose",
                 "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
               }
@@ -41,11 +45,13 @@
         },
         "optimization": {
           "default": [],
-          "description": "The optimization stage compiler config",
+          "description": "The optimization stage compiler passes",
           "examples": [
             [
               {
-                "arguments": {},
+                "arguments": {
+                  "param_1": "value_1"
+                },
                 "method": "decompose",
                 "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
               }
@@ -59,11 +65,13 @@
         },
         "routing": {
           "default": [],
-          "description": "The routing stage compiler config",
+          "description": "The routing stage compiler passes",
           "examples": [
             [
               {
-                "arguments": {},
+                "arguments": {
+                  "param_1": "value_1"
+                },
                 "method": "decompose",
                 "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
               }
@@ -102,7 +110,9 @@
           "default": {},
           "description": "Arguments for the compiler pass",
           "examples": [
-            {}
+            {
+              "param_1": "value_1"
+            }
           ],
           "title": "Arguments",
           "type": "object"
@@ -194,28 +204,36 @@
             {
               "decomposition": [
                 {
-                  "arguments": {},
+                  "arguments": {
+                    "param_1": "value_1"
+                  },
                   "method": "decompose",
                   "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
                 }
               ],
               "mapping": [
                 {
-                  "arguments": {},
+                  "arguments": {
+                    "param_1": "value_1"
+                  },
                   "method": "decompose",
                   "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
                 }
               ],
               "optimization": [
                 {
-                  "arguments": {},
+                  "arguments": {
+                    "param_1": "value_1"
+                  },
                   "method": "decompose",
                   "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
                 }
               ],
               "routing": [
                 {
-                  "arguments": {},
+                  "arguments": {
+                    "param_1": "value_1"
+                  },
                   "method": "decompose",
                   "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
                 }
@@ -296,28 +314,36 @@
           "default_compiler_config": {
             "decomposition": [
               {
-                "arguments": {},
+                "arguments": {
+                  "param_1": "value_1"
+                },
                 "method": "decompose",
                 "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
               }
             ],
             "mapping": [
               {
-                "arguments": {},
+                "arguments": {
+                  "param_1": "value_1"
+                },
                 "method": "decompose",
                 "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
               }
             ],
             "optimization": [
               {
-                "arguments": {},
+                "arguments": {
+                  "param_1": "value_1"
+                },
                 "method": "decompose",
                 "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
               }
             ],
             "routing": [
               {
-                "arguments": {},
+                "arguments": {
+                  "param_1": "value_1"
+                },
                 "method": "decompose",
                 "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
               }

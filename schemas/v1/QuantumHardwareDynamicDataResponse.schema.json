@@ -28,7 +28,9 @@
     "payload": {
       "$ref": "#/$defs/DynamicDataSchema",
       "examples": [
-        {}
+        {
+          "dynamic_key_1": "dynamic_value_1"
+        }
       ]
     }
   },
