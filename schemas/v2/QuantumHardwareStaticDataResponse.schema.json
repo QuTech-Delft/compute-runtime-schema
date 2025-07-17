@@ -30,10 +30,14 @@
             [
               {
                 "arguments": {
-                  "param_1": "value_1"
+                  "mapping": [
+                    2,
+                    0,
+                    1
+                  ]
                 },
-                "method": "decompose",
-                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                "method": "map",
+                "path": "opensquirrel.passes.mapper.simple_mappers.IdentityMapper"
               }
             ]
           ],
@@ -52,8 +56,8 @@
                 "arguments": {
                   "param_1": "value_1"
                 },
-                "method": "decompose",
-                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                "method": "some_method",
+                "path": "some_dummy_path"
               }
             ]
           ],
@@ -70,10 +74,23 @@
             [
               {
                 "arguments": {
-                  "param_1": "value_1"
+                  "connectivity": {
+                    "0": [
+                      1,
+                      2
+                    ],
+                    "1": [
+                      0,
+                      2
+                    ],
+                    "2": [
+                      0,
+                      1
+                    ]
+                  }
                 },
-                "method": "decompose",
-                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                "method": "route",
+                "path": "opensquirrel.passes.router.astar_router.AStarRouter"
               }
             ]
           ],
@@ -214,10 +231,14 @@
               "mapping": [
                 {
                   "arguments": {
-                    "param_1": "value_1"
+                    "mapping": [
+                      2,
+                      0,
+                      1
+                    ]
                   },
-                  "method": "decompose",
-                  "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                  "method": "map",
+                  "path": "opensquirrel.passes.mapper.simple_mappers.IdentityMapper"
                 }
               ],
               "optimization": [
@@ -225,17 +246,30 @@
                   "arguments": {
                     "param_1": "value_1"
                   },
-                  "method": "decompose",
-                  "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                  "method": "some_method",
+                  "path": "some_dummy_path"
                 }
               ],
               "routing": [
                 {
                   "arguments": {
-                    "param_1": "value_1"
+                    "connectivity": {
+                      "0": [
+                        1,
+                        2
+                      ],
+                      "1": [
+                        0,
+                        2
+                      ],
+                      "2": [
+                        0,
+                        1
+                      ]
+                    }
                   },
-                  "method": "decompose",
-                  "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                  "method": "route",
+                  "path": "opensquirrel.passes.router.astar_router.AStarRouter"
                 }
               ]
             }
@@ -324,10 +358,14 @@
             "mapping": [
               {
                 "arguments": {
-                  "param_1": "value_1"
+                  "mapping": [
+                    2,
+                    0,
+                    1
+                  ]
                 },
-                "method": "decompose",
-                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                "method": "map",
+                "path": "opensquirrel.passes.mapper.simple_mappers.IdentityMapper"
               }
             ],
             "optimization": [
@@ -335,17 +373,30 @@
                 "arguments": {
                   "param_1": "value_1"
                 },
-                "method": "decompose",
-                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                "method": "some_method",
+                "path": "some_dummy_path"
               }
             ],
             "routing": [
               {
                 "arguments": {
-                  "param_1": "value_1"
+                  "connectivity": {
+                    "0": [
+                      1,
+                      2
+                    ],
+                    "1": [
+                      0,
+                      2
+                    ],
+                    "2": [
+                      0,
+                      1
+                    ]
+                  }
                 },
-                "method": "decompose",
-                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                "method": "route",
+                "path": "opensquirrel.passes.router.astar_router.AStarRouter"
               }
             ]
           },

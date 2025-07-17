@@ -63,9 +63,9 @@ class CompilerConfig(BaseModel):
         examples=[
             [
                 {
-                    'arguments': {'param_1': 'value_1'},
-                    'method': 'decompose',
-                    'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                    'arguments': {'mapping': [2, 0, 1]},
+                    'method': 'map',
+                    'path': 'opensquirrel.passes.mapper.simple_mappers.IdentityMapper',
                 }
             ]
         ],
@@ -78,8 +78,8 @@ class CompilerConfig(BaseModel):
             [
                 {
                     'arguments': {'param_1': 'value_1'},
-                    'method': 'decompose',
-                    'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                    'method': 'some_method',
+                    'path': 'some_dummy_path',
                 }
             ]
         ],
@@ -91,9 +91,11 @@ class CompilerConfig(BaseModel):
         examples=[
             [
                 {
-                    'arguments': {'param_1': 'value_1'},
-                    'method': 'decompose',
-                    'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                    'arguments': {
+                        'connectivity': {'0': [1, 2], '1': [0, 2], '2': [0, 1]}
+                    },
+                    'method': 'route',
+                    'path': 'opensquirrel.passes.router.astar_router.AStarRouter',
                 }
             ]
         ],
@@ -136,23 +138,25 @@ class StaticDataSchema(BaseModel):
                 ],
                 'mapping': [
                     {
-                        'arguments': {'param_1': 'value_1'},
-                        'method': 'decompose',
-                        'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                        'arguments': {'mapping': [2, 0, 1]},
+                        'method': 'map',
+                        'path': 'opensquirrel.passes.mapper.simple_mappers.IdentityMapper',
                     }
                 ],
                 'optimization': [
                     {
                         'arguments': {'param_1': 'value_1'},
-                        'method': 'decompose',
-                        'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                        'method': 'some_method',
+                        'path': 'some_dummy_path',
                     }
                 ],
                 'routing': [
                     {
-                        'arguments': {'param_1': 'value_1'},
-                        'method': 'decompose',
-                        'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                        'arguments': {
+                            'connectivity': {'0': [1, 2], '1': [0, 2], '2': [0, 1]}
+                        },
+                        'method': 'route',
+                        'path': 'opensquirrel.passes.router.astar_router.AStarRouter',
                     }
                 ],
             }
@@ -191,23 +195,25 @@ class QuantumHardwareStaticDataResponse(BaseModel):
                     ],
                     'mapping': [
                         {
-                            'arguments': {'param_1': 'value_1'},
-                            'method': 'decompose',
-                            'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                            'arguments': {'mapping': [2, 0, 1]},
+                            'method': 'map',
+                            'path': 'opensquirrel.passes.mapper.simple_mappers.IdentityMapper',
                         }
                     ],
                     'optimization': [
                         {
                             'arguments': {'param_1': 'value_1'},
-                            'method': 'decompose',
-                            'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                            'method': 'some_method',
+                            'path': 'some_dummy_path',
                         }
                     ],
                     'routing': [
                         {
-                            'arguments': {'param_1': 'value_1'},
-                            'method': 'decompose',
-                            'path': 'opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer',
+                            'arguments': {
+                                'connectivity': {'0': [1, 2], '1': [0, 2], '2': [0, 1]}
+                            },
+                            'method': 'route',
+                            'path': 'opensquirrel.passes.router.astar_router.AStarRouter',
                         }
                     ],
                 },
