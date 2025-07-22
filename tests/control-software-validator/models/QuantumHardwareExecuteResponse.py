@@ -11,16 +11,23 @@ from pydantic import BaseModel, Field
 
 class RunCircuitResultSchema(BaseModel):
     job_id: int = Field(
-        ..., description='Client defined identifier for the execution.', title='Job Id'
+        ...,
+        description='Client defined identifier for the execution.',
+        examples=[1],
+        title='Job Id',
     )
     results: Dict[str, int] = Field(
         ...,
         description='Mapping of measured bitstring (little endian notation; q[n]...q[0]) to count of occurrences.',
+        examples=[
+            {'0000000000': 250, '0000000001': 250, '0000000010': 250, '0000000011': 250}
+        ],
         title='Results',
     )
     raw_data: Optional[List[str]] = Field(
         None,
         description='A list of bitstrings (little endian notation; `q[n]...q[0]`) ordered by the shot in which it             was measured.',
+        examples=[['0000000000', '0000000001', '0000000010', '0000000011']],
         title='Raw Data',
     )
 
@@ -29,7 +36,22 @@ class QuantumHardwareExecuteResponse(BaseModel):
     session_id: UUID = Field(
         ...,
         description='An arbitrary string, filled in in the request, which is copied into the reply object.',
+        examples=['8e7e2b6c-2b3c-4d9f-8b12-6a4d9b1e3f5a'],
         title='Session Id',
     )
-    status: Literal['success'] = Field(..., title='Status')
-    payload: RunCircuitResultSchema
+    status: Literal['success'] = Field(..., examples=['success'], title='Status')
+    payload: RunCircuitResultSchema = Field(
+        ...,
+        examples=[
+            {
+                'job_id': 1,
+                'raw_data': ['0000000000', '0000000001', '0000000010', '0000000011'],
+                'results': {
+                    '0000000000': 250,
+                    '0000000001': 250,
+                    '0000000010': 250,
+                    '0000000011': 250,
+                },
+            }
+        ],
+    )

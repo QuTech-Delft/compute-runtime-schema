@@ -1,12 +1,19 @@
 {
   "properties": {
     "version": {
+      "description": "The version of the protocol",
+      "examples": [
+        "0.2.0"
+      ],
       "pattern": "^\\d+\\.\\d+\\.\\d$",
       "title": "Version",
       "type": "string"
     },
     "command": {
       "const": "get_static",
+      "examples": [
+        "get_static"
+      ],
       "title": "Command",
       "type": "string"
     }

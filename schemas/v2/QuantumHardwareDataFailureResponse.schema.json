@@ -2,12 +2,19 @@
   "description": "Simplified failure response that can only be used for dynamic/static data requests.",
   "properties": {
     "version": {
+      "description": "The version of the protocol",
+      "examples": [
+        "0.2.0"
+      ],
       "pattern": "^\\d+\\.\\d+\\.\\d$",
       "title": "Version",
       "type": "string"
     },
     "status": {
       "const": "failure",
+      "examples": [
+        "failure"
+      ],
       "title": "Status",
       "type": "string"
     }

@@ -17,6 +17,10 @@ class DynamicDataSchema(BaseModel):
 
 
 class QuantumHardwareDynamicDataResponse(BaseModel):
-    status: Literal['success'] = Field(..., title='Status')
-    payload: DynamicDataSchema
-    session_id: UUID = Field(..., title='Session Id')
+    status: Literal['success'] = Field(..., examples=['success'], title='Status')
+    payload: DynamicDataSchema = Field(
+        ..., examples=[{'dynamic_key_1': 'dynamic_value_1'}]
+    )
+    session_id: UUID = Field(
+        ..., examples=['8e7e2b6c-2b3c-4d9f-8b12-6a4d9b1e3f5a'], title='Session Id'
+    )

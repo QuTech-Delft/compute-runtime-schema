@@ -4,16 +4,25 @@
       "properties": {
         "job_id": {
           "description": "Client identifier for the execution",
+          "examples": [
+            1
+          ],
           "title": "Job Id",
           "type": "integer"
         },
         "circuit": {
           "description": "Circuit description in cQASM language",
+          "examples": [
+            "version 3.0\n\nqubit[10] q\n"
+          ],
           "title": "Circuit",
           "type": "string"
         },
         "number_of_shots": {
           "description": "Number of shots to be executed for the circuit.",
+          "examples": [
+            100
+          ],
           "exclusiveMinimum": 0,
           "title": "Number Of Shots",
           "type": "integer"
@@ -21,6 +30,9 @@
         "include_raw_data": {
           "default": false,
           "description": "Whether or not to return all bitstrings in the order in which they were measured.",
+          "examples": [
+            false
+          ],
           "title": "Include Raw Data",
           "type": "boolean"
         }
@@ -36,23 +48,41 @@
   },
   "properties": {
     "version": {
+      "description": "The version of the protocol",
+      "examples": [
+        "0.2.0"
+      ],
       "pattern": "^\\d+\\.\\d+\\.\\d$",
       "title": "Version",
       "type": "string"
     },
     "session_id": {
       "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
+      "examples": [
+        "8e7e2b6c-2b3c-4d9f-8b12-6a4d9b1e3f5a"
+      ],
       "format": "uuid",
       "title": "Session Id",
       "type": "string"
     },
     "command": {
       "const": "execute",
+      "examples": [
+        "execute"
+      ],
       "title": "Command",
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/RunCircuitPayloadSchema"
+      "$ref": "#/$defs/RunCircuitPayloadSchema",
+      "examples": [
+        {
+          "circuit": "version 3.0\n\nqubit[10] q\n",
+          "include_raw_data": false,
+          "job_id": 1,
+          "number_of_shots": 100
+        }
+      ]
     }
   },
   "required": [

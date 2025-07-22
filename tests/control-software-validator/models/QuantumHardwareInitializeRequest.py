@@ -13,6 +13,9 @@ class QuantumHardwareInitializeRequest(BaseModel):
     session_id: UUID = Field(
         ...,
         description='An arbitrary string, filled in in the request, which is copied into the reply object.',
+        examples=['8e7e2b6c-2b3c-4d9f-8b12-6a4d9b1e3f5a'],
         title='Session Id',
     )
-    command: Literal['initialize'] = Field(..., title='Command')
+    command: Literal['initialize'] = Field(
+        ..., examples=['initialize'], title='Command'
+    )

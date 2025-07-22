@@ -5,6 +5,18 @@
       "properties": {
         "decomposition": {
           "default": [],
+          "description": "The decomposition stage compiler passes",
+          "examples": [
+            [
+              {
+                "arguments": {
+                  "param_1": "value_1"
+                },
+                "method": "decompose",
+                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+              }
+            ]
+          ],
           "items": {
             "$ref": "#/$defs/CompilerPass"
           },
@@ -13,6 +25,22 @@
         },
         "mapping": {
           "default": [],
+          "description": "The mapping stage compiler passes",
+          "examples": [
+            [
+              {
+                "arguments": {
+                  "mapping": [
+                    2,
+                    0,
+                    1
+                  ]
+                },
+                "method": "map",
+                "path": "opensquirrel.passes.mapper.simple_mappers.IdentityMapper"
+              }
+            ]
+          ],
           "items": {
             "$ref": "#/$defs/CompilerPass"
           },
@@ -21,6 +49,18 @@
         },
         "optimization": {
           "default": [],
+          "description": "The optimization stage compiler passes",
+          "examples": [
+            [
+              {
+                "arguments": {
+                  "param_1": "value_1"
+                },
+                "method": "some_method",
+                "path": "some_dummy_path"
+              }
+            ]
+          ],
           "items": {
             "$ref": "#/$defs/CompilerPass"
           },
@@ -29,6 +69,31 @@
         },
         "routing": {
           "default": [],
+          "description": "The routing stage compiler passes",
+          "examples": [
+            [
+              {
+                "arguments": {
+                  "connectivity": {
+                    "0": [
+                      1,
+                      2
+                    ],
+                    "1": [
+                      0,
+                      2
+                    ],
+                    "2": [
+                      0,
+                      1
+                    ]
+                  }
+                },
+                "method": "route",
+                "path": "opensquirrel.passes.router.astar_router.AStarRouter"
+              }
+            ]
+          ],
           "items": {
             "$ref": "#/$defs/CompilerPass"
           },
@@ -61,6 +126,11 @@
           "additionalProperties": true,
           "default": {},
           "description": "Arguments for the compiler pass",
+          "examples": [
+            {
+              "param_1": "value_1"
+            }
+          ],
           "title": "Arguments",
           "type": "object"
         }
@@ -77,25 +147,61 @@
         "protocol_version": {
           "default": 2,
           "description": "Version of the Compute Runtime Schema to use",
+          "examples": [
+            2
+          ],
           "title": "Protocol Version",
           "type": "integer"
         },
         "nqubits": {
           "description": "The number of qubits.",
+          "examples": [
+            3
+          ],
           "title": "Nqubits",
           "type": "integer"
         },
         "topology": {
           "$ref": "#/$defs/Topology",
-          "description": "List of the edges between the various qubits"
+          "description": "List of the edges between the various qubits",
+          "examples": [
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                2
+              ]
+            ]
+          ]
         },
         "name": {
           "description": "Name of the system.",
+          "examples": [
+            "Spin2"
+          ],
           "title": "Name",
           "type": "string"
         },
         "pgs": {
           "description": "Supported primitive gates set of the system. Gate names as described in cQASM (in uppercase).",
+          "examples": [
+            [
+              "X",
+              "Y",
+              "Z"
+            ]
+          ],
           "items": {
             "type": "string"
           },
@@ -110,16 +216,79 @@
             "optimization": [],
             "routing": []
           },
-          "description": "A suitable default compiler configuration for the hardware backend"
+          "description": "A suitable default compiler configuration for the hardware backend",
+          "examples": [
+            {
+              "decomposition": [
+                {
+                  "arguments": {
+                    "param_1": "value_1"
+                  },
+                  "method": "decompose",
+                  "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+                }
+              ],
+              "mapping": [
+                {
+                  "arguments": {
+                    "mapping": [
+                      2,
+                      0,
+                      1
+                    ]
+                  },
+                  "method": "map",
+                  "path": "opensquirrel.passes.mapper.simple_mappers.IdentityMapper"
+                }
+              ],
+              "optimization": [
+                {
+                  "arguments": {
+                    "param_1": "value_1"
+                  },
+                  "method": "some_method",
+                  "path": "some_dummy_path"
+                }
+              ],
+              "routing": [
+                {
+                  "arguments": {
+                    "connectivity": {
+                      "0": [
+                        1,
+                        2
+                      ],
+                      "1": [
+                        0,
+                        2
+                      ],
+                      "2": [
+                        0,
+                        1
+                      ]
+                    }
+                  },
+                  "method": "route",
+                  "path": "opensquirrel.passes.router.astar_router.AStarRouter"
+                }
+              ]
+            }
+          ]
         },
         "starttime": {
           "description": "Timestamp of start-up of the system (return value of time.time())",
+          "examples": [
+            1752241667.1091666
+          ],
           "title": "Starttime",
           "type": "number"
         },
         "supports_raw_data": {
           "default": false,
           "description": "Whether the hardware backend supports shot memory. If True, the include_raw_data flag in the QuantumHardwareRunCircuitPayload should trigger the backend to store shot memory in the raw_data field of the results.",
+          "examples": [
+            false
+          ],
           "title": "Supports Raw Data",
           "type": "boolean"
         }
@@ -156,17 +325,111 @@
   "description": "A successful response to a static data request.",
   "properties": {
     "version": {
+      "description": "The version of the protocol",
+      "examples": [
+        "0.2.0"
+      ],
       "pattern": "^\\d+\\.\\d+\\.\\d$",
       "title": "Version",
       "type": "string"
     },
     "status": {
       "const": "success",
+      "examples": [
+        "success"
+      ],
       "title": "Status",
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/StaticDataSchema"
+      "$ref": "#/$defs/StaticDataSchema",
+      "examples": [
+        {
+          "default_compiler_config": {
+            "decomposition": [
+              {
+                "arguments": {
+                  "param_1": "value_1"
+                },
+                "method": "decompose",
+                "path": "opensquirrel.passes.decomposer.mckay_decomposer.McKayDecomposer"
+              }
+            ],
+            "mapping": [
+              {
+                "arguments": {
+                  "mapping": [
+                    2,
+                    0,
+                    1
+                  ]
+                },
+                "method": "map",
+                "path": "opensquirrel.passes.mapper.simple_mappers.IdentityMapper"
+              }
+            ],
+            "optimization": [
+              {
+                "arguments": {
+                  "param_1": "value_1"
+                },
+                "method": "some_method",
+                "path": "some_dummy_path"
+              }
+            ],
+            "routing": [
+              {
+                "arguments": {
+                  "connectivity": {
+                    "0": [
+                      1,
+                      2
+                    ],
+                    "1": [
+                      0,
+                      2
+                    ],
+                    "2": [
+                      0,
+                      1
+                    ]
+                  }
+                },
+                "method": "route",
+                "path": "opensquirrel.passes.router.astar_router.AStarRouter"
+              }
+            ]
+          },
+          "name": "Spin2",
+          "nqubits": 3,
+          "pgs": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "protocol_version": 2,
+          "starttime": 1752241667.1091666,
+          "supports_raw_data": false,
+          "topology": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        }
+      ]
     }
   },
   "required": [

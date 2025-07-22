@@ -4,6 +4,9 @@
       "properties": {
         "error_msg": {
           "description": "A descriptive error message to be passed on to the user.",
+          "examples": [
+            "Some Error"
+          ],
           "title": "Error Msg",
           "type": "string"
         }
@@ -17,23 +20,38 @@
   },
   "properties": {
     "version": {
+      "description": "The version of the protocol",
+      "examples": [
+        "0.2.0"
+      ],
       "pattern": "^\\d+\\.\\d+\\.\\d$",
       "title": "Version",
       "type": "string"
     },
     "session_id": {
       "description": "An arbitrary string, filled in in the request, which is copied into the reply object.",
+      "examples": [
+        "8e7e2b6c-2b3c-4d9f-8b12-6a4d9b1e3f5a"
+      ],
       "format": "uuid",
       "title": "Session Id",
       "type": "string"
     },
     "status": {
       "const": "failure",
+      "examples": [
+        "failure"
+      ],
       "title": "Status",
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/FailureDataSchema"
+      "$ref": "#/$defs/FailureDataSchema",
+      "examples": [
+        {
+          "error_msg": "Some Error"
+        }
+      ]
     }
   },
   "required": [
