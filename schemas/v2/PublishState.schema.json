@@ -5,6 +5,7 @@
         "IDLE",
         "EXECUTING",
         "CALIBRATING",
+        "BENCHMARKING",
         "OFFLINE"
       ],
       "title": "HWCSState",
