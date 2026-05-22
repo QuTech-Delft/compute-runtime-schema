@@ -813,7 +813,7 @@ by 2300.</p>
 <tr>
 <td><code>state</code></td>
 <td><code>str</code></td>
-<td>The current state of the system in all-capitals (i.e. <code>IDLE</code>, <code>EXECUTING</code>, <code>CALIBRATING</code>, <code>OFFLINE</code>)</td>
+<td>The current state of the system in all-capitals (i.e. <code>IDLE</code>, <code>EXECUTING</code>, <code>BENCHMARKING</code>, <code>CALIBRATING</code>, <code>OFFLINE</code>)</td>
 </tr>
 <tr>
 <td><code>timestamp</code></td>
@@ -826,7 +826,8 @@ by 2300.</p>
 published message.</p>
 <ul>
 <li><code>OFFLINE</code>: 2300 is controlled manually or not reachable,</li>
-<li><code>CALIBRATING</code>: 2300 is calibrating,</li>
+<li><code>CALIBRATING</code>: 2300 is calibrating (involves actively changing values in the system),</li>
+<li><code>BENCHMARKING</code>: 2300 is benchmarking (operations are read-only),</li>
 <li><code>EXECUTING</code>: 2300 is initialized for execution and not yet terminated,</li>
 <li><code>IDLE</code>: 2300 is not executing experiments and being calibrated.</li>
 </ul>
