@@ -2,6 +2,11 @@
   "$defs": {
     "DynamicDataSchema": {
       "additionalProperties": true,
+      "examples": [
+        {
+          "dynamic_key_1": "dynamic_value_1"
+        }
+      ],
       "title": "DynamicDataSchema",
       "type": "object"
     }
@@ -26,12 +31,7 @@
       "type": "string"
     },
     "payload": {
-      "$ref": "#/$defs/DynamicDataSchema",
-      "examples": [
-        {
-          "dynamic_key_1": "dynamic_value_1"
-        }
-      ]
+      "$ref": "#/$defs/DynamicDataSchema"
     }
   },
   "required": [
