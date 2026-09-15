@@ -38,6 +38,7 @@ class Topology(RootModel[List[TopologyItem]]):
     root: List[TopologyItem] = Field(
         ...,
         description='A class representing the topology of a quantum chip.\n\nIt is a list of tuples, where each tuple represents a unidirectional connection between two qubits. The first\nelement of the tuple is the source qubit, and the second element is the target qubit.',
+        examples=[[[0, 1], [1, 2], [2, 0], [3, 2]]],
         title='Topology',
     )
 
@@ -109,9 +110,7 @@ class StaticDataSchema(BaseModel):
         ..., description='The number of qubits.', examples=[3], title='Nqubits'
     )
     topology: Topology = Field(
-        ...,
-        description='List of the edges between the various qubits',
-        examples=[[[0, 1], [1, 2], [2, 0], [3, 2]]],
+        ..., description='List of the edges between the various qubits'
     )
     name: str = Field(
         ..., description='Name of the system.', examples=['Spin2'], title='Name'
